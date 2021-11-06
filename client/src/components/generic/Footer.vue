@@ -36,7 +36,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: black;
+  background: #f24767;
   height: 300px;
 }
 .footer_fix {
