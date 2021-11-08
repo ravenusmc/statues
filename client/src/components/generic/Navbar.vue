@@ -1,6 +1,10 @@
 <template>
   <div>
-    <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+    <nav
+      class="navbar is-danger"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="navbar-brand">
         <a
           role="button"
@@ -29,7 +33,9 @@
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-primary">
-                <strong>Sign up</strong>
+                <router-link class="fontColor font" to="/sign_up"
+                  ><strong>Sign up</strong></router-link
+                >
               </a>
               <a class="button is-light"> Log in </a>
             </div>
