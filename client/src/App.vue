@@ -20,4 +20,15 @@ export default {
 </script>
 
 <style>
+.center {
+  text-align: center;
+}
+
+.title-size {
+  font-size: 3em;
+}
+
+.font {
+  font-family: 'Barlow', sans-serif;
+}
 </style>
