@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Form',
   data() {
@@ -71,6 +73,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['common/setUpUser']),
     signup(evt) {
       evt.preventDefault();
       if (this.firstName === '') {
@@ -96,10 +99,9 @@ export default {
           password: this.password,
           confirmPassword: this.confirmPassword,
         };
-        console.log(payload);
+        console.log('here');
+        this.$store.dispatch('common/setUpUser', { payload });
       }
-
-      // this.$store.dispatch('common/login', { payload });
     },
   },
 };
