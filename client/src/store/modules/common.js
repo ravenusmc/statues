@@ -13,7 +13,7 @@ const getters = {
 
 const actions = {
 
-  setUpUser: ({ payload }) => {
+  setUpUser: (context, { payload }) => {
     console.log(payload);
   },
 
