@@ -13,10 +13,19 @@ app.config.from_object(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 
-# sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!')
+# This route will allow new users to register on the site
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        email = post_data['email']
+        username = post_data['username']
+        password = post_data['password']
+        user = User(email, username, password)
+        hashed = db.encrypt_pass(post_data)
+        user_created = db.insert(user, hashed)
+        return jsonify(user_created)
 
 
 if __name__ == '__main__':
