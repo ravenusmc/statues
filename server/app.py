@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 
+# Files that I built
+
 
 # configuration
 DEBUG = True
@@ -26,7 +28,6 @@ def signup():
         hashed = db.encrypt_pass(post_data)
         user_created = db.insert(user, hashed)
         return jsonify(user_created)
-
 
 if __name__ == '__main__':
     app.run()
