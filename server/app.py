@@ -27,9 +27,7 @@ def signup():
         post_data['userName'], post_data['password'])
         hashed = db.encrypt_pass(post_data)
         user_created = db.insert(user, hashed)
-        print(user_created)
-        # return jsonify(user_created)
-        return jsonify('7')
+        return jsonify(user_created)
 
 
 if __name__ == '__main__':

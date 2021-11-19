@@ -51,7 +51,7 @@
             placeholder="Confirm Password"
           />
         </div>
-        <button class="button is-success">Success</button>
+        <button class="button is-success">Sign Up</button>
       </form>
     </section>
   </div>

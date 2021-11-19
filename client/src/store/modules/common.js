@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-// import router from '../../router';
+import router from '../../router';
 
 Vue.use(Vuex);
 
@@ -18,7 +18,7 @@ const actions = {
     axios.post(path, payload)
       .then((res) => {
         console.log(res.data);
-        // router.push({ path: '/login' });
+        router.push({ path: '/login' });
       })
       .catch((error) => {
         console.log(error);

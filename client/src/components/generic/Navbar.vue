@@ -32,12 +32,14 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <router-link class="fontColor font" to="/sign_up"
-                  ><strong>Sign up</strong></router-link
-                >
-              </a>
-              <a class="button is-light"> Log in </a>
+              <router-link class="fontColor font" to="/sign_up">
+                <a class="button is-primary">
+                  <strong>Sign up</strong>
+                </a>
+              </router-link>
+              <router-link class="fontColor font" to="/login">
+                <a class="button is-light"> Log in </a>
+              </router-link>
             </div>
           </div>
         </div>
