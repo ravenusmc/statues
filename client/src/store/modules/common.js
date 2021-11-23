@@ -5,10 +5,12 @@ import router from '../../router';
 
 Vue.use(Vuex);
 
-const state = {
+const data = {
+  userNotFound: false,
 };
 
 const getters = {
+  userNotFound: (state) => state.userNotFound,
 };
 
 const actions = {
@@ -29,7 +31,6 @@ const actions = {
     const path = 'http://localhost:5000/login';
     axios.post(path, payload)
       .then((res) => {
-        console.log(res.data);
         commit('setNotFound', res.data);
         // if (res.data.login_flag) {
         //   commit('session/setUserObject', res.data.user, { root: true })
@@ -37,7 +38,8 @@ const actions = {
         //   router.push({ path: '/set_up' });
         // }
         // commit('setNoPasswordMatch', res.data.Password_no_match)
-        // commit('setNotFound', res.data.Not_found)
+        console.log(res.data);
+        commit('setUserNotFound', res.data.Not_found);
       })
       .catch((error) => {
         console.log(error);
@@ -48,11 +50,15 @@ const actions = {
 
 const mutations = {
 
+  setUserNotFound(state, value) {
+    state.userNotFound = value;
+  },
+
 };
 
 export default {
   namespaced: true,
-  state,
+  state: data,
   getters,
   actions,
   mutations,

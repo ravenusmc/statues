@@ -1,7 +1,11 @@
 <template>
   <div>
     <section>
-      <h1 class="center signup-title title-size font">Sign Up</h1>
+      <h2 class="center signup-title title-size font">Login</h2>
+      <h1 v-if="userNotFound" class='center font alert'>User is not found, Please <a
+              ><router-link class='alert' to="/sign_up"
+                >sign up.</router-link
+              ></a></h1>
       <form @submit="login">
         <div class="field">
           <input
@@ -26,10 +30,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Form',
+  computed: {
+    ...mapGetters('common', ['userNotFound']),
+  },
   data() {
     return {
       userName: '',

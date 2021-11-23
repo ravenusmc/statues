@@ -31,4 +31,9 @@ export default {
 .font {
   font-family: 'Barlow', sans-serif;
 }
+
+.alert {
+  font-weight: bold;
+  color: red;
+}
 </style>
