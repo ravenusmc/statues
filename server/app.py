@@ -45,9 +45,7 @@ def login():
         login_values['Not_found'] = not_found
         login_values['Password_no_match'] = password_no_match
         login_values['user'] = user
-        print(login_values)
-    return jsonify('5')
-    # return jsonify(login_values)
+    return jsonify(login_values)
 
 
 if __name__ == '__main__':

@@ -33,9 +33,7 @@ class Connection():
         self.conn.commit()
         return user_created
 
-    # This method will check to ensure that the username is in the database. It's also
-    # a method that I wrote a long time ago that really needs to be modified - essentially
-    # improved.
+    # This method will check to ensure that the username is in the database. 
     def check(self, username, password):
         # Setting up a user dictionary
         user = {}
