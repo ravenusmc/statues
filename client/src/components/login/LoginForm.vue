@@ -6,6 +6,7 @@
               ><router-link class='alert' to="/sign_up"
                 >sign up.</router-link
               ></a></h1>
+      <h1 v-if="passwordNoMatch" class='center font alert'>Password is Invalid</h1>
       <form @submit="login">
         <div class="field">
           <input
@@ -35,7 +36,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'Form',
   computed: {
-    ...mapGetters('common', ['userNotFound']),
+    ...mapGetters('common', ['userNotFound', 'passwordNoMatch']),
   },
   data() {
     return {

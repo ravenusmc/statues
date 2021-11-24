@@ -7,10 +7,12 @@ Vue.use(Vuex);
 
 const data = {
   userNotFound: false,
+  passwordNoMatch: false,
 };
 
 const getters = {
   userNotFound: (state) => state.userNotFound,
+  passwordNoMatch: (state) => state.passwordNoMatch,
 };
 
 const actions = {
@@ -37,8 +39,8 @@ const actions = {
         //   commit('setLoginFlag', res.data.login_flag)
         //   router.push({ path: '/set_up' });
         // }
-        // commit('setNoPasswordMatch', res.data.Password_no_match)
         console.log(res.data);
+        commit('setNoPasswordMatch', res.data.Password_no_match);
         commit('setUserNotFound', res.data.Not_found);
       })
       .catch((error) => {
@@ -52,6 +54,10 @@ const mutations = {
 
   setUserNotFound(state, value) {
     state.userNotFound = value;
+  },
+
+  setNoPasswordMatch(state, value) {
+    state.passwordNoMatch = value;
   },
 
 };
