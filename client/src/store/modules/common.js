@@ -39,7 +39,6 @@ const actions = {
         //   commit('setLoginFlag', res.data.login_flag)
         //   router.push({ path: '/set_up' });
         // }
-        console.log(res.data);
         commit('setNoPasswordMatch', res.data.Password_no_match);
         commit('setUserNotFound', res.data.Not_found);
       })
