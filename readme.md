@@ -32,6 +32,7 @@ Please note that these instructions are not 100% complete.
 3. Pandas-0.18.1
 4. Numpy-1.11.0
 5. Vue.JS-2.5
+6. MySQL
 
 ### Operation
 
