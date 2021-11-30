@@ -8,7 +8,7 @@ Vue.use(Vuex);
 const data = {
   userNotFound: false,
   passwordNoMatch: false,
-  loginFlag: false, 
+  loginFlag: false,
 };
 
 const getters = {
@@ -35,11 +35,10 @@ const actions = {
     const path = 'http://localhost:5000/login';
     axios.post(path, payload)
       .then((res) => {
-        // clean this up
         if (res.data.login_flag) {
-          commit('session/setUserObject', res.data.user, { root: true })
-          commit('setLoginFlag', res.data.login_flag)
-          router.push({ path: '/Data' });
+          commit('session/setUserObject', res.data.user, { root: true });
+          commit('setLoginFlag', res.data.login_flag);
+          // router.push({ path: '/Data' });
         }
         commit('setNoPasswordMatch', res.data.Password_no_match);
         commit('setUserNotFound', res.data.Not_found);
