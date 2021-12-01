@@ -22,9 +22,8 @@ const actions = {
   setUpUser: (context, { payload }) => {
     const path = 'http://localhost:5000/signup';
     axios.post(path, payload)
-      .then((res) => {
-        console.log(res.data);
-        router.push({ path: '/login' });
+      .then(() => {
+        this.$router.push({ path: '/login' });
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +37,8 @@ const actions = {
         if (res.data.login_flag) {
           commit('session/setUserObject', res.data.user, { root: true });
           commit('setLoginFlag', res.data.login_flag);
-          // router.push({ path: '/Data' });
+          router.push({ name: 'Data' });
+          // this.$router.push({ name: 'Data' });
         }
         commit('setNoPasswordMatch', res.data.Password_no_match);
         commit('setUserNotFound', res.data.Not_found);

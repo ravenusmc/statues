@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+// import store from '../store/index.js';
+import store from '@/store/index';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -27,6 +29,25 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/Login.vue'),
+  },
+  {
+    path: '/data',
+    name: 'Data',
+    component: () => import('../views/Data.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
 ];
 
