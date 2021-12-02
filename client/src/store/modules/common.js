@@ -38,7 +38,6 @@ const actions = {
           commit('session/setUserObject', res.data.user, { root: true });
           commit('setLoginFlag', res.data.login_flag);
           router.push({ name: 'Data' });
-          // this.$router.push({ name: 'Data' });
         }
         commit('setNoPasswordMatch', res.data.Password_no_match);
         commit('setUserNotFound', res.data.Not_found);
@@ -47,6 +46,17 @@ const actions = {
         console.log(error);
       });
   },
+
+  logout: ({ commit }) => {
+    let userNotFound = false;
+		let passwordNoMatch = false;
+		let loginFlag = false;
+    let userObject = [];
+    commit('setUserNotFound', userNotFound);
+    commit('setNoPasswordMatch', passwordNoMatch);
+		commit('setLoginFlag', loginFlag);
+		commit('session/setUserObject', userObject, { root: true })
+	},
 
 };
 

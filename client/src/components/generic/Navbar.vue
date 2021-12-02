@@ -32,13 +32,29 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link class="fontColor font" to="/sign_up">
+              <router-link
+                v-if="!loginFlag"
+                class="fontColor font fix"
+                to="/sign_up"
+              >
                 <a class="button is-primary">
                   <strong>Sign up</strong>
                 </a>
               </router-link>
-              <router-link class="fontColor font" to="/login">
-                <a class="button is-light"> Log in </a>
+              <router-link
+                v-if="!loginFlag"
+                class="fontColor font fix"
+                to="/login"
+              >
+                <a class="button is-light"> Login </a>
+              </router-link>
+              <router-link
+                v-if="loginFlag"
+                @click.native="logout"
+                class="fontColor font"
+                to="/login"
+              >
+                <a class="button is-light"> Log out </a>
               </router-link>
             </div>
           </div>
@@ -49,10 +65,30 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'navbar',
+  computed: {
+    ...mapGetters('common', ['loginFlag']),
+  },
+  methods: {
+    ...mapActions(['common/logout']),
+    logout: function () {
+      this.$store.dispatch('common/logout');
+    },
+  },
 };
 </script>
 
 <style scoped>
+.fix {
+  margin-right: 10px;
+}
+
+.fontColor {
+  color: white;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
 </style>
