@@ -1,15 +1,19 @@
 <template>
-	<div>
-		<h1>Data</h1>
-	</div>
+  <div>
+    <Intro />
+  </div>
 </template>
 
 <script>
+import Intro from '@/components/data/Intro.vue';
+
 export default {
-	name: "Data",
-}
+  name: 'Data',
+  components: {
+    Intro,
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
