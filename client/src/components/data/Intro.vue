@@ -1,6 +1,9 @@
 <template>
   <div>
-		<h1>Intro</h1>
+		<div>
+			<h1>The Purpose</h1>
+		</div>
+		<div></div>
 	</div>
 </template>
 
