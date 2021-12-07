@@ -49,6 +49,7 @@ footer {
 }
 .footerTitle {
   color: white;
+  font-weight: bolder;
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;

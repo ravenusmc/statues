@@ -1,8 +1,8 @@
 <template>
   <div>
     <section>
-      <div>
-        <h1 class="font center title_data_page">The Purpose</h1>
+      <div class='title-div'>
+        <h1 class="font center title-data-page">The Purpose</h1>
       </div>
       <div>
         <p>
@@ -16,7 +16,19 @@
 				<p>
 					The main purpose of this project is to look at Confederate Statue data so that the 
 					user can see when did the most statues go up. I believe that this will be between 
-					1890 - 1930. 
+					1890 - 1930. I'm someone that believes that Confederate statues do belong in a 
+					museum. What the Confederacy stood for was wrong. I do have visions that I could 
+					use this project to inform friends and family about the statues. Maybe, if I'm lucky, 
+					I can change some opinions. 
+				</p>
+				<br>
+				<p>
+					Finally, I was browsing Reddit, specifically the section on Ask Reddit. Some one 
+					asked the question: What do you think of the Confederate flag. The first answer 
+					was by a guy who said he grew up in the South and was taught to worship the culture. 
+					As he got older he educated himself more about the Civil War. He came to the conclusion that 
+					Confederate memorbia is wrong. He ended with this line: "A flag against oppression shouldn't 
+					leave people of color feeling oppressed".
 				</p>
       </div>
     </section>
@@ -33,10 +45,17 @@ export default {
 section {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	margin-top: 50px;
+	margin: 50px 0 50px 0;
 }
 
-.title_data_page {
+.title-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.title-data-page {
 	font-weight: bolder;
 	font-size: 4em;
 	text-transform: uppercase;
