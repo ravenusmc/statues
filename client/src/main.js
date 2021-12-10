@@ -7,6 +7,7 @@ import {
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import VueGoogleCharts from 'vue-google-charts';
 
 library.add(faUserSecret,
   faHashtag,
@@ -15,6 +16,9 @@ library.add(faUserSecret,
   faNetworkWired);
 
 Vue.component('fa-icon', FontAwesomeIcon);
+
+// Google charts plugin
+Vue.use(VueGoogleCharts);
 
 Vue.config.productionTip = false;
 
