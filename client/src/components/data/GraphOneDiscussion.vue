@@ -2,7 +2,7 @@
 	<div>
 		<h1 class='center font'>Discussion</h1>
 		<p>
-			This is discussion section...
+			<span class='responsive-phrase-large'>The graph to the right...</span><span class='responsive-phrase-small'>The below graph...</span>
 		</p>
 	</div>
 </template>
@@ -14,5 +14,20 @@ export default {
 </script>
 
 <style scoped>
+
+.responsive-phrase-small {
+	display: none;
+}
+
+/* Responsive media quries */
+@media only all and (max-width: 768px) {
+	.responsive-phrase-large {
+		display: none
+	}
+
+	.responsive-phrase-small {
+		display: block;
+	}
+}
 
 </style>
