@@ -11,9 +11,6 @@ This will be a larger project - using MYSQL, Python - flask and Vue.js. It will 
 and then allow the user to play with the data that I have so that one can see information regarding these 
 statues. 
 
-Remix Icon link: 
-https://remixicon.com/
-
 # Getting started
 ### Installing
 
@@ -33,6 +30,9 @@ Please note that these instructions are not 100% complete.
 4. Numpy-1.11.0
 5. Vue.JS-2.5
 6. MySQL
+
+Remix Icon link: 
+https://remixicon.com/
 
 ### Operation
 
