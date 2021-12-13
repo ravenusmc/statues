@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import GraphOneDiscussion from '@/components/data/GraphOneDiscussion.vue';
+
 export default {
 	name: 'GraphOne',
 }
