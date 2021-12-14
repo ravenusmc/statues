@@ -4,6 +4,7 @@ from flask_cors import CORS
 # Files that I built
 from db import *
 from user import *
+from clean import *
 
 # configuration
 DEBUG = True
@@ -14,8 +15,6 @@ app.config.from_object(__name__)
 
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
-
-# This route will allow new users to register on the site
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -46,6 +45,7 @@ def login():
         login_values['Password_no_match'] = password_no_match
         login_values['user'] = user
     return jsonify(login_values)
+
 
 @app.route('/graphOne', methods=['GET', 'POST'])
 def graphOne():
