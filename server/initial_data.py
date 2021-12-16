@@ -1,5 +1,5 @@
 # This file will deal with a lot of the initial data sets for this project. The file 
-# will essentially build the initial dataset. 
+# will essentially build the initial dataset.
 
 # importing supporting libraries
 import numpy as np
@@ -9,6 +9,7 @@ import datetime
 # Files that I built
 from clean import *
 
+# Class builds the initial data set - which I will then place into the store on the client side.
 class InitialData():
 
     def build_north_south_graph(self):
