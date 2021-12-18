@@ -17,10 +17,18 @@ class InitialData():
     def build_north_south_graph(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
+        first_chart_data_initial = []
+        columns = ['Side', 'Count']
+        first_chart_data_initial.append(columns)
         sides = ['North', 'South']
-        for side in sides: 
-            number_of_statues = len(statues_data_subset[(statues_data_subset.Side == side)])
-            print(number_of_statues)
+        for side in sides:
+            rows = []
+            number_of_statues = len(
+                statues_data_subset[(statues_data_subset.Side == side)])
+            rows.append(side)
+            rows.append(number_of_statues)
+            first_chart_data_initial.append(rows)
+        print(first_chart_data_initial)
 
 
 test = InitialData()
