@@ -5,7 +5,12 @@ import axios from 'axios';
 Vue.use(Vuex)
 
 const state = {
-	firstGraphDataSetInitial: [['Side', 'Count'], ['North', 43], ['South', 1722]],
+	firstGraphDataSetInitial: [
+		['Side', 'Count'], 
+		['South', 1722],
+		['Not Applicable', 377],
+		['North', 43], 
+		],
 };
 
 const getters = {

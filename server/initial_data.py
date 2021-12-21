@@ -20,7 +20,7 @@ class InitialData():
         first_chart_data_initial = []
         columns = ['Side', 'Count']
         first_chart_data_initial.append(columns)
-        sides = ['North', 'South']
+        sides = ['North', 'South', 'Not Applicable']
         for side in sides:
             rows = []
             number_of_statues = len(
