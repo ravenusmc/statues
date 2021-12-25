@@ -2,7 +2,7 @@
   <div>
     <form @submit="submitForm">
       <div>
-        <label for="yearOne">Enter First Year (1870-):</label>
+        <label for="yearOne">Enter First Year (1870-1950):</label>
         <input
           type="number"
           id="year"
@@ -11,7 +11,7 @@
           min="1870"
           max="1950"
         />
-        <label for="yearTwo">Enter Second Year (1870-100):</label>
+        <label for="yearTwo">Enter Second Year (1870-1950):</label>
         <input
           type="number"
           id="year"
@@ -42,9 +42,10 @@ export default {
 			console.log(this.yearTwo)
       // this.startDate = moment(this.startDate).format('M/D/YYYY h:mm:ss A');
       // this.endDate = moment(this.endDate).format('M/D/YYYY h:mm:ss A');
-      // const payload = {
-      //   year: this.year,
-      // };
+      const payload = {
+				yearOne: this.yearOne,
+				yearTwo: this.yearTwo, 
+      };
       // this.fireActions({ payload });
     },
   },
