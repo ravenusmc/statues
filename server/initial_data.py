@@ -30,6 +30,13 @@ class InitialData():
             first_chart_data_initial.append(rows)
         print(first_chart_data_initial)
 
+    def see_data_types(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        print(statues_data_subset.dtypes)
+        Year Dedicated                   object
+
 
 test = InitialData()
-test.build_north_south_graph()
+test.see_data_types()
+

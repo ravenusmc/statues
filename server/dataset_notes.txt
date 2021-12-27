@@ -1,0 +1,21 @@
+-Most statues with side of south are in the south. 
+
+-Year Dedicated looks like: 1987
+
+Column Types: 
+Unique ID                         int64
+feature_name                     object
+Honorees                         object
+City                             object
+County                           object
+State                            object
+Side                             object
+Coordinates                      object
+Symbol Type                      object
+Sponsors                         object
+Year Dedicated                   object
+Year Removed                     object
+Tracking Status                  object
+Removed After Charlottesville     int64
+Symbol Location                  object
+Symbol Type Other                object

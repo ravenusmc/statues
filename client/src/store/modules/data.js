@@ -6,11 +6,11 @@ Vue.use(Vuex)
 
 const state = {
 	firstGraphDataSetInitial: [
-		['Side', 'Count'], 
+		['Side', 'Count'],
 		['South', 1722],
 		['Not Applicable', 377],
-		['North', 43], 
-		],
+		['North', 43],
+	],
 };
 
 const getters = {
@@ -19,23 +19,14 @@ const getters = {
 
 const actions = {
 
-	// fetchFileInformation: ({ commit }, { formData }) => {
-	// 	const path = 'http://localhost:5000/fetch_File_Information';
-	// 	axios.post(path, formData, {
-	// 		headers: {
-	// 			'Content-Type': 'multipart/form-data'
-	// 		}
-	// 	})
-	// 		.then((res) => {
-	// 			commit('setFileName', res.data.file_name)
-	// 			commit('setColumns', res.data.column_names)
-	// 			commit('setShowDataArea', true)
-	// 		})
-	// 		.catch(error => {
-	// 			console.log(error);
-	// 		})
-	// },
-
+	fetchNorthSouthByYear: ({ commit }, { payload }) => {
+		console.log(payload)
+		const path = 'http://localhost:5000/fetch_north_south_by_year';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setGraphTwoData', res.data)
+			})
+	},
 };
 
 
