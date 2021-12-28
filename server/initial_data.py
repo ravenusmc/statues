@@ -34,9 +34,19 @@ class InitialData():
         clean = Clean()
         statues_data_subset = clean.clean_data()
         print(statues_data_subset.dtypes)
-        Year Dedicated                   object
+
+    def min_value(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        pd.to_numeric(statues_data_subset['Year Dedicated'])
+        print(statues_data_subset['Year Dedicated'].min())
+
+    def min_value(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        pd.to_numeric(statues_data_subset['Year Dedicated'])
+        print(statues_data_subset['Year Dedicated'].max())
 
 
 test = InitialData()
-test.see_data_types()
-
+test.min_value()

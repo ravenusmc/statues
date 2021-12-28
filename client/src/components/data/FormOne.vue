@@ -3,25 +3,25 @@
     <form @submit="submitForm">
       <div class="year-selection-area">
         <div class='input-area'>
-          <label for="yearOne">Enter First Year (1870-1950):</label>
+          <label for="yearOne">Enter First Year (1854-2017):</label>
           <input
             type="number"
             id="year"
             v-model="yearOne"
             name="yearOne"
-            min="1870"
-            max="1950"
+            min="1854"
+            max="2017"
           />
         </div>
         <div>
-          <label for="yearTwo">Enter Second Year (1870-1950):</label>
+          <label for="yearTwo">Enter Second Year (1854-2017):</label>
           <input
             type="number"
             id="year"
             v-model="yearTwo"
             name="yearTwo"
-            min="1870"
-            max="1950"
+            min="1854"
+            max="2017"
           />
         </div>
       </div>
@@ -37,8 +37,8 @@ export default {
   name: 'FormOne',
   data() {
     return {
-      yearOne: 1870,
-      yearTwo: 1870,
+      yearOne: 1854,
+      yearTwo: 2017,
     };
   },
   methods: {

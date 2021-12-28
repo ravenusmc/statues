@@ -20,7 +20,7 @@ class Clean():
         # statues_data_subset = self.data.dropna(how='any')
         # print(statues_data_subset.shape)
         #####
-        return self.data.fillna('Not Applicable')
+        return self.data.fillna(np.nan)
 
 
 test = Clean()
