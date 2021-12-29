@@ -47,10 +47,11 @@ def login():
     return jsonify(login_values)
 
 
-@app.route('/graphOne', methods=['GET', 'POST'])
+@app.route('/fetch_north_south_by_year', methods=['GET', 'POST'])
 def graphOne():
     if request.method == 'POST':
-        pass
+        post_data = request.get_json()
+        print(post_data)
     return jsonify('5')
 
 

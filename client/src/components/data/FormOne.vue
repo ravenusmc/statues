@@ -48,8 +48,8 @@ export default {
       // this.startDate = moment(this.startDate).format('M/D/YYYY h:mm:ss A');
       // this.endDate = moment(this.endDate).format('M/D/YYYY h:mm:ss A');
       const payload = {
-        yearOne: this.yearOne.toString(),
-        yearTwo: this.yearTwo.toString(),
+        yearOne: Number(this.yearOne),
+        yearTwo: Number(this.yearTwo),
       };
       this.fetchNorthSouthByYear({ payload });
     },

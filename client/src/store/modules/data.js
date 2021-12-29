@@ -24,7 +24,8 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_north_south_by_year';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setGraphTwoData', res.data)
+				console.log(res.data)
+				// commit('setGraphTwoData', res.data)
 			})
 	},
 };

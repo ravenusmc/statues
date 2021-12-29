@@ -49,4 +49,4 @@ class InitialData():
 
 
 test = InitialData()
-test.min_value()
+test.build_north_south_graph()
