@@ -5,6 +5,7 @@ from flask_cors import CORS
 from db import *
 from user import *
 from clean import *
+from data import *
 
 # configuration
 DEBUG = True
@@ -50,8 +51,9 @@ def login():
 @app.route('/fetch_north_south_by_year', methods=['GET', 'POST'])
 def graphOne():
     if request.method == 'POST':
+        data = Data()
         post_data = request.get_json()
-        print(post_data)
+        data.build_north_south_graph(post_data)
     return jsonify('5')
 
 

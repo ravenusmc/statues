@@ -20,7 +20,6 @@ const getters = {
 const actions = {
 
 	fetchNorthSouthByYear: ({ commit }, { payload }) => {
-		console.log(payload)
 		const path = 'http://localhost:5000/fetch_north_south_by_year';
 		axios.post(path, payload)
 			.then((res) => {

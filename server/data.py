@@ -8,14 +8,16 @@ import datetime
 # Files that I built
 from clean import *
 
+class Data():
 
-class InitialData():
-
-    def build_north_south_graph(self):
+    def build_north_south_graph(self, years):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        print(statues_data_subset.head())
+        yearOne = years['yearOne']
+        yearTwo = years['yearTwo']
+        statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (statues_data_subset['Year Dedicated'] <= yearTwo)]
+        print(statues_data_set_by_year)
 
 
-test = Data()
-test.build_north_south_graph()
+# test = Data()
+# test.build_north_south_graph()
