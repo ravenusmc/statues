@@ -53,8 +53,8 @@ def graphOne():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()
-        data.build_north_south_graph(post_data)
-    return jsonify('5')
+        first_chart_data = data.build_north_south_graph(post_data)
+    return jsonify(first_chart_data)
 
 
 if __name__ == '__main__':

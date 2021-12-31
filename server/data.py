@@ -8,6 +8,7 @@ import datetime
 # Files that I built
 from clean import *
 
+
 class Data():
 
     def build_north_south_graph(self, years):
@@ -15,8 +16,20 @@ class Data():
         statues_data_subset = clean.clean_data()
         yearOne = years['yearOne']
         yearTwo = years['yearTwo']
-        statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (statues_data_subset['Year Dedicated'] <= yearTwo)]
-        print(statues_data_set_by_year)
+        statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
+            statues_data_subset['Year Dedicated'] <= yearTwo)]
+        first_chart_data = []
+        columns = ['Side', 'Count']
+        first_chart_data.append(columns)
+        sides = ['North', 'South', 'Not Applicable']
+        for side in sides:
+            rows = []
+            number_of_statues = len(
+                statues_data_set_by_year[(statues_data_subset.Side == side)])
+            rows.append(side)
+            rows.append(number_of_statues)
+            first_chart_data.append(rows)
+        return first_chart_data
 
 
 # test = Data()

@@ -45,8 +45,6 @@ export default {
     ...mapActions('data', ['fetchNorthSouthByYear']),
     submitForm(evt) {
       evt.preventDefault();
-      // this.startDate = moment(this.startDate).format('M/D/YYYY h:mm:ss A');
-      // this.endDate = moment(this.endDate).format('M/D/YYYY h:mm:ss A');
       const payload = {
         yearOne: Number(this.yearOne),
         yearTwo: Number(this.yearTwo),
