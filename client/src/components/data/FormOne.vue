@@ -2,7 +2,7 @@
   <div>
     <form @submit="submitForm">
       <div class="year-selection-area">
-        <div class='input-area'>
+        <div class="input-area">
           <label for="yearOne">Enter First Year (1854-2017):</label>
           <input
             type="number"
@@ -45,11 +45,21 @@ export default {
     ...mapActions('data', ['fetchNorthSouthByYear']),
     submitForm(evt) {
       evt.preventDefault();
-      const payload = {
-        yearOne: Number(this.yearOne),
-        yearTwo: Number(this.yearTwo),
-      };
-      this.fetchNorthSouthByYear({ payload });
+      let yearOne = Number(this.yearOne);
+      let yearTwo = Number(this.yearTwo);
+      console.log(yearOne)
+      console.log(yearTwo)
+      if (yearOne >= yearTwo) {
+        alert('Year One must be less than year two.');
+      } else {
+        const payload = {
+          yearOne, 
+          yearTwo,
+          // yearOne: Number(this.yearOne),
+          // yearTwo: Number(this.yearTwo),
+        };
+        this.fetchNorthSouthByYear({ payload });
+      }
     },
   },
 };

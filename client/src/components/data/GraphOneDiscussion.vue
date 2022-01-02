@@ -4,6 +4,7 @@
     <p>
       <span class="responsive-phrase-large">The graph to the right...</span>
       <span class="responsive-phrase-small">The below graph...</span>
+      There's one thing that stands out to me on the graph. 
     </p>
   </div>
 </template>
