@@ -51,12 +51,14 @@ export default {
       console.log(yearTwo)
       if (yearOne >= yearTwo) {
         alert('Year One must be less than year two.');
+      } else if (yearTwo <= yearOne){
+        alert('Year Two must be greater than year one');
+      }else if (yearOne === yearTwo){
+        alert('The years cannot be the same.');
       } else {
         const payload = {
           yearOne, 
           yearTwo,
-          // yearOne: Number(this.yearOne),
-          // yearTwo: Number(this.yearTwo),
         };
         this.fetchNorthSouthByYear({ payload });
       }
