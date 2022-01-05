@@ -47,8 +47,6 @@ export default {
       evt.preventDefault();
       let yearOne = Number(this.yearOne);
       let yearTwo = Number(this.yearTwo);
-      console.log(yearOne)
-      console.log(yearTwo)
       if (yearOne >= yearTwo) {
         alert('Year One must be less than year two.');
       } else if (yearTwo <= yearOne){

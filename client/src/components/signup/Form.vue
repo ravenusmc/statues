@@ -99,7 +99,6 @@ export default {
           password: this.password,
           confirmPassword: this.confirmPassword,
         };
-        console.log(payload);
         this.$store.dispatch('common/setUpUser', { payload });
       }
     },
