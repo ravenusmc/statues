@@ -21,7 +21,7 @@
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
-                <button class="font modal-default-button" @click="closeModal()">
+                <button class="button is-success" @click="closeModal()">
                   Close
                 </button>
               </slot>
@@ -36,16 +36,15 @@
 
 <script>
 export default {
-	name: 'Modal',
-	props: ['showModal'],
-	methods: {
+  name: 'Modal',
+  props: ['showModal'],
+  methods: {
     closeModal() {
-			console.log('hello');
       let modalClose = this.showModal;
-      modalClose = false
-      // this.$emit("update-number", modalClose);
+      modalClose = false;
+      this.$emit("close-modal", modalClose);
     },
-	}
+  },
 };
 </script>
 

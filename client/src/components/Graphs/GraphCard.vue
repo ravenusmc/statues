@@ -1,8 +1,6 @@
 <template>
   <div>
-    <Modal
-      :showModal="showModal"
-    />
+    <Modal :showModal="showModal" @close-modal="update" />
     <GChart
       :type="typeOne"
       :data="data"
@@ -55,7 +53,7 @@ export default {
           let row = selection.row + 1;
           let side = this.data[row][0];
           console.log(side);
-          this.showModal = true
+          this.showModal = true;
           // this.toggle();
         },
       }, // End Chart Events
@@ -81,6 +79,9 @@ export default {
         backdrop.classList = 'modal-backdrop fade show';
         document.body.appendChild(backdrop);
       }
+    },
+    update(close) {
+      this.showModal = close;
     },
   }, // End of Methods
 };
