@@ -12,8 +12,6 @@
                 :type="Table"
                 :data="drillDownData"
                 :options="chartOptionsDrillDown"
-                :events="chartEvents"
-                ref="gChart"
               />
             </div> -->
             <!-- End Modal Body area -->

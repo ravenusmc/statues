@@ -19,3 +19,7 @@ Tracking Status                  object
 Removed After Charlottesville     int64
 Symbol Location                  object
 Symbol Type Other                object
+
+https://github.com/ravenusmc/world_one_letters/blob/master/client/src/components/graphCards/GraphCard.vue
+https://github.com/ravenusmc/world_one_letters/blob/master/client/src/components/explore/Modal.vue
+
