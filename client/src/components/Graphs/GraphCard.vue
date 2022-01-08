@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal :showModal="showModal" @close-modal="update" />
+    <Modal :type="typeOne" :showModal="showModal" @close-modal="update" />
     <GChart
       :type="typeOne"
       :data="data"
