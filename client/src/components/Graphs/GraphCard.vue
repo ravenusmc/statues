@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Modal :type="typeOne" :showModal="showModal" @close-modal="update" />
+    <Modal
+      :data="drillDownDataGraphOne"
+      :showModal="showModal"
+      @close-modal="update"
+    />
     <GChart
       :type="typeOne"
       :data="data"

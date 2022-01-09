@@ -10,7 +10,7 @@
             <!-- <div>
               <GChart
                 :type="Table"
-                :data="drillDownData"
+                :data="drillDownDataGraphOne"
                 :options="chartOptionsDrillDown"
               />
             </div> -->
@@ -35,12 +35,19 @@
 <script>
 export default {
   name: 'Modal',
-  props: ['showModal'],
+  props: ['showModal', 'drillDownDataGraphOne'],
+  data() {
+    return {
+      chartOptionsDrillDown: {
+        alternatingRowStyle: true,
+      }, // End Chart One Options
+    };
+  },
   methods: {
     closeModal() {
       let modalClose = this.showModal;
       modalClose = false;
-      this.$emit("close-modal", modalClose);
+      this.$emit('close-modal', modalClose);
     },
   },
 };
