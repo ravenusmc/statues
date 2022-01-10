@@ -31,6 +31,16 @@ class Data():
             first_chart_data.append(rows)
         return first_chart_data
 
+    def build_north_south_graph_drill_down(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        yearOne = post_data['graphOneYearOne']
+        yearTwo = post_data['graphOneYearTwo']
+        side = post_data['side']
+        statues_data_set_by_year_drill_down = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
+            statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['Side'] == side)]
+        return statues_data_set_by_year_drill_down
+
 
 # test = Data()
 # test.build_north_south_graph()

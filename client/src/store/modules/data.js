@@ -37,12 +37,12 @@ const actions = {
 
 	fetchDrillDownDataGraphOne: ({ commit }, { payload }) => {
 		console.log(payload)
-		// const path = 'http://localhost:5000/fetch_north_south_by_year';
-		// axios.post(path, payload)
-		// 	.then((res) => {
-		// 		res.data.sort((a, b) => b[1] - a[1]);
-		// 		commit('setFirstGraphDataSetInitial', res.data)
-		// 	})
+		const path = 'http://localhost:5000/fetch_north_south_by_year_drilldown';
+		axios.post(path, payload)
+			.then((res) => {
+				res.data.sort((a, b) => b[1] - a[1]);
+				commit('setFirstGraphDataSetInitial', res.data)
+			})
 	},
 	
 };

@@ -56,6 +56,14 @@ def graphOne():
         first_chart_data = data.build_north_south_graph(post_data)
     return jsonify(first_chart_data)
 
+@app.route('/fetch_north_south_by_year_drilldown', methods=['GET', 'POST'])
+def graphOneDrillDown():
+    if request.method == 'POST':
+        data = Data()
+        post_data = request.get_json()
+        statues_data_set_by_year_drill_down = data.build_north_south_graph_drill_down(post_data)
+    return jsonify('5')
+
 
 if __name__ == '__main__':
     app.run()
