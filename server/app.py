@@ -62,7 +62,7 @@ def graphOneDrillDown():
         data = Data()
         post_data = request.get_json()
         statues_data_set_by_year_drill_down = data.build_north_south_graph_drill_down(post_data)
-    return jsonify('5')
+    return jsonify(statues_data_set_by_year_drill_down)
 
 
 if __name__ == '__main__':

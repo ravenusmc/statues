@@ -26,7 +26,7 @@ export default {
     Modal,
   },
   computed: {
-    ...mapGetters('data', ['graphOneYearOne', 'graphOneYearTwo']),
+    ...mapGetters('data', ['graphOneYearOne', 'graphOneYearTwo', 'drillDownDataGraphOne']),
   },
   data() {
     return {

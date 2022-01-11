@@ -34,12 +34,40 @@ class Data():
     def build_north_south_graph_drill_down(self, post_data):
         clean = Clean()
         statues_data_subset = clean.clean_data()
+        drilldown_data_graph_one = []
+        columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        drilldown_data_graph_one .append(columns)
         yearOne = post_data['graphOneYearOne']
         yearTwo = post_data['graphOneYearTwo']
         side = post_data['side']
         statues_data_set_by_year_drill_down = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['Side'] == side)]
-        return statues_data_set_by_year_drill_down
+        if len(statues_data_set_by_year_drill_down) > 1:
+            count = 0
+            while count < len(statues_data_set_by_year_drill_down):
+                rows = []
+                Feature_Name = statues_data_set_by_year_drill_down.iat[count, 1]
+                State = statues_data_set_by_year_drill_down.iat[count, 5]
+                Symbol_type = statues_data_set_by_year_drill_down.iat[count, 8]
+                Year_dedicated = statues_data_set_by_year_drill_down.iat[count, 10]
+                rows.append(Feature_Name)
+                rows.append(State)
+                rows.append(Symbol_type)
+                rows.append(Year_dedicated)
+                drilldown_data_graph_one.append(rows)
+                count += 1
+        else:
+            rows = []
+            Feature_Name = statues_data_set_by_year_drill_down['feature_name'].iloc[0]
+            State = statues_data_set_by_year_drill_down['State'].iloc[0]
+            Symbol_type = statues_data_set_by_year_drill_down['Symbol Type'].iloc[0]
+            Year_dedicated = statues_data_set_by_year_drill_down['Year Dedicated'].iloc[0]
+            rows.append(Feature_Name)
+            rows.append(State)
+            rows.append(Symbol_type)
+            rows.append(Year_dedicated)
+            drilldown_data_graph_one.append(rows)
+        return drilldown_data_graph_one
 
 
 # test = Data()

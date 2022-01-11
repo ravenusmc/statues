@@ -22,4 +22,10 @@ Symbol Type Other                object
 
 https://github.com/ravenusmc/world_one_letters/blob/master/client/src/components/graphCards/GraphCard.vue
 https://github.com/ravenusmc/world_one_letters/blob/master/client/src/components/explore/Modal.vue
+https://github.com/ravenusmc/world_one_letters/blob/master/server/data.py
 
+For Drill down table: 
+feature_name                     object
+State                            object
+Symbol Type                      object
+Year Dedicated                   object

@@ -7,13 +7,13 @@
             <!-- <h1>{{ modalTitle }}</h1> -->
 
             <!-- Modal Body area -->
-            <!-- <div>
+            <div>
               <GChart
                 :type="Table"
                 :data="drillDownDataGraphOne"
                 :options="chartOptionsDrillDown"
               />
-            </div> -->
+            </div>
             <!-- End Modal Body area -->
 
             <!-- Modal Footer area -->
@@ -33,16 +33,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Modal',
-  props: ['showModal', 'drillDownDataGraphOne'],
+  props: ['showModal'],
   data() {
     return {
+      Table: 'Table',
       chartOptionsDrillDown: {
         alternatingRowStyle: true,
       }, // End Chart One Options
     };
   },
+  computed: {
+    ...mapGetters('data', ['drillDownDataGraphOne']),
+  }, // End Computed Area
   methods: {
     closeModal() {
       let modalClose = this.showModal;
