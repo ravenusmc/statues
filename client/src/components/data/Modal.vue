@@ -4,8 +4,8 @@
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="font center modal-container">
-            <!-- <h1>{{ modalTitle }}</h1> -->
-
+            <h1>{{ modalTitle }}</h1>
+            <hr>
             <!-- Modal Body area -->
             <div>
               <GChart
@@ -15,7 +15,7 @@
               />
             </div>
             <!-- End Modal Body area -->
-
+            <hr>
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
@@ -37,7 +37,7 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'Modal',
-  props: ['showModal'],
+  props: ['showModal', 'modalTitle'],
   data() {
     return {
       Table: 'Table',

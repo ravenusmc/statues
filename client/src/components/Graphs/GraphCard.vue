@@ -3,6 +3,7 @@
     <Modal
       :data="drillDownDataGraphOne"
       :showModal="showModal"
+      :modalTitle="modalTitle"
       @close-modal="update"
     />
     <GChart
@@ -30,7 +31,6 @@ export default {
   },
   data() {
     return {
-      modalClasses: ['modal', 'fade'],
       showModal: false,
       chartEvents: {
         select: () => {
@@ -48,6 +48,7 @@ export default {
             side,
           };
           this.$store.dispatch('data/fetchDrillDownDataGraphOne', { payload });
+          this.modalTitle = `Statues in the ${side} between ${graphOneYearOne} - ${graphOneYearTwo}`
         },
       }, // End Chart Events
     };
