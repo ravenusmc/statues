@@ -3,7 +3,7 @@
 # importing supporting libraries
 import numpy as np
 import pandas as pd
-import datetime
+from datetime import datetime
 
 # Files that I built
 from clean import *
@@ -42,6 +42,7 @@ class Data():
         side = post_data['side']
         statues_data_set_by_year_drill_down = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['Side'] == side)]
+        #statues_data_set_by_year_drill_down = pd.to_datetime(statues_data_set_by_year_drill_down['Year Dedicated'], format='%Y')
         if len(statues_data_set_by_year_drill_down) > 1:
             count = 0
             while count < len(statues_data_set_by_year_drill_down):
@@ -53,6 +54,9 @@ class Data():
                 rows.append(Feature_Name)
                 rows.append(State)
                 rows.append(Symbol_type)
+                Year_dedicated = pd.to_datetime(Year_dedicated, format='%Y').year
+                # print(datetime(year, month='01',day='01'))
+                print(Year_dedicated)
                 rows.append(Year_dedicated)
                 drilldown_data_graph_one.append(rows)
                 count += 1

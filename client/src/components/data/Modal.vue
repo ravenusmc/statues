@@ -5,7 +5,10 @@
         <div class="modal-wrapper">
           <div class="font center modal-container">
             <h1>{{ modalTitle }}</h1>
-            <hr>
+            <button class="button is-success" @click="closeModal()">
+              Close
+            </button>
+            <hr />
             <!-- Modal Body area -->
             <div>
               <GChart
@@ -15,7 +18,7 @@
               />
             </div>
             <!-- End Modal Body area -->
-            <hr>
+            <hr />
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
