@@ -55,8 +55,8 @@ class Data():
                 rows.append(State)
                 rows.append(Symbol_type)
                 Year_dedicated = pd.to_datetime(Year_dedicated, format='%Y').year
-                # print(datetime(year, month='01',day='01'))
-                print(Year_dedicated)
+                Year_dedicated = datetime.date(Year_dedicated, 1,1)
+                # print(datetime.date(Year_dedicated))
                 rows.append(Year_dedicated)
                 drilldown_data_graph_one.append(rows)
                 count += 1
