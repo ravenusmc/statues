@@ -3,7 +3,9 @@
     <form @submit="submitForm">
       <div class="year-selection-area">
         <div class="input-area">
-          <label for="yearOne">Enter First Year (1854-2017):</label>
+          <label class="fix-label-alignment" for="yearOne"
+            >Enter First Year (1854-2017):</label
+          >
           <input
             type="number"
             id="year"
@@ -49,13 +51,13 @@ export default {
       let yearTwo = Number(this.yearTwo);
       if (yearOne >= yearTwo) {
         alert('Year One must be less than year two.');
-      } else if (yearTwo <= yearOne){
+      } else if (yearTwo <= yearOne) {
         alert('Year Two must be greater than year one');
-      }else if (yearOne === yearTwo){
+      } else if (yearOne === yearTwo) {
         alert('The years cannot be the same.');
       } else {
         const payload = {
-          yearOne, 
+          yearOne,
           yearTwo,
         };
         this.fetchNorthSouthByYear({ payload });
@@ -87,5 +89,11 @@ button {
 .input-area {
   display: flex;
   flex-direction: row;
+  margin-bottom: 5px;
 }
+
+.fix-label-alignment {
+  margin-left: -23px;
+}
+
 </style>

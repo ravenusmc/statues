@@ -42,7 +42,7 @@ class Data():
         side = post_data['side']
         statues_data_set_by_year_drill_down = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['Side'] == side)]
-        #statues_data_set_by_year_drill_down = pd.to_datetime(statues_data_set_by_year_drill_down['Year Dedicated'], format='%Y')
+        # statues_data_set_by_year_drill_down = pd.to_datetime(statues_data_set_by_year_drill_down['Year Dedicated'], format='%Y')
         if len(statues_data_set_by_year_drill_down) > 1:
             count = 0
             while count < len(statues_data_set_by_year_drill_down):
@@ -54,9 +54,9 @@ class Data():
                 rows.append(Feature_Name)
                 rows.append(State)
                 rows.append(Symbol_type)
-                Year_dedicated = pd.to_datetime(Year_dedicated, format='%Y').year
-                Year_dedicated = datetime.date(Year_dedicated, 1,1)
-                print(datetime.date(Year_dedicated))
+                Year_dedicated = pd.to_datetime(
+                    Year_dedicated, format='%Y').year
+                Year_dedicated = datetime.date(Year_dedicated, 1, 1)
                 rows.append(Year_dedicated)
                 drilldown_data_graph_one.append(rows)
                 count += 1
@@ -66,6 +66,8 @@ class Data():
             State = statues_data_set_by_year_drill_down['State'].iloc[0]
             Symbol_type = statues_data_set_by_year_drill_down['Symbol Type'].iloc[0]
             Year_dedicated = statues_data_set_by_year_drill_down['Year Dedicated'].iloc[0]
+            Year_dedicated = pd.to_datetime(Year_dedicated, format='%Y').year
+            Year_dedicated = datetime.date(Year_dedicated, 1, 1)
             rows.append(Feature_Name)
             rows.append(State)
             rows.append(Symbol_type)

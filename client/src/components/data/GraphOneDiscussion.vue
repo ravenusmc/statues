@@ -1,6 +1,6 @@
 <template>
   <div class="graph-discussion">
-    <h1 class="center font">Discussion</h1>
+    <h1 class="center font heading-title">First Graph Discussion</h1>
     <p>
       <span class="responsive-phrase-large">The graph to the right...</span>
       <span class="responsive-phrase-small">The below graph...</span>
@@ -35,6 +35,13 @@ export default {
 
 .graph-discussion {
   margin: 0 10% 0 10%;
+}
+
+.heading-title {
+  font-weight: bolder;
+  font-size: 2em;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 /* Responsive media quries */

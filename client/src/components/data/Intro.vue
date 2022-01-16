@@ -64,6 +64,10 @@ section {
   text-transform: uppercase;
 }
 
+.paragraph-div {
+  margin-right: 100px;
+}
+
 /****************
 Media Queries
 ****************/
