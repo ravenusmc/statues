@@ -87,7 +87,7 @@ export default {
 }
 
 .fontColor {
-  color: white;
+  color: blue;
   font-weight: bolder;
   text-transform: uppercase;
 }
