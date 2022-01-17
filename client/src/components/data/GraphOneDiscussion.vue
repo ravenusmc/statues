@@ -4,6 +4,18 @@
     <p>
       <span class="responsive-phrase-large">The graph to the right...</span>
       <span class="responsive-phrase-small">The below graph...</span>
+    </p>
+    <br />
+    <p>
+      This graph allows the user to see the count of statues in the North, South
+      and areas that I've labeled "Not Applicable." The user is able to select a
+      time period and see how the number of statues changed with time. The user
+      is also able to click on one of the columns to drill down into the data.
+      The window that then appears will allow the user to see more information
+      on the statues that make up that data.
+    </p>
+    <br />
+    <p>
       There's one thing that stands out to me on the graph. The South always
       appears to have more statues than the North. The North won the war. I
       almost would have thought that the North would have had more statues up

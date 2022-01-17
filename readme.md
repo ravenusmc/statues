@@ -43,7 +43,7 @@ as well as npm.
 
 # Issues / Other
 
-N/A
+1. Need to fix date/time graph issue for first graph drill downs. 
 
 # Preview
 
