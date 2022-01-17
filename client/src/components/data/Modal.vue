@@ -5,9 +5,6 @@
         <div class="modal-wrapper">
           <div class="font center modal-container">
             <h1>{{ modalTitle }}</h1>
-            <button class="button is-success" @click="closeModal()">
-              Close
-            </button>
             <hr />
             <!-- Modal Body area -->
             <div>
@@ -46,6 +43,8 @@ export default {
       Table: 'Table',
       chartOptionsDrillDown: {
         alternatingRowStyle: true,
+        height: 300,
+        width: 800,
       }, // End Chart One Options
     };
   },
