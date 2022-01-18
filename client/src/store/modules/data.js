@@ -13,8 +13,9 @@ const state = {
 	],
 	graphOneYearOne: 1854,
 	graphOneYearTwo: 2017,
-	drillDownDataGraphOne: []
-
+	drillDownDataGraphOne: [],
+	graphTwoYearOne: 1854,
+	graphTwoYearTwo: 2017,
 };
 
 const getters = {
@@ -22,6 +23,8 @@ const getters = {
 	graphOneYearOne: state => state.graphOneYearOne,
 	graphOneYearTwo: state => state.graphOneYearTwo,
 	drillDownDataGraphOne: state => state.drillDownDataGraphOne,
+	graphTwoYearOne: state => state.graphTwoYearOne,
+	graphTwoYearTwo: state => state.graphTwoYearTwo,
 };
 
 const actions = {
@@ -45,7 +48,20 @@ const actions = {
 				commit('setDrillDownDataGraphOne', res.data)
 			})
 	},
-	
+
+	fetchTopFiveByYear: ({ commit }, { payload }) => {
+		commit('setGraphTwoYearOne', payload.yearOne)
+		commit('setGraphTwoYearTwo', payload.yearTwo)
+		console.log('ACTION!!')
+		console.log(payload)
+		const path = 'http://localhost:5000/fetch_north_south_by_year';
+		axios.post(path, payload)
+			.then((res) => {
+				res.data.sort((a, b) => b[1] - a[1]);
+				commit('setFirstGraphDataSetInitial', res.data)
+			})
+	},
+
 };
 
 
@@ -65,6 +81,14 @@ const mutations = {
 
 	setDrillDownDataGraphOne(state, data) {
 		state.drillDownDataGraphOne = data
+	},
+
+	setGraphTwoYearOne(state, data) {
+		state.graphTwoYearOne = data
+	},
+
+	setGraphTwoYearTwo(state, data) {
+		state.graphTwoYearTwo = data
 	},
 
 };

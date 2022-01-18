@@ -13,7 +13,7 @@
     <section class="graph-area">
       <div>
         <GraphOne />
-        <FormOne />
+        <FormTwo />
       </div>
       <GraphTwoDiscussion />
     </section>
@@ -26,6 +26,7 @@ import GraphOneDiscussion from '@/components/data/GraphOneDiscussion.vue';
 import GraphOne from '@/components/data/GraphOne.vue';
 import FormOne from '@/components/data/FormOne.vue';
 import GraphTwoDiscussion from '@/components/data/graphtwo/GraphTwoDiscussion.vue';
+import FormTwo from '@/components/data/graphtwo/FormTwo.vue';
 
 export default {
   name: 'Data',
@@ -35,6 +36,7 @@ export default {
     GraphOne,
     FormOne,
     GraphTwoDiscussion,
+    FormTwo,
   },
 };
 </script>
