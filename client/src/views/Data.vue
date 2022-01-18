@@ -2,12 +2,20 @@
   <div>
     <Intro />
     <hr />
-    <section class="graph-one">
+    <section class="graph-area">
       <GraphOneDiscussion />
       <div>
         <GraphOne />
         <FormOne />
       </div>
+    </section>
+    <hr>
+    <section class="graph-area">
+      <div>
+        <GraphOne />
+        <FormOne />
+      </div>
+      <GraphTwoDiscussion />
     </section>
   </div>
 </template>
@@ -17,6 +25,7 @@ import Intro from '@/components/data/Intro.vue';
 import GraphOneDiscussion from '@/components/data/GraphOneDiscussion.vue';
 import GraphOne from '@/components/data/GraphOne.vue';
 import FormOne from '@/components/data/FormOne.vue';
+import GraphTwoDiscussion from '@/components/data/graphtwo/GraphTwoDiscussion.vue';
 
 export default {
   name: 'Data',
@@ -25,12 +34,13 @@ export default {
     GraphOneDiscussion,
     GraphOne,
     FormOne,
+    GraphTwoDiscussion,
   },
 };
 </script>
 
 <style scoped>
-.graph-one {
+.graph-area {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
