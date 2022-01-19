@@ -54,11 +54,12 @@ const actions = {
 		commit('setGraphTwoYearTwo', payload.yearTwo)
 		console.log('ACTION!!')
 		console.log(payload)
-		const path = 'http://localhost:5000/fetch_north_south_by_year';
+		const path = 'http://localhost:5000/fetch_top_five_by_year';
 		axios.post(path, payload)
 			.then((res) => {
-				res.data.sort((a, b) => b[1] - a[1]);
-				commit('setFirstGraphDataSetInitial', res.data)
+				console.log(res.data)
+				// res.data.sort((a, b) => b[1] - a[1]);
+				// commit('setFirstGraphDataSetInitial', res.data)
 			})
 	},
 

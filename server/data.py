@@ -42,7 +42,6 @@ class Data():
         side = post_data['side']
         statues_data_set_by_year_drill_down = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['Side'] == side)]
-        # statues_data_set_by_year_drill_down = pd.to_datetime(statues_data_set_by_year_drill_down['Year Dedicated'], format='%Y')
         if len(statues_data_set_by_year_drill_down) > 1:
             count = 0
             while count < len(statues_data_set_by_year_drill_down):
@@ -74,6 +73,14 @@ class Data():
             rows.append(Year_dedicated)
             drilldown_data_graph_one.append(rows)
         return drilldown_data_graph_one
+
+    def build_top_five_graph(self, years):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        yearOne = years['yearOne']
+        yearTwo = years['yearTwo']
+        statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
+            statues_data_subset['Year Dedicated'] <= yearTwo)]
 
 
 # test = Data()
