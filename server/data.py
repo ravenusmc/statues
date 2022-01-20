@@ -81,6 +81,9 @@ class Data():
         yearTwo = years['yearTwo']
         statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo)]
+        second_chart_data = []
+        columns = ['State', 'Count']
+        second_chart_data.append(columns)
 
 
 # test = Data()
