@@ -81,9 +81,19 @@ class Data():
         yearTwo = years['yearTwo']
         statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo)]
+        state_counts = statues_data_set_by_year['State'].value_counts().head(5)
         second_chart_data = []
         columns = ['State', 'Count']
         second_chart_data.append(columns)
+        count = 0
+        for state in state_counts.to_frame().index:
+            rows = []
+            rows.append(state)
+            rows.append(state_counts.iloc[count])
+            second_chart_data.append(rows)
+            count += 1
+        #[['State', 'Count'], ['VA', 221], ['TX', 159], ['GA', 135], ['NC', 112], ['AL', 92]]
+
 
 
 # test = Data()
