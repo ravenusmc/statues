@@ -89,10 +89,11 @@ class Data():
         for state in state_counts.to_frame().index:
             rows = []
             rows.append(state)
-            rows.append(state_counts.iloc[count])
+            rows.append(int(state_counts.iloc[count]))
             second_chart_data.append(rows)
             count += 1
-        #[['State', 'Count'], ['VA', 221], ['TX', 159], ['GA', 135], ['NC', 112], ['AL', 92]]
+        print(second_chart_data)
+        return second_chart_data
 
 
 

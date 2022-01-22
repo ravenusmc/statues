@@ -72,9 +72,9 @@ def graphTwo():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()
-        statues_data_set_by_year_drill_down = data.build_top_five_graph(
+        second_chart_data = data.build_top_five_graph(
             post_data)
-    return jsonify('5')
+    return jsonify(second_chart_data)
 
 
 if __name__ == '__main__':

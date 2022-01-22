@@ -16,6 +16,14 @@ const state = {
 	drillDownDataGraphOne: [],
 	graphTwoYearOne: 1854,
 	graphTwoYearTwo: 2017,
+	secondGraphDataSetInitial: [
+		['State', 'Count'], 
+		['VA', 221], 
+		['TX', 159], 
+		['GA', 135], 
+		['NC', 112], 
+		['AL', 92]
+	],
 };
 
 const getters = {
@@ -25,6 +33,7 @@ const getters = {
 	drillDownDataGraphOne: state => state.drillDownDataGraphOne,
 	graphTwoYearOne: state => state.graphTwoYearOne,
 	graphTwoYearTwo: state => state.graphTwoYearTwo,
+	secondGraphDataSetInitial: state => state.secondGraphDataSetInitial,
 };
 
 const actions = {
@@ -52,14 +61,10 @@ const actions = {
 	fetchTopFiveByYear: ({ commit }, { payload }) => {
 		commit('setGraphTwoYearOne', payload.yearOne)
 		commit('setGraphTwoYearTwo', payload.yearTwo)
-		console.log('ACTION!!')
-		console.log(payload)
 		const path = 'http://localhost:5000/fetch_top_five_by_year';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
-				// res.data.sort((a, b) => b[1] - a[1]);
-				// commit('setFirstGraphDataSetInitial', res.data)
+				commit('setSecondGraphDataSetInitial', res.data)
 			})
 	},
 
@@ -90,6 +95,10 @@ const mutations = {
 
 	setGraphTwoYearTwo(state, data) {
 		state.graphTwoYearTwo = data
+	},
+
+	setSecondGraphDataSetInitial(state, data) {
+		state.secondGraphDataSetInitial = data
 	},
 
 };
