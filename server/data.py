@@ -92,10 +92,5 @@ class Data():
             rows.append(int(state_counts.iloc[count]))
             second_chart_data.append(rows)
             count += 1
-        print(second_chart_data)
         return second_chart_data
 
-
-
-# test = Data()
-# test.build_north_south_graph()

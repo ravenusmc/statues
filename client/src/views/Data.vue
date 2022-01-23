@@ -22,9 +22,9 @@
 
 <script>
 import Intro from '@/components/data/Intro.vue';
-import GraphOneDiscussion from '@/components/data/GraphOneDiscussion.vue';
-import GraphOne from '@/components/data/GraphOne.vue';
-import FormOne from '@/components/data/FormOne.vue';
+import GraphOneDiscussion from '@/components/data/graphone/GraphOneDiscussion.vue';
+import GraphOne from '@/components/data/graphone/GraphOne.vue';
+import FormOne from '@/components/data/graphone/FormOne.vue';
 import GraphTwoDiscussion from '@/components/data/graphtwo/GraphTwoDiscussion.vue';
 import FormTwo from '@/components/data/graphtwo/FormTwo.vue';
 import GraphTwo from '@/components/data/graphtwo/GraphTwo.vue';
