@@ -27,7 +27,11 @@ export default {
     Modal,
   },
   computed: {
-    ...mapGetters('data', ['graphOneYearOne', 'graphOneYearTwo', 'drillDownDataGraphOne']),
+    ...mapGetters('data', [
+      'graphOneYearOne',
+      'graphOneYearTwo',
+      'drillDownDataGraphOne',
+    ]),
   },
   data() {
     return {
@@ -36,20 +40,26 @@ export default {
       chartEvents: {
         select: () => {
           // console.log(this.data); // This will show you the data kept for reference
-          const chart = this.$refs.gChart.chartObject;
-          const selection = chart.getSelection()[0];
-          let row = selection.row + 1;
-          let side = this.data[row][0];
-          this.showModal = true;
-          let graphOneYearOne = this.graphOneYearOne;
-          let graphOneYearTwo = this.graphOneYearTwo;
-          const payload = {
-            graphOneYearOne,
-            graphOneYearTwo,
-            side,
-          };
-          this.$store.dispatch('data/fetchDrillDownDataGraphOne', { payload });
-          this.modalTitle = `Statues in the ${side} between ${graphOneYearOne} - ${graphOneYearTwo}`
+          if (this.data[0][0] === 'Side') {
+            const chart = this.$refs.gChart.chartObject;
+            const selection = chart.getSelection()[0];
+            let row = selection.row + 1;
+            let side = this.data[row][0];
+            this.showModal = true;
+            let graphOneYearOne = this.graphOneYearOne;
+            let graphOneYearTwo = this.graphOneYearTwo;
+            const payload = {
+              graphOneYearOne,
+              graphOneYearTwo,
+              side,
+            };
+            this.$store.dispatch('data/fetchDrillDownDataGraphOne', {
+              payload,
+            });
+            this.modalTitle = `Statues in the ${side} between ${graphOneYearOne} - ${graphOneYearTwo}`;
+          } else if (this.data[0][0] === 'State') {
+            console.log('STATE!')
+          }
         },
       }, // End Chart Events
     };
