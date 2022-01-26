@@ -26,7 +26,7 @@ export default {
       chartOptionsOne: {
         title: 'Top Five States with Most Statues by Year',
         legend: { position: 'top' },
-        colors: ['#05ce78'],
+        colors: ['#f24867'],
         height: 500,
         animation: {
           duration: 1000,

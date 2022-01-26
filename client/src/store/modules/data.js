@@ -53,7 +53,6 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_north_south_by_year_drilldown';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
 				commit('setDrillDownDataGraphOne', res.data)
 			})
 	},
@@ -65,6 +64,17 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				commit('setSecondGraphDataSetInitial', res.data)
+			})
+	},
+
+	fetchDrillDownDataGraphTwo: ({ commit }, { payload }) => {
+		console.log('ACTION')
+		console.log(payload)
+		const path = 'http://localhost:5000/fetch_north_south_by_state_drilldown';
+		axios.post(path, payload)
+			.then((res) => {
+				console.log(res.data)
+				// commit('setDrillDownDataGraphOne', res.data)
 			})
 	},
 

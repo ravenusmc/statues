@@ -76,6 +76,16 @@ def graphTwo():
             post_data)
     return jsonify(second_chart_data)
 
+@app.route('/fetch_north_south_by_state_drilldown', methods=['GET', 'POST'])
+def graphTwoDrillDown():
+    if request.method == 'POST':
+        data = Data()
+        post_data = request.get_json()
+        print(post_data)
+        # second_chart_data = data.build_top_five_graph(
+        #     post_data)
+    return jsonify('5')
+
 
 if __name__ == '__main__':
     app.run()

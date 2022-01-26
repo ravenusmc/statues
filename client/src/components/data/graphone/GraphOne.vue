@@ -26,7 +26,7 @@ export default {
       chartOptionsOne: {
         title: 'Statues in North Vs South',
         legend: { position: 'top' },
-        colors: ['#05ce78'],
+        colors: ['#f24867'],
         height: 500,
         animation: {
           duration: 1000,

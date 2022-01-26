@@ -31,6 +31,8 @@ export default {
       'graphOneYearOne',
       'graphOneYearTwo',
       'drillDownDataGraphOne',
+      'graphTwoYearOne',
+      'graphTwoYearTwo',
     ]),
   },
   data() {
@@ -58,7 +60,22 @@ export default {
             });
             this.modalTitle = `Statues in the ${side} between ${graphOneYearOne} - ${graphOneYearTwo}`;
           } else if (this.data[0][0] === 'State') {
-            console.log('STATE!')
+            const chart = this.$refs.gChart.chartObject;
+            const selection = chart.getSelection()[0];
+            let row = selection.row + 1;
+            let state = this.data[row][0];
+            this.showModal = true;
+            let graphTwoYearOne = this.graphTwoYearOne;
+            let graphTwoYearTwo = this.graphTwoYearTwo;
+            const payload = {
+              graphTwoYearOne,
+              graphTwoYearTwo,
+              state,
+            };
+            this.$store.dispatch('data/fetchDrillDownDataGraphTwo', {
+              payload,
+            });
+            this.modalTitle = `Statues in ${state} between ${graphTwoYearOne} - ${graphTwoYearTwo}`;
           }
         },
       }, // End Chart Events
