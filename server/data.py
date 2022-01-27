@@ -94,3 +94,16 @@ class Data():
             count += 1
         return second_chart_data
 
+    def build_graph_two_drill_down(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        drilldown_data_graph_one = []
+        columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        drilldown_data_graph_one .append(columns)
+        yearOne = post_data['graphTwoYearOne']
+        yearTwo = post_data['graphTwoYearTwo']
+        state = post_data['state']
+        print(state)
+        statues_data_set_by_year_drill_down_two = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
+            statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['State'] == state)]
+        print(statues_data_set_by_year_drill_down_two)

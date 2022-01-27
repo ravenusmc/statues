@@ -81,9 +81,8 @@ def graphTwoDrillDown():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()
-        print(post_data)
-        # second_chart_data = data.build_top_five_graph(
-        #     post_data)
+        graph_two_drill_down_data = data.build_graph_two_drill_down(
+            post_data)
     return jsonify('5')
 
 
