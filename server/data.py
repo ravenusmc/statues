@@ -97,13 +97,42 @@ class Data():
     def build_graph_two_drill_down(self, post_data):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        drilldown_data_graph_one = []
+        drilldown_data_graph_two = []
         columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
-        drilldown_data_graph_one .append(columns)
+        drilldown_data_graph_two.append(columns)
         yearOne = post_data['graphTwoYearOne']
         yearTwo = post_data['graphTwoYearTwo']
         state = post_data['state']
-        print(state)
         statues_data_set_by_year_drill_down_two = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['State'] == state)]
-        print(statues_data_set_by_year_drill_down_two)
+        if len(statues_data_set_by_year_drill_down_two) > 1:
+            count = 0
+            while count < len(statues_data_set_by_year_drill_down_two):
+                rows = []
+                Feature_Name = statues_data_set_by_year_drill_down_two.iat[count, 1]
+                State = statues_data_set_by_year_drill_down_two.iat[count, 5]
+                Symbol_type = statues_data_set_by_year_drill_down_two.iat[count, 8]
+                Year_dedicated = statues_data_set_by_year_drill_down_two.iat[count, 10]
+                rows.append(Feature_Name)
+                rows.append(State)
+                rows.append(Symbol_type)
+                Year_dedicated = pd.to_datetime(
+                    Year_dedicated, format='%Y').year
+                Year_dedicated = datetime.date(Year_dedicated, 1, 1)
+                rows.append(Year_dedicated)
+                drilldown_data_graph_two.append(rows)
+                count += 1
+        else:
+            rows = []
+            Feature_Name = statues_data_set_by_year_drill_down_two['feature_name'].iloc[0]
+            State = statues_data_set_by_year_drill_down_two['State'].iloc[0]
+            Symbol_type = statues_data_set_by_year_drill_down_two['Symbol Type'].iloc[0]
+            Year_dedicated = statues_data_set_by_year_drill_down_two['Year Dedicated'].iloc[0]
+            Year_dedicated = pd.to_datetime(Year_dedicated, format='%Y').year
+            Year_dedicated = datetime.date(Year_dedicated, 1, 1)
+            rows.append(Feature_Name)
+            rows.append(State)
+            rows.append(Symbol_type)
+            rows.append(Year_dedicated)
+            drilldown_data_graph_two.append(rows)
+        return drilldown_data_graph_two

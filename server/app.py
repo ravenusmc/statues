@@ -83,7 +83,7 @@ def graphTwoDrillDown():
         post_data = request.get_json()
         graph_two_drill_down_data = data.build_graph_two_drill_down(
             post_data)
-    return jsonify('5')
+    return jsonify(graph_two_drill_down_data)
 
 
 if __name__ == '__main__':

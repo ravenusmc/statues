@@ -10,7 +10,7 @@
             <div>
               <GChart
                 :type="Table"
-                :data="drillDownDataGraphOne"
+                :data="drillDownData"
                 :options="chartOptionsDrillDown"
               />
             </div>
@@ -49,7 +49,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('data', ['drillDownDataGraphOne']),
+    ...mapGetters('data', ['drillDownData']),
   }, // End Computed Area
   methods: {
     closeModal() {

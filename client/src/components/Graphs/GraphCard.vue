@@ -1,7 +1,7 @@
 <template>
   <div>
     <Modal
-      :data="drillDownDataGraphOne"
+      :data="drillDownData"
       :showModal="showModal"
       :modalTitle="modalTitle"
       @close-modal="update"
@@ -30,7 +30,7 @@ export default {
     ...mapGetters('data', [
       'graphOneYearOne',
       'graphOneYearTwo',
-      'drillDownDataGraphOne',
+      'drillDownData',
       'graphTwoYearOne',
       'graphTwoYearTwo',
     ]),

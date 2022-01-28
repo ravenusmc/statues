@@ -13,7 +13,7 @@ const state = {
 	],
 	graphOneYearOne: 1854,
 	graphOneYearTwo: 2017,
-	drillDownDataGraphOne: [],
+	drillDownData: [],
 	graphTwoYearOne: 1854,
 	graphTwoYearTwo: 2017,
 	secondGraphDataSetInitial: [
@@ -30,7 +30,7 @@ const getters = {
 	firstGraphDataSetInitial: state => state.firstGraphDataSetInitial,
 	graphOneYearOne: state => state.graphOneYearOne,
 	graphOneYearTwo: state => state.graphOneYearTwo,
-	drillDownDataGraphOne: state => state.drillDownDataGraphOne,
+	drillDownData: state => state.drillDownData,
 	graphTwoYearOne: state => state.graphTwoYearOne,
 	graphTwoYearTwo: state => state.graphTwoYearTwo,
 	secondGraphDataSetInitial: state => state.secondGraphDataSetInitial,
@@ -53,7 +53,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_north_south_by_year_drilldown';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setDrillDownDataGraphOne', res.data)
+				commit('setDrillDownData', res.data)
 			})
 	},
 
@@ -68,13 +68,10 @@ const actions = {
 	},
 
 	fetchDrillDownDataGraphTwo: ({ commit }, { payload }) => {
-		console.log('ACTION')
-		console.log(payload)
 		const path = 'http://localhost:5000/fetch_north_south_by_state_drilldown';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
-				// commit('setDrillDownDataGraphOne', res.data)
+				commit('setDrillDownData', res.data)
 			})
 	},
 
@@ -95,8 +92,8 @@ const mutations = {
 		state.graphOneYearTwo = data
 	},
 
-	setDrillDownDataGraphOne(state, data) {
-		state.drillDownDataGraphOne = data
+	setDrillDownData(state, data) {
+		state.drillDownData= data
 	},
 
 	setGraphTwoYearOne(state, data) {
