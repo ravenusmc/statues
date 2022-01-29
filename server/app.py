@@ -6,6 +6,7 @@ from db import *
 from user import *
 from clean import *
 from data import *
+from support import *
 
 # configuration
 DEBUG = True
@@ -61,10 +62,12 @@ def graphOne():
 def graphOneDrillDown():
     if request.method == 'POST':
         data = Data()
+        support = Support()
         post_data = request.get_json()
         statues_data_set_by_year_drill_down = data.build_north_south_graph_drill_down(
             post_data)
-    return jsonify(statues_data_set_by_year_drill_down)
+        drill_down_data = support.build_drill_down_rows(statues_data_set_by_year_drill_down)
+    return jsonify(drill_down_data)
 
 
 @app.route('/fetch_top_five_by_year', methods=['GET', 'POST'])
@@ -80,10 +83,12 @@ def graphTwo():
 def graphTwoDrillDown():
     if request.method == 'POST':
         data = Data()
+        support = Support()
         post_data = request.get_json()
-        graph_two_drill_down_data = data.build_graph_two_drill_down(
+        statues_data_set_by_year_drill_down_two = data.build_graph_two_drill_down(
             post_data)
-    return jsonify(graph_two_drill_down_data)
+        drill_down_data = support.build_drill_down_rows(statues_data_set_by_year_drill_down_two)
+    return jsonify(drill_down_data)
 
 
 if __name__ == '__main__':
