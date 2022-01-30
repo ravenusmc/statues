@@ -69,7 +69,6 @@ def graphOneDrillDown():
         drill_down_data = support.build_drill_down_rows(statues_data_set_by_year_drill_down)
     return jsonify(drill_down_data)
 
-
 @app.route('/fetch_top_five_by_year', methods=['GET', 'POST'])
 def graphTwo():
     if request.method == 'POST':

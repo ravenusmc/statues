@@ -29,11 +29,10 @@ section {
 
 @media only all and (max-width: 900px) {
   section {
+    height: 1000px;
+    border: 2px solid red;
     grid-template-columns: 1fr;
   }
 
-  .pictures {
-    display: none;
-  }
 }
 </style>

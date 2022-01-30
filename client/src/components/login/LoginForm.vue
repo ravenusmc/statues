@@ -2,11 +2,13 @@
   <div>
     <section>
       <h2 class="center signup-title title-size font">Login</h2>
-      <h1 v-if="userNotFound" class='center font alert'>User is not found, Please <a
-              ><router-link class='alert' to="/sign_up"
-                >sign up.</router-link
-              ></a></h1>
-      <h1 v-if="passwordNoMatch" class='center font alert'>Password is Invalid</h1>
+      <h1 v-if="userNotFound" class="center font alert">
+        User is not found, Please
+        <a><router-link class="alert" to="/sign_up">sign up.</router-link></a>
+      </h1>
+      <h1 v-if="passwordNoMatch" class="center font alert">
+        Password is Invalid
+      </h1>
       <form @submit="login">
         <div class="field">
           <input
@@ -70,5 +72,11 @@ section {
 .signup-title {
   text-transform: uppercase;
   font-weight: bold;
+}
+
+@media only all and (max-width: 900px) {
+  section {
+    margin-top: -100px;
+  }
 }
 </style>

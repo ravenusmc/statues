@@ -22,4 +22,10 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@media only all and (max-width: 900px) {
+  section {
+    margin: 1% 5% 5% 1%;
+  }
+}
 </style>
