@@ -9,13 +9,21 @@
         <FormOne />
       </div>
     </section>
-    <hr>
+    <hr />
     <section class="graph-area">
       <div>
         <GraphTwo />
         <FormTwo />
       </div>
       <GraphTwoDiscussion />
+    </section>
+    <hr />
+    <section class="graph-area">
+      <GraphThreeDiscussion />
+      <div>
+        <GraphThree />
+        <FormThree />
+      </div>
     </section>
   </div>
 </template>
@@ -28,6 +36,9 @@ import FormOne from '@/components/data/graphone/FormOne.vue';
 import GraphTwoDiscussion from '@/components/data/graphtwo/GraphTwoDiscussion.vue';
 import FormTwo from '@/components/data/graphtwo/FormTwo.vue';
 import GraphTwo from '@/components/data/graphtwo/GraphTwo.vue';
+import GraphThreeDiscussion from '@/components/data/graphthree/GraphThreeDiscussion.vue';
+import FormThree from '@/components/data/graphthree/FormThree.vue';
+import GraphThree from '@/components/data/graphthree/GraphThree.vue';
 
 export default {
   name: 'Data',
@@ -39,6 +50,9 @@ export default {
     GraphTwoDiscussion,
     FormTwo,
     GraphTwo,
+    GraphThreeDiscussion,
+    FormThree,
+    GraphThree,
   },
 };
 </script>
