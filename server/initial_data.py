@@ -47,6 +47,16 @@ class InitialData():
         pd.to_numeric(statues_data_subset['Year Dedicated'])
         print(statues_data_subset['Year Dedicated'].max())
 
+    def unique_states(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        # statues_data_subset["State"].unique()
+        states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
+        'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+        'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
+        states = sorted(states)
+        print(states)
+
 
 test = InitialData()
-test.build_north_south_graph()
+test.unique_states()

@@ -15,6 +15,9 @@ export default {
   name: 'FormOne',
   data() {
     return {
+      states: ['AK', 'AL', 'AR', 'AZ', 'CA', 'DC', 'DE', 'FL', 'GA', 'IA', 'IN', 'KS', 'KY', 'MA',
+      'MD', 'ME', 'MS', 'MT', 'NC', 'NM', 'NV', 'NY', 'OH', 'OKPAMOLAID', 'OR', 'SC', 'SD', 'TN', 
+      'TX', 'UT', 'VA', 'WA', 'WV'],
       yearOne: 1854,
       yearTwo: 2017,
     };
