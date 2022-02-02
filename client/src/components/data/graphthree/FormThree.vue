@@ -1,7 +1,35 @@
 <template>
   <div>
     <form @submit="submitForm">
+      <select v-model="state">
+        <option>Please select a State</option>
+        <option v-for="state in states" :key="state">{{ state }}</option>
+      </select>
       <div class="year-selection-area">
+        <div class="input-area">
+          <label class="fix-label-alignment" for="yearOne"
+            >Enter First Year (1854-2017):</label
+          >
+          <input
+            type="number"
+            id="year"
+            v-model="yearOne"
+            name="yearOne"
+            min="1854"
+            max="2017"
+          />
+        </div>
+        <div>
+          <label for="yearTwo">Enter Second Year (1854-2017):</label>
+          <input
+            type="number"
+            id="year"
+            v-model="yearTwo"
+            name="yearTwo"
+            min="1854"
+            max="2017"
+          />
+        </div>
       </div>
       <button class="button is-success font">Submit</button>
     </form>
@@ -15,9 +43,42 @@ export default {
   name: 'FormOne',
   data() {
     return {
-      states: ['AK', 'AL', 'AR', 'AZ', 'CA', 'DC', 'DE', 'FL', 'GA', 'IA', 'IN', 'KS', 'KY', 'MA',
-      'MD', 'ME', 'MS', 'MT', 'NC', 'NM', 'NV', 'NY', 'OH', 'OKPAMOLAID', 'OR', 'SC', 'SD', 'TN', 
-      'TX', 'UT', 'VA', 'WA', 'WV'],
+      state: 'AK',
+      states: [
+        'AK',
+        'AL',
+        'AR',
+        'AZ',
+        'CA',
+        'DC',
+        'DE',
+        'FL',
+        'GA',
+        'IA',
+        'IN',
+        'KS',
+        'KY',
+        'MA',
+        'MD',
+        'ME',
+        'MS',
+        'MT',
+        'NC',
+        'NM',
+        'NV',
+        'NY',
+        'OH',
+        'OKPAMOLAID',
+        'OR',
+        'SC',
+        'SD',
+        'TN',
+        'TX',
+        'UT',
+        'VA',
+        'WA',
+        'WV',
+      ],
       yearOne: 1854,
       yearTwo: 2017,
     };
@@ -26,6 +87,7 @@ export default {
     ...mapActions('data', ['fetchTopFiveByYear']),
     submitForm(evt) {
       evt.preventDefault();
+      let state = this.state;
       let yearOne = Number(this.yearOne);
       let yearTwo = Number(this.yearTwo);
       if (yearOne >= yearTwo) {
@@ -36,10 +98,12 @@ export default {
         alert('The years cannot be the same.');
       } else {
         const payload = {
+          state,
           yearOne,
           yearTwo,
         };
-        this.fetchTopFiveByYear({ payload });
+        console.log(payload)
+      //   this.fetchTopFiveByYear({ payload });
       }
     },
   },
@@ -58,4 +122,20 @@ button {
   margin: 15px 0 15px 0;
 }
 
+.year-selection-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.fix-label-alignment {
+  margin-left: -23px;
+}
 </style>
