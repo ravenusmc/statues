@@ -24,6 +24,8 @@ const state = {
 		['NC', 112], 
 		['AL', 92]
 	],
+	graphThreeYearOne: 1854,
+	graphThreeYearTwo: 2017,
 };
 
 const getters = {
@@ -34,6 +36,8 @@ const getters = {
 	graphTwoYearOne: state => state.graphTwoYearOne,
 	graphTwoYearTwo: state => state.graphTwoYearTwo,
 	secondGraphDataSetInitial: state => state.secondGraphDataSetInitial,
+	graphThreeYearOne: state => state.graphThreeYearOne,
+	graphThreeYearTwo: state => state.graphThreeYearTwo,
 };
 
 const actions = {
@@ -75,8 +79,17 @@ const actions = {
 			})
 	},
 
-};
+	fetchStatuesBySingleState: ({ commit }, { payload }) => {
+		commit('setGraphThreeYearOne', payload.yearOne)
+		commit('setGraphThreeYearTwo', payload.yearTwo)
+		const path = 'http://localhost:5000/fetch_Statues_Single_State';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setSecondGraphDataSetInitial', res.data)
+			})
+	},
 
+};
 
 const mutations = {
 
@@ -106,6 +119,14 @@ const mutations = {
 
 	setSecondGraphDataSetInitial(state, data) {
 		state.secondGraphDataSetInitial = data
+	},
+
+	setGraphThreeYearOne(state, data) {
+		state.graphThreeYearOne = data
+	},
+
+	setGraphThreeYearTwo(state, data) {
+		state.graphThreeYearTwo = data
 	},
 
 };

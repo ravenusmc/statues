@@ -84,7 +84,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions('data', ['fetchTopFiveByYear']),
+    ...mapActions('data', ['fetchStatuesBySingleState']),
     submitForm(evt) {
       evt.preventDefault();
       let state = this.state;
@@ -102,8 +102,7 @@ export default {
           yearOne,
           yearTwo,
         };
-        console.log(payload)
-      //   this.fetchTopFiveByYear({ payload });
+        this.fetchStatuesBySingleState({ payload });
       }
     },
   },

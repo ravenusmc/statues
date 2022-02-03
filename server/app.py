@@ -89,6 +89,16 @@ def graphTwoDrillDown():
         drill_down_data = support.build_drill_down_rows(statues_data_set_by_year_drill_down_two)
     return jsonify(drill_down_data)
 
+@app.route('/fetch_Statues_Single_State', methods=['GET', 'POST'])
+def graphThree():
+    if request.method == 'POST':
+        data = Data()
+        post_data = request.get_json()
+        print(post_data)
+        # third_chart_data = data.build_top_five_graph(
+        #     post_data)
+    return jsonify('5')
+
 
 if __name__ == '__main__':
     app.run()
