@@ -72,5 +72,32 @@ class Data():
         state = post_data['state']
         statues_data_set_by_year_drill_down_two = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['State'] == state)]
-        return statues_data_set_by_year_drill_down_two 
+        return statues_data_set_by_year_drill_down_two
 
+    def build_singe_state_graph(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        state = statues_data_subset['State'] == post_data['state']
+        yearOne = statues_data_subset['Year Dedicated'] >= post_data['yearOne']
+        yearTwo = statues_data_subset['Year Dedicated'] <= post_data['yearTwo']
+        statues_data_set_by_state = statues_data_subset[state &
+                                                        yearOne & yearTwo]
+        third_chart_data = []
+        columns = ['State', 'South', 'North', 'N/A']
+        third_chart_data.append(columns)
+        rows = []
+        rows.append(post_data['state'])
+        # Count for North
+        North = statues_data_set_by_state['Side'] == 'North'
+        North_Count = len(statues_data_set_by_state[North])
+        rows.append(North_Count)
+        # Count for South
+        South= statues_data_set_by_state['Side'] == 'South'
+        South_count= len(statues_data_set_by_state[South])
+        rows.append(South_count)
+        # Count for Not Applicable
+        Not_Applicable= statues_data_set_by_state['Side'] == 'Not Applicable'
+        Not_Applicable_Count= len(statues_data_set_by_state[Not_Applicable])
+        rows.append(Not_Applicable_Count)
+        third_chart_data.append(rows)
+        return third_chart_data

@@ -94,10 +94,9 @@ def graphThree():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()
-        print(post_data)
-        # third_chart_data = data.build_top_five_graph(
-        #     post_data)
-    return jsonify('5')
+        third_chart_data = data.build_singe_state_graph(
+            post_data)
+    return jsonify(third_chart_data)
 
 
 if __name__ == '__main__':

@@ -26,6 +26,10 @@ const state = {
 	],
 	graphThreeYearOne: 1854,
 	graphThreeYearTwo: 2017,
+	thirdGraphDataSet: [
+		['State', 'South', 'North', 'N/A'], 
+		['AK', 0, 0, 1]
+	],
 };
 
 const getters = {
@@ -38,6 +42,7 @@ const getters = {
 	secondGraphDataSetInitial: state => state.secondGraphDataSetInitial,
 	graphThreeYearOne: state => state.graphThreeYearOne,
 	graphThreeYearTwo: state => state.graphThreeYearTwo,
+	thirdGraphDataSet: state => state.thirdGraphDataSet,
 };
 
 const actions = {
@@ -85,7 +90,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_Statues_Single_State';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setSecondGraphDataSetInitial', res.data)
+				commit('setThirdGraphDataSet', res.data)
 			})
 	},
 
@@ -127,6 +132,10 @@ const mutations = {
 
 	setGraphThreeYearTwo(state, data) {
 		state.graphThreeYearTwo = data
+	},
+
+	setThirdGraphDataSet(state, data) {
+		state.thirdGraphDataSet = data
 	},
 
 };

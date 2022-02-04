@@ -2,7 +2,7 @@
   <div>
     <GraphCard
       :typeOne="typeOne"
-      :data="firstGraphDataSetInitial"
+      :data="thirdGraphDataSet"
       :options="chartOptionsOne"
     />
   </div>
@@ -18,15 +18,14 @@ export default {
     GraphCard,
   },
   computed: {
-    ...mapGetters('data', ['firstGraphDataSetInitial']),
+    ...mapGetters('data', ['thirdGraphDataSet']),
   },
   data() {
     return {
       typeOne: 'ColumnChart',
       chartOptionsOne: {
-        title: 'Statues in North Vs South',
+        title: 'Statues in Single State',
         legend: { position: 'top' },
-        colors: ['#f24867'],
         height: 500,
         animation: {
           duration: 1000,
