@@ -41,13 +41,19 @@ class Data():
             statues_data_subset['Year Dedicated'] <= yearTwo) & (statues_data_subset['Side'] == side)]
         return statues_data_set_by_year_drill_down
 
-    def build_top_five_graph(self, years):
+    def build_top_five_graph(self, post_data):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        yearOne = years['yearOne']
-        yearTwo = years['yearTwo']
-        statues_data_set_by_year = statues_data_subset[(statues_data_subset['Year Dedicated'] >= yearOne) & (
-            statues_data_subset['Year Dedicated'] <= yearTwo)]
+        yearOne = statues_data_subset['Year Dedicated'] >= post_data['yearOne']
+        yearTwo = statues_data_subset['Year Dedicated'] <= post_data['yearTwo']
+        statues_data_set_by_year = statues_data_subset[(yearOne) & (yearTwo)]
+        # print(statues_data_set_by_year[statues_data_set_by_year['State'] == 'VA'])
+        # statues_data_set_by_year[statues_data_set_by_year['State'] == 'VA'].to_csv('test.csv')
+
+        issue = statues_data_set_by_year[statues_data_set_by_year['State'] == 'VA']
+        print(issue['Side'].value_counts())
+
+
         state_counts = statues_data_set_by_year['State'].value_counts().head(5)
         second_chart_data = []
         columns = ['State', 'Count']
@@ -80,10 +86,10 @@ class Data():
         state = statues_data_subset['State'] == post_data['state']
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['yearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['yearTwo']
-        statues_data_set_by_state = statues_data_subset[state &
-                                                        yearOne & yearTwo]
+        statues_data_set_by_state = statues_data_subset[(state) &
+                                                        (yearOne) & (yearTwo)]
         third_chart_data = []
-        columns = ['State', 'South', 'North', 'N/A']
+        columns = ['State', 'North', 'South', 'N/A', 'Blank']
         third_chart_data.append(columns)
         rows = []
         rows.append(post_data['state'])
@@ -92,12 +98,17 @@ class Data():
         North_Count = len(statues_data_set_by_state[North])
         rows.append(North_Count)
         # Count for South
-        South= statues_data_set_by_state['Side'] == 'South'
-        South_count= len(statues_data_set_by_state[South])
+        South = statues_data_set_by_state['Side'] == 'South'
+        South_count = len(statues_data_set_by_state[South])
         rows.append(South_count)
         # Count for Not Applicable
-        Not_Applicable= statues_data_set_by_state['Side'] == 'Not Applicable'
-        Not_Applicable_Count= len(statues_data_set_by_state[Not_Applicable])
+        Not_Applicable = statues_data_set_by_state['Side'] == 'Not Applicable'
+        Not_Applicable_Count = len(statues_data_set_by_state[Not_Applicable])
         rows.append(Not_Applicable_Count)
+        # Count for Blank
+        Blank = statues_data_set_by_state['Side'] == ''
+        Blank_count = len(statues_data_set_by_state[Blank])
+        print(Blank_count)
+        rows.append(Blank_count)
         third_chart_data.append(rows)
         return third_chart_data
