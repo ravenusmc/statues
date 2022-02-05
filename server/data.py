@@ -47,13 +47,6 @@ class Data():
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['yearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['yearTwo']
         statues_data_set_by_year = statues_data_subset[(yearOne) & (yearTwo)]
-        # print(statues_data_set_by_year[statues_data_set_by_year['State'] == 'VA'])
-        # statues_data_set_by_year[statues_data_set_by_year['State'] == 'VA'].to_csv('test.csv')
-
-        issue = statues_data_set_by_year[statues_data_set_by_year['State'] == 'VA']
-        print(issue['Side'].value_counts())
-
-
         state_counts = statues_data_set_by_year['State'].value_counts().head(5)
         second_chart_data = []
         columns = ['State', 'Count']
@@ -89,7 +82,7 @@ class Data():
         statues_data_set_by_state = statues_data_subset[(state) &
                                                         (yearOne) & (yearTwo)]
         third_chart_data = []
-        columns = ['State', 'North', 'South', 'N/A', 'Blank']
+        columns = ['State', 'North', 'South', 'N/A or Blank']
         third_chart_data.append(columns)
         rows = []
         rows.append(post_data['state'])
@@ -104,11 +97,9 @@ class Data():
         # Count for Not Applicable
         Not_Applicable = statues_data_set_by_state['Side'] == 'Not Applicable'
         Not_Applicable_Count = len(statues_data_set_by_state[Not_Applicable])
-        rows.append(Not_Applicable_Count)
         # Count for Blank
-        Blank = statues_data_set_by_state['Side'] == ''
+        Blank = statues_data_set_by_state['Side'].isnull()
         Blank_count = len(statues_data_set_by_state[Blank])
-        print(Blank_count)
-        rows.append(Blank_count)
+        rows.append(Not_Applicable_Count + Blank_count)
         third_chart_data.append(rows)
         return third_chart_data

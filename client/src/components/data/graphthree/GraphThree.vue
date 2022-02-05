@@ -24,7 +24,7 @@ export default {
     return {
       typeOne: 'ColumnChart',
       chartOptionsOne: {
-        title: 'Statues in Single State',
+        title: 'Statues by Single State',
         legend: { position: 'top' },
         height: 500,
         animation: {
