@@ -33,6 +33,8 @@ export default {
       'drillDownData',
       'graphTwoYearOne',
       'graphTwoYearTwo',
+      'graphThreeYearOne',
+      'graphThreeYearTwo',
     ]),
   },
   data() {
@@ -41,7 +43,28 @@ export default {
       showModal: false,
       chartEvents: {
         select: () => {
-          // console.log(this.data); // This will show you the data kept for reference
+          //console.log(this.data); // This will show you the data kept for reference
+          if (this.data[0].length === 4) {
+            const chart = this.$refs.gChart.chartObject;
+            const selection = chart.getSelection()[0];
+            let side_selected = this.data[0][selection.column];
+            this.showModal = true;
+            let graphThreeYearOne = this.graphOneYearOne;
+            let graphThreeYearTwo = this.graphOneYearTwo;
+            let state = this.data[1][0]
+            const payload = {
+              graphThreeYearOne,
+              graphThreeYearTwo,
+              state,
+              side_selected,
+            };
+            this.$store.dispatch('data/fetchDrillDownDataGraphThree', {
+              payload,
+            });
+            this.modalTitle = `Statues in the state of ${state} between ${graphThreeYearOne} - ${graphThreeYearTwo}
+            that are for the ${side_selected}`;
+          }
+
           if (this.data[0][0] === 'Side') {
             const chart = this.$refs.gChart.chartObject;
             const selection = chart.getSelection()[0];

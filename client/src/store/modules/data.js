@@ -85,12 +85,22 @@ const actions = {
 	},
 
 	fetchStatuesBySingleState: ({ commit }, { payload }) => {
+		// Using graph two's year for the drill down graph may or may not be the best option...
 		commit('setGraphThreeYearOne', payload.yearOne)
 		commit('setGraphThreeYearTwo', payload.yearTwo)
 		const path = 'http://localhost:5000/fetch_Statues_Single_State';
 		axios.post(path, payload)
 			.then((res) => {
 				commit('setThirdGraphDataSet', res.data)
+			})
+	},
+
+	fetchDrillDownDataGraphThree: ({ commit }, { payload }) => {
+		console.log(payload)
+		const path = 'http://localhost:5000/fetch_north_south_by_state_drilldown';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setDrillDownData', res.data)
 			})
 	},
 
@@ -136,6 +146,14 @@ const mutations = {
 
 	setThirdGraphDataSet(state, data) {
 		state.thirdGraphDataSet = data
+	},
+
+	setGraphThreeYearOne(state, data) {
+		state.graphThreeYearOne = data
+	},
+
+	setGraphThreeYearTwo(state, data) {
+		state.graphThreeYearTwo = data
 	},
 
 };
