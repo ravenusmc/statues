@@ -49,8 +49,8 @@ export default {
             const selection = chart.getSelection()[0];
             let side_selected = this.data[0][selection.column];
             this.showModal = true;
-            let graphThreeYearOne = this.graphOneYearOne;
-            let graphThreeYearTwo = this.graphOneYearTwo;
+            let graphThreeYearOne = this.graphThreeYearOne;
+            let graphThreeYearTwo = this.graphThreeYearTwo;
             let state = this.data[1][0]
             const payload = {
               graphThreeYearOne,

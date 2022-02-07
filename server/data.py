@@ -103,3 +103,18 @@ class Data():
         rows.append(Not_Applicable_Count + Blank_count)
         third_chart_data.append(rows)
         return third_chart_data
+
+    def build_graph_three_drill_down(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        drilldown_data_graph_two = []
+        columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        drilldown_data_graph_two.append(columns)
+        # Setting up the filtering - I like this way better which I learned from Colt Steele
+        state = statues_data_subset['State'] == post_data['state']
+        yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphThreeYearOne']
+        yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
+        side =  statues_data_subset['Side'] == post_data['side_selected']
+        statues_data_drill_down_three = statues_data_subset[(state) &
+                                                        (yearOne) & (yearTwo) & (side)]
+        return statues_data_drill_down_three

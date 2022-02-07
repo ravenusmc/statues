@@ -66,8 +66,10 @@ def graphOneDrillDown():
         post_data = request.get_json()
         statues_data_set_by_year_drill_down = data.build_north_south_graph_drill_down(
             post_data)
-        drill_down_data = support.build_drill_down_rows(statues_data_set_by_year_drill_down)
+        drill_down_data = support.build_drill_down_rows(
+            statues_data_set_by_year_drill_down)
     return jsonify(drill_down_data)
+
 
 @app.route('/fetch_top_five_by_year', methods=['GET', 'POST'])
 def graphTwo():
@@ -78,6 +80,7 @@ def graphTwo():
             post_data)
     return jsonify(second_chart_data)
 
+
 @app.route('/fetch_north_south_by_state_drilldown', methods=['GET', 'POST'])
 def graphTwoDrillDown():
     if request.method == 'POST':
@@ -86,8 +89,10 @@ def graphTwoDrillDown():
         post_data = request.get_json()
         statues_data_set_by_year_drill_down_two = data.build_graph_two_drill_down(
             post_data)
-        drill_down_data = support.build_drill_down_rows(statues_data_set_by_year_drill_down_two)
+        drill_down_data = support.build_drill_down_rows(
+            statues_data_set_by_year_drill_down_two)
     return jsonify(drill_down_data)
+
 
 @app.route('/fetch_Statues_Single_State', methods=['GET', 'POST'])
 def graphThree():
@@ -97,6 +102,22 @@ def graphThree():
         third_chart_data = data.build_singe_state_graph(
             post_data)
     return jsonify(third_chart_data)
+
+
+@app.route('/fetch_drilldown_graph_three', methods=['GET', 'POST'])
+def graphThreeDrillDown():
+    if request.method == 'POST':
+        data = Data()
+        support = Support()
+        post_data = request.get_json()
+        statues_data_drill_down_three = data.build_graph_three_drill_down(
+            post_data)
+        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_three)
+        print(drill_down_data)
+    return jsonify(drill_down_data)
+
+
+
 
 
 if __name__ == '__main__':
