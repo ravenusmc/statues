@@ -96,7 +96,6 @@ const actions = {
 	},
 
 	fetchDrillDownDataGraphThree: ({ commit }, { payload }) => {
-		console.log(payload)
 		const path = 'http://localhost:5000/fetch_drilldown_graph_three';
 		axios.post(path, payload)
 			.then((res) => {
