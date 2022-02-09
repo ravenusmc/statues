@@ -116,7 +116,8 @@ class Data():
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
         side =  statues_data_subset['Side'] == post_data['side_selected']
         if side == # deal with not applicable and '' 
-            pass
+            frames = [df1, df2, df3]
+            result = pd.concat(frames)
         statues_data_drill_down_three = statues_data_subset[(state) &
                                                         (yearOne) & (yearTwo) & (side)]
         return statues_data_drill_down_three
