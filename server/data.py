@@ -115,7 +115,7 @@ class Data():
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphThreeYearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
         side =  statues_data_subset['Side'] == post_data['side_selected']
-        # Need to merge to df's
+        # Need to merge to dealing with not applicable and ''
         if side == # deal with not applicable and '' 
             frames = [df1, df2, df3]
             result = pd.concat(frames)
