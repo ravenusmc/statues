@@ -114,11 +114,16 @@ class Data():
         state = statues_data_subset['State'] == post_data['state']
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphThreeYearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
-        side =  statues_data_subset['Side'] == post_data['side_selected']
-        # Need to merge to dealing with not applicable and ''
-        if side == # deal with not applicable and '' 
-            frames = [df1, df2, df3]
-            result = pd.concat(frames)
+        if post_data['side_selected'] == 'N/A or Blank':
+            Not_Applicable = statues_data_subset['Side'] == 'Not Applicable'
+            Blank = statues_data_subset['Side'].isnull()
+            frames = [Not_Applicable, Blank]
+            side = pd.concat(frames)
+            print('HERE')
+            print(side.index.duplicated())
+            input()
+        else:
+            side = statues_data_subset['Side'] == post_data['side_selected']
         statues_data_drill_down_three = statues_data_subset[(state) &
                                                         (yearOne) & (yearTwo) & (side)]
         return statues_data_drill_down_three
