@@ -63,9 +63,7 @@ export default {
             });
             this.modalTitle = `Statues in the state of ${state} between ${graphThreeYearOne} - ${graphThreeYearTwo}
             that are for the ${side_selected}`;
-          }
-
-          if (this.data[0][0] === 'Side') {
+          } else if (this.data[0][0] === 'Side') {
             const chart = this.$refs.gChart.chartObject;
             const selection = chart.getSelection()[0];
             let row = selection.row + 1;

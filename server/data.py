@@ -115,15 +115,16 @@ class Data():
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphThreeYearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
         if post_data['side_selected'] == 'N/A or Blank':
-            Not_Applicable = statues_data_subset['Side'] == 'Not Applicable'
-            Blank = statues_data_subset['Side'].isnull()
-            frames = [Not_Applicable, Blank]
-            side = pd.concat(frames)
-            print('HERE')
-            print(side.index.duplicated())
-            input()
+            side = statues_data_subset['Side'] == 'Not Applicable'
+            not_applicable_statues = statues_data_subset[(state) &
+                                                         (yearOne) & (yearTwo) & (side)]
+            side_is_null = statues_data_subset['Side'].isnull()
+            is_null_statues = statues_data_subset[(state) &
+                                                  (yearOne) & (yearTwo) & (side_is_null)]
+            statues_data_drill_down_three = pd.concat([not_applicable_statues, is_null_statues])
         else:
             side = statues_data_subset['Side'] == post_data['side_selected']
-        statues_data_drill_down_three = statues_data_subset[(state) &
-                                                        (yearOne) & (yearTwo) & (side)]
+            statues_data_drill_down_three = statues_data_subset[(state) &
+                                                                (yearOne) & (yearTwo) & (side)]
+        # print(statues_data_drill_down_three)
         return statues_data_drill_down_three

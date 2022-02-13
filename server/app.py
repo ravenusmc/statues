@@ -113,7 +113,6 @@ def graphThreeDrillDown():
         statues_data_drill_down_three = data.build_graph_three_drill_down(
             post_data)
         drill_down_data = support.build_drill_down_rows(statues_data_drill_down_three)
-        print(drill_down_data)
     return jsonify(drill_down_data)
 
 

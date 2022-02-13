@@ -99,6 +99,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_drilldown_graph_three';
 		axios.post(path, payload)
 			.then((res) => {
+				console.log(res.data)
 				commit('setDrillDownData', res.data)
 			})
 	},
