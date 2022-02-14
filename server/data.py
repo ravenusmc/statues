@@ -126,5 +126,4 @@ class Data():
             side = statues_data_subset['Side'] == post_data['side_selected']
             statues_data_drill_down_three = statues_data_subset[(state) &
                                                                 (yearOne) & (yearTwo) & (side)]
-        # print(statues_data_drill_down_three)
         return statues_data_drill_down_three

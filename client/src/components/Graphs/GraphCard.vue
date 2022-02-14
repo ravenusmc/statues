@@ -41,14 +41,14 @@ export default {
     return {
       modalTitle: '',
       showModal: false,
+      // Code in here could be cleaned up some more...
       chartEvents: {
         select: () => {
           //console.log(this.data); // This will show you the data kept for reference
+          const chart = this.$refs.gChart.chartObject;
+          const selection = chart.getSelection()[0];
           if (this.data[0].length === 4) {
-            const chart = this.$refs.gChart.chartObject;
-            const selection = chart.getSelection()[0];
             let side_selected = this.data[0][selection.column];
-            this.showModal = true;
             let graphThreeYearOne = this.graphThreeYearOne;
             let graphThreeYearTwo = this.graphThreeYearTwo;
             let state = this.data[1][0]
@@ -64,11 +64,8 @@ export default {
             this.modalTitle = `Statues in the state of ${state} between ${graphThreeYearOne} - ${graphThreeYearTwo}
             that are for the ${side_selected}`;
           } else if (this.data[0][0] === 'Side') {
-            const chart = this.$refs.gChart.chartObject;
-            const selection = chart.getSelection()[0];
             let row = selection.row + 1;
             let side = this.data[row][0];
-            this.showModal = true;
             let graphOneYearOne = this.graphOneYearOne;
             let graphOneYearTwo = this.graphOneYearTwo;
             const payload = {
@@ -81,11 +78,8 @@ export default {
             });
             this.modalTitle = `Statues in the ${side} between ${graphOneYearOne} - ${graphOneYearTwo}`;
           } else if (this.data[0][0] === 'State') {
-            const chart = this.$refs.gChart.chartObject;
-            const selection = chart.getSelection()[0];
             let row = selection.row + 1;
             let state = this.data[row][0];
-            this.showModal = true;
             let graphTwoYearOne = this.graphTwoYearOne;
             let graphTwoYearTwo = this.graphTwoYearTwo;
             const payload = {
@@ -98,6 +92,7 @@ export default {
             });
             this.modalTitle = `Statues in ${state} between ${graphTwoYearOne} - ${graphTwoYearTwo}`;
           }
+          this.showModal = true;
         },
       }, // End Chart Events
     };
