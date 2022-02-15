@@ -18,7 +18,7 @@
 
 <script>
 import Modal from '@/components/data/Modal.vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'GraphCard',
@@ -51,7 +51,7 @@ export default {
             let side_selected = this.data[0][selection.column];
             let graphThreeYearOne = this.graphThreeYearOne;
             let graphThreeYearTwo = this.graphThreeYearTwo;
-            let state = this.data[1][0]
+            let state = this.data[1][0];
             const payload = {
               graphThreeYearOne,
               graphThreeYearTwo,
@@ -98,8 +98,10 @@ export default {
     };
   }, // End of data
   methods: {
+    ...mapActions('data', ['resetDrillDownData']),
     update(close) {
       this.showModal = close;
+      this.resetDrillDownData();
     },
   }, // End of Methods
 };

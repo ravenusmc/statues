@@ -17,17 +17,17 @@ const state = {
 	graphTwoYearOne: 1854,
 	graphTwoYearTwo: 2017,
 	secondGraphDataSetInitial: [
-		['State', 'Count'], 
-		['VA', 221], 
-		['TX', 159], 
-		['GA', 135], 
-		['NC', 112], 
+		['State', 'Count'],
+		['VA', 221],
+		['TX', 159],
+		['GA', 135],
+		['NC', 112],
 		['AL', 92]
 	],
 	graphThreeYearOne: 1854,
 	graphThreeYearTwo: 2017,
 	thirdGraphDataSet: [
-		['State', 'South', 'North', 'N/A'], 
+		['State', 'South', 'North', 'N/A'],
 		['AK', 0, 0, 1]
 	],
 };
@@ -99,10 +99,14 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_drilldown_graph_three';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
 				commit('setDrillDownData', res.data)
 			})
 	},
+
+	resetDrillDownData: ({ commit }) => {
+		let drillDownData = []
+		commit('setDrillDownData', drillDownData)
+	}
 
 };
 
@@ -121,7 +125,7 @@ const mutations = {
 	},
 
 	setDrillDownData(state, data) {
-		state.drillDownData= data
+		state.drillDownData = data
 	},
 
 	setGraphTwoYearOne(state, data) {
