@@ -7,25 +7,21 @@
     </p>
     <br />
     <p>
-      This graph allows the user to see the count of statues in the North, South
-      and areas that I've labeled "Not Applicable." The user is able to select a
-      time period and see how the number of statues changed with time. The user
-      is also able to click on one of the columns to drill down into the data.
-      The window that then appears will allow the user to see more information
-      on the statues that make up that data.
+      Now this graph started to get me really thinking that something is going 
+      on here with this data. The amount of statues that are not from the North 
+      is huge. Select just about any Southern state and the data that I have does 
+      not show any statues of the North. It's like the North does not even have any 
+      memories of the war. With the South, the number of statues that they have really 
+      seems to show that they think of the war very fondly. 
     </p>
     <br />
     <p>
-      There's one thing that stands out to me on the graph. The South always
-      appears to have more statues than the North. The North won the war. I
-      almost would have thought that the North would have had more statues up
-      until about 1890. That is very clearly not the case. From the start,
-      according to the data, the South had way more statues than the North did.
-      The South, from the start, appears to have been much more willing to pay
-      tribute to the fallen than the North. Still this does not make much sense
-      to me. The Lost Cause Myth I believe was developed towards the end of the
-      19th century. I'd almost expect to have more statues in the North up until
-      that point.
+      The South lost the war though! Yet, one would not be able to tell from any of these 
+      graphs. This graph works similar to the others except one is able to select a state 
+      as well as a time period. The data that comes back shows three columns - the amount 
+      of statues that are for the North, South and that have Side being blank - that is 
+      Not Applicable. Again, you'll almost think that the graph is broken because there 
+      appear to hardly be any statues for the North. 
     </p>
   </div>
 </template>
