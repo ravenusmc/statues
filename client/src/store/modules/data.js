@@ -30,6 +30,14 @@ const state = {
 		['State', 'South', 'North', 'N/A'],
 		['AK', 0, 0, 1]
 	],
+	removedStatuesData: [
+		['State', 'Count'], 
+		['TX', 24], 
+		['VA', 20], 
+		['FL', 11], 
+		['TN', 8], 
+		['GA', 7]
+	],
 };
 
 const getters = {
@@ -43,6 +51,7 @@ const getters = {
 	graphThreeYearOne: state => state.graphThreeYearOne,
 	graphThreeYearTwo: state => state.graphThreeYearTwo,
 	thirdGraphDataSet: state => state.thirdGraphDataSet,
+	removedStatuesData: state => state.removedStatuesData, 
 };
 
 const actions = {

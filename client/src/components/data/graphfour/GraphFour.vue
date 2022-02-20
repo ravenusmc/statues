@@ -2,7 +2,7 @@
   <div>
     <GraphCard
       :typeOne="typeOne"
-      :data="firstGraphDataSetInitial"
+      :data="removedStatuesData"
       :options="chartOptionsOne"
     />
   </div>
@@ -18,13 +18,13 @@ export default {
     GraphCard,
   },
   computed: {
-    ...mapGetters('data', ['firstGraphDataSetInitial']),
+    ...mapGetters('data', ['removedStatuesData']),
   },
   data() {
     return {
       typeOne: 'ColumnChart',
       chartOptionsOne: {
-        title: 'Statues in North Vs South',
+        title: 'Top 5 States that Removed Statues',
         legend: { position: 'top' },
         colors: ['#f24867'],
         height: 500,
