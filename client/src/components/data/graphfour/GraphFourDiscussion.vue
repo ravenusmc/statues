@@ -18,7 +18,9 @@
     </p>
     <br />
     <p>
-      
+      This graph will have a drill down to see which statues were removed. As with 
+      the other graphs, simply click on the bar you want to drill down on and a table 
+      will appear showing you the data. 
     </p>
   </div>
 </template>
