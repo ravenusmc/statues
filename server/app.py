@@ -115,9 +115,16 @@ def graphThreeDrillDown():
         drill_down_data = support.build_drill_down_rows(statues_data_drill_down_three)
     return jsonify(drill_down_data)
 
-
-
-
+@app.route('/fetch_drilldown_graph_four', methods=['GET', 'POST'])
+def graphFourDrillDown():
+    if request.method == 'POST':
+        data = Data()
+        support = Support()
+        post_data = request.get_json()
+        statues_data_drill_down_four = data.build_graph_four_drill_down(
+            post_data)
+        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_four)
+    return jsonify(drill_down_data)
 
 if __name__ == '__main__':
     app.run()

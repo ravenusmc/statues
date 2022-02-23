@@ -121,9 +121,21 @@ class Data():
             side_is_null = statues_data_subset['Side'].isnull()
             is_null_statues = statues_data_subset[(state) &
                                                   (yearOne) & (yearTwo) & (side_is_null)]
-            statues_data_drill_down_three = pd.concat([not_applicable_statues, is_null_statues])
+            statues_data_drill_down_three = pd.concat(
+                [not_applicable_statues, is_null_statues])
         else:
             side = statues_data_subset['Side'] == post_data['side_selected']
             statues_data_drill_down_three = statues_data_subset[(state) &
                                                                 (yearOne) & (yearTwo) & (side)]
         return statues_data_drill_down_three
+
+    def build_graph_four_drill_down(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        drilldown_data_graph_two = []
+        columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        drilldown_data_graph_two.append(columns)
+        state = statues_data_subset['State'] == post_data['state']
+        removed = statues_data_subset['Removed After Charlottesville'] == 1
+        statues_data_drill_down_four = statues_data_subset[(state) & (removed)]
+        return statues_data_drill_down_four

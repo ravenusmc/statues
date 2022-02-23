@@ -44,9 +44,10 @@ export default {
       // Code in here could be cleaned up some more...
       chartEvents: {
         select: () => {
-          //console.log(this.data); // This will show you the data kept for reference
+          // console.log(this.data); // This will show you the data kept for reference
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
+          let row = selection.row + 1;
           if (this.data[0].length === 4) {
             let side_selected = this.data[0][selection.column];
             let graphThreeYearOne = this.graphThreeYearOne;
@@ -64,7 +65,6 @@ export default {
             this.modalTitle = `Statues in the state of ${state} between ${graphThreeYearOne} - ${graphThreeYearTwo}
             that are for the ${side_selected}`;
           } else if (this.data[0][0] === 'Side') {
-            let row = selection.row + 1;
             let side = this.data[row][0];
             let graphOneYearOne = this.graphOneYearOne;
             let graphOneYearTwo = this.graphOneYearTwo;
@@ -78,7 +78,6 @@ export default {
             });
             this.modalTitle = `Statues in the ${side} between ${graphOneYearOne} - ${graphOneYearTwo}`;
           } else if (this.data[0][0] === 'State') {
-            let row = selection.row + 1;
             let state = this.data[row][0];
             let graphTwoYearOne = this.graphTwoYearOne;
             let graphTwoYearTwo = this.graphTwoYearTwo;
@@ -91,6 +90,15 @@ export default {
               payload,
             });
             this.modalTitle = `Statues in ${state} between ${graphTwoYearOne} - ${graphTwoYearTwo}`;
+          } else if (this.data[0][0] === 'Southern State') {
+            let state = this.data[row][0];
+            const payload = {
+              state,
+            };
+            this.$store.dispatch('data/fetchDrillDownDataGraphFour', {
+              payload,
+            });
+            this.modalTitle = `Statues that have been removed in ${state}`;
           }
           this.showModal = true;
         },

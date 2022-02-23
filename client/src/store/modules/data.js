@@ -31,7 +31,7 @@ const state = {
 		['AK', 0, 0, 1]
 	],
 	removedStatuesData: [
-		['State', 'Count'], 
+		['Southern State', 'Count'], 
 		['TX', 24], 
 		['VA', 20], 
 		['FL', 11], 
@@ -106,6 +106,14 @@ const actions = {
 
 	fetchDrillDownDataGraphThree: ({ commit }, { payload }) => {
 		const path = 'http://localhost:5000/fetch_drilldown_graph_three';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setDrillDownData', res.data)
+			})
+	},
+
+	fetchDrillDownDataGraphFour: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/fetch_drilldown_graph_four';
 		axios.post(path, payload)
 			.then((res) => {
 				commit('setDrillDownData', res.data)
