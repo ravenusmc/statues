@@ -4,6 +4,7 @@
 import numpy as np
 import pandas as pd
 from datetime import date
+import math
 
 
 class Support():
@@ -23,9 +24,10 @@ class Support():
                 rows.append(Feature_Name)
                 rows.append(State)
                 rows.append(Symbol_type)
-                print(Year_dedicated)
-                input()
-                Year_dedicated = date(int(Year_dedicated), int(1), int(1))
+                if math.isnan(Year_dedicated):
+                    Year_dedicated = 'Not Available'
+                else:
+                    Year_dedicated = date(int(Year_dedicated), int(1), int(1))
                 rows.append(Year_dedicated)
                 drilldown_data.append(rows)
                 count += 1
