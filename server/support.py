@@ -6,7 +6,7 @@ import pandas as pd
 from datetime import date
 import math
 
-
+# This class will provide methods that support the data class. 
 class Support():
 
     def build_drill_down_rows(self, data):
