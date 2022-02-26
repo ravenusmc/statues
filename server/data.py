@@ -114,7 +114,8 @@ class Data():
         state = statues_data_subset['State'] == post_data['state']
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphThreeYearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
-        if post_data['side_selected'] == 'N/A or Blank':
+        if (post_data['side_selected'] =='N/A') or (post_data['side_selected'] == 'N/A or Blank'):
+            print("HEHEHHEHE")
             side = statues_data_subset['Side'] == 'Not Applicable'
             not_applicable_statues = statues_data_subset[(state) &
                                                          (yearOne) & (yearTwo) & (side)]
