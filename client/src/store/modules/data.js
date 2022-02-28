@@ -38,6 +38,7 @@ const state = {
 		['TN', 8], 
 		['GA', 7]
 	],
+	removedStatuesByYearsData: [],
 };
 
 const getters = {
