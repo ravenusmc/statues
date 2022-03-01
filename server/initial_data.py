@@ -78,20 +78,18 @@ class InitialData():
     def get_top_years_statues_removed(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        # removed_statues_data_set = statues_data_subset[(removed_statues)]
-        state_counts = statues_data_subset['Year Removed'].value_counts().head(15)
-        print(state_counts)
-        # fourth_chart_data = []
-        # columns = ['State', 'Count']
-        # fourth_chart_data.append(columns)
-        # count = 0
-        # for state in state_counts.to_frame().index:
-        #     rows = []
-        #     rows.append(state)
-        #     rows.append(int(state_counts.iloc[count]))
-        #     fourth_chart_data.append(rows)
-        #     count += 1
-        # print(fifth_chart_data)
+        state_counts = statues_data_subset['Year Removed'].value_counts().head(10).sort_index()
+        fifth_chart_data = []
+        columns = ['Year', 'Count']
+        fifth_chart_data.append(columns)
+        count = 0
+        for year in state_counts.to_frame().index:
+            rows = []
+            rows.append(year)
+            rows.append(int(state_counts.iloc[count]))
+            fifth_chart_data.append(rows)
+            count += 1
+        print(fifth_chart_data)
 
 
 test = InitialData()
