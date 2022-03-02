@@ -40,16 +40,16 @@ const state = {
 	],
 	removedStatuesByYearsData: [
 		['Year', 'Count'], 
-		[2012.0, 2], 
-		[2013.0, 1],
-		[2014.0, 2], 
-		[2015.0, 15], 
-		[2016.0, 18], 
-		[2017.0, 63], 
-		[2018.0, 32], 
-		[2019.0, 22], 
-		[2020.0, 172], 
-		[2021.0, 23]
+		[2012, 2], 
+		[2013, 1],
+		[2014, 2], 
+		[2015, 15], 
+		[2016, 18], 
+		[2017, 63], 
+		[2018, 32], 
+		[2019, 22], 
+		[2020, 172], 
+		[2021, 23]
 	],
 };
 
@@ -65,6 +65,7 @@ const getters = {
 	graphThreeYearTwo: state => state.graphThreeYearTwo,
 	thirdGraphDataSet: state => state.thirdGraphDataSet,
 	removedStatuesData: state => state.removedStatuesData, 
+	removedStatuesByYearsData: state => state.removedStatuesByYearsData,
 };
 
 const actions = {

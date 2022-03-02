@@ -2,7 +2,7 @@
   <div>
     <GraphCard
       :typeOne="typeOne"
-      :data="YearsStatuesRemovedData"
+      :data="removedStatuesByYearsData"
       :options="chartOptionsOne"
     />
   </div>
@@ -18,13 +18,13 @@ export default {
     GraphCard,
   },
   computed: {
-    ...mapGetters('data', ['removedStatuesData']),
+    ...mapGetters('data', ['removedStatuesByYearsData']),
   },
   data() {
     return {
-      typeOne: 'ColumnChart',
+      typeOne: 'LineChart',
       chartOptionsOne: {
-        title: 'Top 5 States that Removed Statues',
+        title: 'Last Ten Years of Statue Removal',
         legend: { position: 'top' },
         colors: ['#f24867'],
         height: 500,
