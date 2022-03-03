@@ -1,10 +1,11 @@
 <template>
   <div>
-    <GraphCard
+    <!-- <GraphCard
       :typeOne="typeOne"
       :data="removedStatuesByYearsData"
       :options="chartOptionsOne"
-    />
+    /> -->
+    {{removedStatuesByYearsData}}
   </div>
 </template>
 

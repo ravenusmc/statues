@@ -4,7 +4,7 @@
 # importing supporting libraries
 import numpy as np
 import pandas as pd
-import datetime
+from datetime import date
 
 # Files that I built
 from clean import *
@@ -85,6 +85,7 @@ class InitialData():
         count = 0
         for year in state_counts.to_frame().index:
             rows = []
+            year = date(int(year), int(1), int(1))
             rows.append(year)
             rows.append(int(state_counts.iloc[count]))
             fifth_chart_data.append(rows)
