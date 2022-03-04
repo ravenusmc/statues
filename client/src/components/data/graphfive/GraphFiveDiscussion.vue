@@ -7,7 +7,8 @@
     </p>
     <br />
     <p>
-
+      The fifth graph I think is one of those graphs that you can quickly look at 
+      and see the effects of when culture starts to change. 
     </p>
     <br />
     <p>
