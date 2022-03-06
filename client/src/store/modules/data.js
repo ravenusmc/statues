@@ -65,6 +65,7 @@ const getters = {
 	graphThreeYearTwo: state => state.graphThreeYearTwo,
 	thirdGraphDataSet: state => state.thirdGraphDataSet,
 	removedStatuesData: state => state.removedStatuesData, 
+	removedStatuesByYearsData: state => state.removedStatuesByYearsData,
 	// removedStatuesByYearsData: state => year => {
 	// 	console.log('hi')
 	// 	return console.log(state.removedStatuesByYearsData)
