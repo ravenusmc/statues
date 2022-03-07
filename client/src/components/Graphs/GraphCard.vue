@@ -44,7 +44,7 @@ export default {
       // Code in here could be cleaned up some more...
       chartEvents: {
         select: () => {
-          // console.log(this.data); // This will show you the data kept for reference
+          console.log(this.data); // This will show you the data kept for reference
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
@@ -99,6 +99,11 @@ export default {
               payload,
             });
             this.modalTitle = `Statues that have been removed in ${state}`;
+          } else if (this.data[0][0] === 'Year removed') {
+            let date = this.data[row][0];
+            const payload = {
+              state,
+            };
           }
           this.showModal = true;
         },

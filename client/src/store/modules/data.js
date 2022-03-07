@@ -38,8 +38,9 @@ const state = {
 		['TN', 8], 
 		['GA', 7]
 	],
+	// I don't like how I am calling Date here...Not good!!!
 	removedStatuesByYearsData: [
-		['Year', 'Count'], 
+		['Year removed', 'Count'], 
 		[new Date(2012, 0, 1), 2], 
 		[new Date(2013, 0, 1), 1],
 		[new Date(2014, 0, 1), 2], 
