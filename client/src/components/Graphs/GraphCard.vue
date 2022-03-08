@@ -104,6 +104,10 @@ export default {
             const payload = {
               state,
             };
+            this.$store.dispatch('data/fetchDrillDownDataGraphFive', {
+              payload,
+            });
+            this.modalTitle = `Statues that have been removed in ${state}`;
           }
           this.showModal = true;
         },
