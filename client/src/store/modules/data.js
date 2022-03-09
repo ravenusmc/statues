@@ -141,6 +141,7 @@ const actions = {
 
 	fetchDrillDownDataGraphFive: ({ commit }, { payload }) => {
 		const path = 'http://localhost:5000/fetch_drilldown_graph_five';
+		console.log(payload)
 		axios.post(path, payload)
 			.then((res) => {
 				commit('setDrillDownData', res.data)

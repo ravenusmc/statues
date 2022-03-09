@@ -100,14 +100,14 @@ export default {
             });
             this.modalTitle = `Statues that have been removed in ${state}`;
           } else if (this.data[0][0] === 'Year removed') {
-            let date = this.data[row][0];
+            let year = this.data[row][0].getFullYear();
             const payload = {
-              state,
+              year,
             };
             this.$store.dispatch('data/fetchDrillDownDataGraphFive', {
               payload,
             });
-            this.modalTitle = `Statues that have been removed in ${state}`;
+            this.modalTitle = `Statues that have been removed in the year ${year}`;
           }
           this.showModal = true;
         },
