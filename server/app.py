@@ -132,10 +132,10 @@ def graphFiveDrillDown():
         data = Data()
         support = Support()
         post_data = request.get_json()
-        # statues_data_drill_down_four = data.build_graph_four_drill_down(
-        #     post_data)
-        # drill_down_data = support.build_drill_down_rows(statues_data_drill_down_four)
-    return jsonify('5')
+        statues_data_drill_down_five = data.build_graph_five_drill_down(
+            post_data)
+        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_five)
+    return jsonify(drill_down_data)
 
 if __name__ == '__main__':
     app.run()

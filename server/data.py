@@ -114,7 +114,7 @@ class Data():
         state = statues_data_subset['State'] == post_data['state']
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphThreeYearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphThreeYearTwo']
-        if (post_data['side_selected'] =='N/A') or (post_data['side_selected'] == 'N/A or Blank'):
+        if (post_data['side_selected'] == 'N/A') or (post_data['side_selected'] == 'N/A or Blank'):
             side = statues_data_subset['Side'] == 'Not Applicable'
             not_applicable_statues = statues_data_subset[(state) &
                                                          (yearOne) & (yearTwo) & (side)]
@@ -139,3 +139,13 @@ class Data():
         removed = statues_data_subset['Removed After Charlottesville'] == 1
         statues_data_drill_down_four = statues_data_subset[(state) & (removed)]
         return statues_data_drill_down_four
+
+    def build_graph_five_drill_down(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        drilldown_data_graph_five = []
+        columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        drilldown_data_graph_five.append(columns)
+        year_removed_data = statues_data_subset['Year Removed'] == post_data['year']
+        statues_data_drill_down_five = statues_data_subset[(year_removed_data)]
+        return statues_data_drill_down_five
