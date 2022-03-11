@@ -3,7 +3,7 @@
     <h1 class="center font heading-title">Fifth Graph Discussion</h1>
     <p>
       <span class="responsive-phrase-large">The graph to the left...</span>
-      <span class="responsive-phrase-small">The below graph...</span>
+      <span class="responsive-phrase-small">The above graph...</span>
     </p>
     <br />
     <p>
