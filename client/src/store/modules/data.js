@@ -67,10 +67,6 @@ const getters = {
 	thirdGraphDataSet: state => state.thirdGraphDataSet,
 	removedStatuesData: state => state.removedStatuesData, 
 	removedStatuesByYearsData: state => state.removedStatuesByYearsData,
-	// removedStatuesByYearsData: state => year => {
-	// 	console.log('hi')
-	// 	return console.log(state.removedStatuesByYearsData)
-	// }
 };
 
 const actions = {
@@ -141,7 +137,6 @@ const actions = {
 
 	fetchDrillDownDataGraphFive: ({ commit }, { payload }) => {
 		const path = 'http://localhost:5000/fetch_drilldown_graph_five';
-		console.log(payload)
 		axios.post(path, payload)
 			.then((res) => {
 				commit('setDrillDownData', res.data)

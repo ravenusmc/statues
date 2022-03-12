@@ -28,24 +28,24 @@ class InitialData():
             rows.append(side)
             rows.append(number_of_statues)
             first_chart_data_initial.append(rows)
-        print(first_chart_data_initial)
+        # print(first_chart_data_initial)
 
     def see_data_types(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        print(statues_data_subset.dtypes)
+        # print(statues_data_subset.dtypes)
 
     def min_value(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
         pd.to_numeric(statues_data_subset['Year Dedicated'])
-        print(statues_data_subset['Year Dedicated'].min())
+        # print(statues_data_subset['Year Dedicated'].min())
 
     def min_value(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
         pd.to_numeric(statues_data_subset['Year Dedicated'])
-        print(statues_data_subset['Year Dedicated'].max())
+        # print(statues_data_subset['Year Dedicated'].max())
 
     def unique_states(self):
         clean = Clean()
@@ -55,7 +55,7 @@ class InitialData():
                   'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
                   'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
         states = sorted(states)
-        print(states)
+        # print(states)
 
     def get_top_states_removed_statues(self):
         clean = Clean()
@@ -73,7 +73,7 @@ class InitialData():
             rows.append(int(state_counts.iloc[count]))
             fourth_chart_data.append(rows)
             count += 1
-        print(fourth_chart_data)
+        # print(fourth_chart_data)
     
     def get_top_years_statues_removed(self):
         clean = Clean()
@@ -90,7 +90,7 @@ class InitialData():
             rows.append(int(state_counts.iloc[count]))
             fifth_chart_data.append(rows)
             count += 1
-        print(fifth_chart_data)
+        # print(fifth_chart_data)
 
 
 test = InitialData()

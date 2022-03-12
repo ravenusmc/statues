@@ -13,7 +13,6 @@ class Support():
         drilldown_data = []
         columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
         drilldown_data.append(columns)
-        print(data)
         if len(data) > 1:
             count = 0
             while count < len(data):
