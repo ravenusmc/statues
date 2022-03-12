@@ -1,7 +1,3 @@
--Most statues with side of south are in the south. 
-
--Year Dedicated looks like: 1987
-
 Column Types: 
 Unique ID                         int64
 feature_name                     object
@@ -29,3 +25,9 @@ feature_name                     object
 State                            object
 Symbol Type                      object
 Year Dedicated                   object
+
+Getter article: 
+https://medium.com/swlh/adding-getters-to-a-vuex-store-6b39b4281d8d
+
+Need Graph On: 
+Symbol Type - like the most common type of momument => Allow user to change the data over time? 
