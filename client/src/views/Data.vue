@@ -38,6 +38,13 @@
       </div>
       <GraphFiveDiscussion />
     </section>
+    <section class="graph-area">
+      <GraphSixDiscussion />
+      <div>
+        <GraphSix />
+        <FormSix />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -56,6 +63,9 @@ import GraphFourDiscussion from '@/components/data/graphfour/GraphFourDiscussion
 import GraphFour from '@/components/data/graphfour/GraphFour.vue';
 import GraphFiveDiscussion from '@/components/data/graphfive/GraphFiveDiscussion.vue';
 import GraphFive from '@/components/data/graphfive/GraphFive.vue';
+import GraphSixDiscussion from '@/components/data/graphsix/GraphSixDiscussion.vue';
+import FormSix from '@/components/data/graphsix/FormSix.vue';
+import GraphSix from '@/components/data/graphsix/GraphSix.vue';
 
 export default {
   name: 'Data',
@@ -74,6 +84,9 @@ export default {
     GraphFour,
     GraphFiveDiscussion,
     GraphFive,
+    GraphSixDiscussion,
+    FormSix,
+    GraphSix,
   },
 };
 </script>
