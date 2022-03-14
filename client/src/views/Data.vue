@@ -6,7 +6,9 @@
       <GraphOneDiscussion />
       <div>
         <GraphOne />
-        <FormOne />
+        <form @submit="submitForm">
+          <FormTypeOne />
+        </form>
       </div>
     </section>
     <hr />
@@ -49,10 +51,11 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Intro from '@/components/data/Intro.vue';
 import GraphOneDiscussion from '@/components/data/graphone/GraphOneDiscussion.vue';
 import GraphOne from '@/components/data/graphone/GraphOne.vue';
-import FormOne from '@/components/data/graphone/FormOne.vue';
+import FormTypeOne from '@/components/forms/FormTypeOne.vue';
 import GraphTwoDiscussion from '@/components/data/graphtwo/GraphTwoDiscussion.vue';
 import FormTwo from '@/components/data/graphtwo/FormTwo.vue';
 import GraphTwo from '@/components/data/graphtwo/GraphTwo.vue';
@@ -73,7 +76,7 @@ export default {
     Intro,
     GraphOneDiscussion,
     GraphOne,
-    FormOne,
+    FormTypeOne,
     GraphTwoDiscussion,
     FormTwo,
     GraphTwo,
@@ -87,6 +90,27 @@ export default {
     GraphSixDiscussion,
     FormSix,
     GraphSix,
+  },
+  methods: {
+    ...mapActions('data', ['fetchNorthSouthByYear']),
+    submitForm(evt) {
+      evt.preventDefault();
+      let yearOne = Number(this.yearOne);
+      let yearTwo = Number(this.yearTwo);
+      if (yearOne >= yearTwo) {
+        alert('Year One must be less than year two.');
+      } else if (yearTwo <= yearOne) {
+        alert('Year Two must be greater than year one');
+      } else if (yearOne === yearTwo) {
+        alert('The years cannot be the same.');
+      } else {
+        const payload = {
+          yearOne,
+          yearTwo,
+        };
+        this.fetchNorthSouthByYear({ payload });
+      }
+    },
   },
 };
 </script>
