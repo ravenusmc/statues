@@ -72,7 +72,6 @@ const getters = {
 const actions = {
 
 	fetchNorthSouthByYear: ({ commit }, { payload }) => {
-		console.log(payload);
 		commit('setGraphOneYearOne', payload.yearOne)
 		commit('setGraphOneYearTwo', payload.yearTwo)
 		const path = 'http://localhost:5000/fetch_north_south_by_year';

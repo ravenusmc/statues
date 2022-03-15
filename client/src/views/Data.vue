@@ -7,7 +7,10 @@
       <div>
         <GraphOne />
         <form @submit="submitForm">
-          <FormTypeOne />
+          <Years
+            :value="years"
+            @input="(years) => {years = years}"
+          />
         </form>
       </div>
     </section>
@@ -69,6 +72,8 @@ import GraphFive from '@/components/data/graphfive/GraphFive.vue';
 import GraphSixDiscussion from '@/components/data/graphsix/GraphSixDiscussion.vue';
 import FormSix from '@/components/data/graphsix/FormSix.vue';
 import GraphSix from '@/components/data/graphsix/GraphSix.vue';
+// Form inputs
+import Years from '@/components/forms/Years.vue';
 
 export default {
   name: 'Data',
@@ -90,13 +95,22 @@ export default {
     GraphSixDiscussion,
     FormSix,
     GraphSix,
+    Years,
+  },
+  data() {
+    return {
+      years: {
+        yearOne: '',
+        yearTwo: '',
+      }
+    };
   },
   methods: {
     ...mapActions('data', ['fetchNorthSouthByYear']),
     submitForm(evt) {
       evt.preventDefault();
-      let yearOne = Number(this.yearOne);
-      let yearTwo = Number(this.yearTwo);
+      let yearOne = Number(this.years.yearOne);
+      let yearTwo = Number(this.years.yearTwo);
       if (yearOne >= yearTwo) {
         alert('Year One must be less than year two.');
       } else if (yearTwo <= yearOne) {
