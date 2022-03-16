@@ -44,6 +44,11 @@ as well as npm.
 # Issues / Other
 
 1. Need to fix date/time graph issue for first graph drill downs. 
+2. A note on the forms. I debated making one master form 'control' at the top of the page 
+however I did not want each graph to be controlled by one form. I wanted each graph to 
+have it's seperate control. I also thought about breaking my forms up into smaller components 
+but also did not like how that turned out as well. Thus, that's why I have each graph has it's 
+own form component. This may be fixed in the future...
 
 # Preview
 

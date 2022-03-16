@@ -6,12 +6,7 @@
       <GraphOneDiscussion />
       <div>
         <GraphOne />
-        <form @submit="submitForm">
-          <Years
-            :value="years"
-            @input="(years) => {years = years}"
-          />
-        </form>
+        <FormOne />
       </div>
     </section>
     <hr />
@@ -58,7 +53,7 @@ import { mapActions } from 'vuex';
 import Intro from '@/components/data/Intro.vue';
 import GraphOneDiscussion from '@/components/data/graphone/GraphOneDiscussion.vue';
 import GraphOne from '@/components/data/graphone/GraphOne.vue';
-import FormTypeOne from '@/components/forms/FormTypeOne.vue';
+import FormOne from '@/components/data/graphone/FormOne.vue';
 import GraphTwoDiscussion from '@/components/data/graphtwo/GraphTwoDiscussion.vue';
 import FormTwo from '@/components/data/graphtwo/FormTwo.vue';
 import GraphTwo from '@/components/data/graphtwo/GraphTwo.vue';
@@ -72,8 +67,6 @@ import GraphFive from '@/components/data/graphfive/GraphFive.vue';
 import GraphSixDiscussion from '@/components/data/graphsix/GraphSixDiscussion.vue';
 import FormSix from '@/components/data/graphsix/FormSix.vue';
 import GraphSix from '@/components/data/graphsix/GraphSix.vue';
-// Form inputs
-import Years from '@/components/forms/Years.vue';
 
 export default {
   name: 'Data',
@@ -81,7 +74,7 @@ export default {
     Intro,
     GraphOneDiscussion,
     GraphOne,
-    FormTypeOne,
+    FormOne,
     GraphTwoDiscussion,
     FormTwo,
     GraphTwo,
@@ -95,20 +88,21 @@ export default {
     GraphSixDiscussion,
     FormSix,
     GraphSix,
-    Years,
   },
   data() {
     return {
       years: {
         yearOne: '',
         yearTwo: '',
-      }
+      },
+      graphNumber: 0,
     };
   },
   methods: {
     ...mapActions('data', ['fetchNorthSouthByYear']),
     submitForm(evt) {
       evt.preventDefault();
+      console.log(this.graphNumber);
       let yearOne = Number(this.years.yearOne);
       let yearTwo = Number(this.years.yearTwo);
       if (yearOne >= yearTwo) {
