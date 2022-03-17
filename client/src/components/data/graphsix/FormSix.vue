@@ -1,6 +1,10 @@
 <template>
   <div>
     <form @submit="submitForm">
+      <select v-model="state">
+        <option>Please select a State</option>
+        <option v-for="state in states" :key="state">{{ state }}</option>
+      </select>
       <div class="year-selection-area">
         <div class="input-area">
           <label class="fix-label-alignment" for="yearOne"
@@ -39,6 +43,42 @@ export default {
   name: 'FormSix',
   data() {
     return {
+      state: 'AK',
+      states: [
+        'AK',
+        'AL',
+        'AR',
+        'AZ',
+        'CA',
+        'DC',
+        'DE',
+        'FL',
+        'GA',
+        'IA',
+        'IN',
+        'KS',
+        'KY',
+        'MA',
+        'MD',
+        'ME',
+        'MS',
+        'MT',
+        'NC',
+        'NM',
+        'NV',
+        'NY',
+        'OH',
+        'OKPAMOLAID',
+        'OR',
+        'SC',
+        'SD',
+        'TN',
+        'TX',
+        'UT',
+        'VA',
+        'WA',
+        'WV',
+      ],
       yearOne: 1854,
       yearTwo: 2017,
     };
@@ -47,6 +87,7 @@ export default {
     ...mapActions('data', ['fetchNorthSouthByYear']),
     submitForm(evt) {
       evt.preventDefault();
+      let state = this.state;
       let yearOne = Number(this.yearOne);
       let yearTwo = Number(this.yearTwo);
       if (yearOne >= yearTwo) {
@@ -57,6 +98,7 @@ export default {
         alert('The years cannot be the same.');
       } else {
         const payload = {
+          state,
           yearOne,
           yearTwo,
         };
@@ -95,5 +137,4 @@ button {
 .fix-label-alignment {
   margin-left: -23px;
 }
-
 </style>

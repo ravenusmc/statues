@@ -52,6 +52,7 @@ const state = {
 		[new Date(2020, 0, 1), 172], 
 		[new Date(2021, 0, 1), 23],
 	],
+	sixthGraphDataSet: [],
 };
 
 const getters = {
@@ -67,6 +68,7 @@ const getters = {
 	thirdGraphDataSet: state => state.thirdGraphDataSet,
 	removedStatuesData: state => state.removedStatuesData, 
 	removedStatuesByYearsData: state => state.removedStatuesByYearsData,
+	sixthGraphDataSet: state => state.sixthGraphDataSet,
 };
 
 const actions = {
