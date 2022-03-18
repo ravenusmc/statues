@@ -202,6 +202,10 @@ const mutations = {
 		state.graphThreeYearTwo = data
 	},
 
+	setSixthGraphDataSetInitial(state, data) {
+		state.secondGraphDataSetInitial = data
+	},
+
 };
 
 export default {
