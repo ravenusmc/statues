@@ -84,7 +84,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions('data', ['fetchNorthSouthByYear']),
+    ...mapActions('data', ['fetchDataForSixthGraph']),
     submitForm(evt) {
       evt.preventDefault();
       let state = this.state;
@@ -102,7 +102,7 @@ export default {
           yearOne,
           yearTwo,
         };
-        this.fetchNorthSouthByYear({ payload });
+        this.fetchDataForSixthGraph({ payload });
       }
     },
   },

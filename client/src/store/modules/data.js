@@ -111,7 +111,6 @@ const actions = {
 	},
 
 	fetchStatuesBySingleState: ({ commit }, { payload }) => {
-		// Using graph two's year for the drill down graph may or may not be the best option...
 		commit('setGraphThreeYearOne', payload.yearOne)
 		commit('setGraphThreeYearTwo', payload.yearTwo)
 		const path = 'http://localhost:5000/fetch_Statues_Single_State';
@@ -148,7 +147,17 @@ const actions = {
 	resetDrillDownData: ({ commit }) => {
 		let drillDownData = []
 		commit('setDrillDownData', drillDownData)
-	}
+	},
+
+	fetchDataForSixthGraph: ({ commit }, { payload }) => {
+		// commit('setGraphTwoYearOne', payload.yearOne)
+		// commit('setGraphTwoYearTwo', payload.yearTwo)
+		const path = 'http://localhost:5000/fetch_data_for_graph_six';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setSecondGraphDataSetInitial', res.data)
+			})
+	},
 
 };
 
@@ -202,8 +211,8 @@ const mutations = {
 		state.graphThreeYearTwo = data
 	},
 
-	setSixthGraphDataSetInitial(state, data) {
-		state.secondGraphDataSetInitial = data
+	setSixthGraphDataSet(state, data) {
+		state.sixthGraphDataSet = data
 	},
 
 };

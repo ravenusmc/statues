@@ -137,5 +137,15 @@ def graphFiveDrillDown():
         drill_down_data = support.build_drill_down_rows(statues_data_drill_down_five)
     return jsonify(drill_down_data)
 
+@app.route('/fetch_data_for_graph_six', methods=['GET', 'POST'])
+def graphSix():
+    if request.method == 'POST':
+        data = Data()
+        post_data = request.get_json()
+        print(post_data)
+        # third_chart_data = data.build_singe_state_graph(
+        #     post_data)
+    return jsonify('5')
+
 if __name__ == '__main__':
     app.run()

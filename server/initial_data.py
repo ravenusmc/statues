@@ -91,6 +91,23 @@ class InitialData():
             fifth_chart_data.append(rows)
             count += 1
         # print(fifth_chart_data)
+    
+    def get_data_for_statue_type_by_state(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        state_counts = statues_data_subset['Year Removed'].value_counts().head(10).sort_index()
+        fifth_chart_data = []
+        columns = ['Year', 'Count']
+        fifth_chart_data.append(columns)
+        count = 0
+        for year in state_counts.to_frame().index:
+            rows = []
+            year = date(int(year), int(1), int(1))
+            rows.append(year)
+            rows.append(int(state_counts.iloc[count]))
+            fifth_chart_data.append(rows)
+            count += 1
+        # print(six_chart_data_initital)
 
 
 test = InitialData()
