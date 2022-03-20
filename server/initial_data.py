@@ -74,11 +74,12 @@ class InitialData():
             fourth_chart_data.append(rows)
             count += 1
         # print(fourth_chart_data)
-    
+
     def get_top_years_statues_removed(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        state_counts = statues_data_subset['Year Removed'].value_counts().head(10).sort_index()
+        state_counts = statues_data_subset['Year Removed'].value_counts().head(
+            10).sort_index()
         fifth_chart_data = []
         columns = ['Year', 'Count']
         fifth_chart_data.append(columns)
@@ -91,24 +92,28 @@ class InitialData():
             fifth_chart_data.append(rows)
             count += 1
         # print(fifth_chart_data)
-    
+
     def get_data_for_statue_type_by_state(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        state_counts = statues_data_subset['Year Removed'].value_counts().head(10).sort_index()
-        fifth_chart_data = []
-        columns = ['Year', 'Count']
-        fifth_chart_data.append(columns)
-        count = 0
-        for year in state_counts.to_frame().index:
-            rows = []
-            year = date(int(year), int(1), int(1))
-            rows.append(year)
-            rows.append(int(state_counts.iloc[count]))
-            fifth_chart_data.append(rows)
-            count += 1
+        state_sort = statues_data_subset['State'] == 'AK'
+        yearOne = statues_data_subset['Year Dedicated'] >= 1854
+        yearTwo = statues_data_subset['Year Dedicated'] <= 2017
+        statues_data = statues_data_subset[(state_sort) & (yearOne) & (yearTwo)]
+        print(statues_data['Symbol Type'].value_counts())
+        sixth_chart_data = []
+        columns = ['Symbol Type', 'Count']
+        sixth_chart_data.append(columns)
+        # count = 0
+        # for year in state_counts.to_frame().index:
+        #     rows = []
+        #     year = date(int(year), int(1), int(1))
+        #     rows.append(year)
+        #     rows.append(int(state_counts.iloc[count]))
+        #     fifth_chart_data.append(rows)
+        #     count += 1
         # print(six_chart_data_initital)
 
 
 test = InitialData()
-test.get_top_years_statues_removed()
+test.get_data_for_statue_type_by_state()
