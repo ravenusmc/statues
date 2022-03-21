@@ -96,23 +96,23 @@ class InitialData():
     def get_data_for_statue_type_by_state(self):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        state_sort = statues_data_subset['State'] == 'AK'
+        state_sort = statues_data_subset['State'] == 'VA'
         yearOne = statues_data_subset['Year Dedicated'] >= 1854
         yearTwo = statues_data_subset['Year Dedicated'] <= 2017
         statues_data = statues_data_subset[(state_sort) & (yearOne) & (yearTwo)]
-        print(statues_data['Symbol Type'].value_counts())
+        statues_data_by_value_counts = statues_data['Symbol Type'].value_counts().head(
+            10).sort_index()
         sixth_chart_data = []
         columns = ['Symbol Type', 'Count']
         sixth_chart_data.append(columns)
-        # count = 0
-        # for year in state_counts.to_frame().index:
-        #     rows = []
-        #     year = date(int(year), int(1), int(1))
-        #     rows.append(year)
-        #     rows.append(int(state_counts.iloc[count]))
-        #     fifth_chart_data.append(rows)
-        #     count += 1
-        # print(six_chart_data_initital)
+        count = 0
+        for statue_type in statues_data_by_value_counts.to_frame().index:
+            rows = []
+            rows.append(statue_type)
+            rows.append(int(statues_data_by_value_counts.iloc[count]))
+            sixth_chart_data.append(rows)
+            count += 1
+        print(sixth_chart_data)
 
 
 test = InitialData()

@@ -43,7 +43,7 @@ export default {
   name: 'FormSix',
   data() {
     return {
-      state: 'AK',
+      state: 'VA',
       states: [
         'AK',
         'AL',

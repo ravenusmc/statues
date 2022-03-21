@@ -31,28 +31,35 @@ const state = {
 		['AK', 0, 0, 1]
 	],
 	removedStatuesData: [
-		['Southern State', 'Count'], 
-		['TX', 24], 
-		['VA', 20], 
-		['FL', 11], 
-		['TN', 8], 
+		['Southern State', 'Count'],
+		['TX', 24],
+		['VA', 20],
+		['FL', 11],
+		['TN', 8],
 		['GA', 7]
 	],
 	// I don't like how I am calling Date here...Not good!!!
 	removedStatuesByYearsData: [
-		['Year removed', 'Count'], 
-		[new Date(2012, 0, 1), 2], 
+		['Year removed', 'Count'],
+		[new Date(2012, 0, 1), 2],
 		[new Date(2013, 0, 1), 1],
-		[new Date(2014, 0, 1), 2], 
-		[new Date(2015, 0, 1), 15], 
-		[new Date(2016, 0, 1), 18], 
-		[new Date(2017, 0, 1), 63], 
-		[new Date(2018, 0, 1), 32], 
-		[new Date(2019, 0, 1), 22], 
-		[new Date(2020, 0, 1), 172], 
+		[new Date(2014, 0, 1), 2],
+		[new Date(2015, 0, 1), 15],
+		[new Date(2016, 0, 1), 18],
+		[new Date(2017, 0, 1), 63],
+		[new Date(2018, 0, 1), 32],
+		[new Date(2019, 0, 1), 22],
+		[new Date(2020, 0, 1), 172],
 		[new Date(2021, 0, 1), 23],
 	],
-	sixthGraphDataSet: [],
+	sixthGraphDataSet: [
+		['Symbol Type', 'Count'],
+		['Monument', 115],
+		['Other', 54],
+		['School', 31],
+		['Building', 19],
+		['County/Municipality', 2],
+	],
 };
 
 const getters = {
@@ -66,7 +73,7 @@ const getters = {
 	graphThreeYearOne: state => state.graphThreeYearOne,
 	graphThreeYearTwo: state => state.graphThreeYearTwo,
 	thirdGraphDataSet: state => state.thirdGraphDataSet,
-	removedStatuesData: state => state.removedStatuesData, 
+	removedStatuesData: state => state.removedStatuesData,
 	removedStatuesByYearsData: state => state.removedStatuesByYearsData,
 	sixthGraphDataSet: state => state.sixthGraphDataSet,
 };

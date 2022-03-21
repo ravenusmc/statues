@@ -2,7 +2,7 @@
   <div>
     <GraphCard
       :typeOne="typeOne"
-      :data="firstGraphDataSetInitial"
+      :data="sixthGraphDataSet"
       :options="chartOptionsOne"
     />
   </div>
@@ -18,13 +18,13 @@ export default {
     GraphCard,
   },
   computed: {
-    ...mapGetters('data', ['firstGraphDataSetInitial']),
+    ...mapGetters('data', ['sixthGraphDataSet']),
   },
   data() {
     return {
       typeOne: 'ColumnChart',
       chartOptionsOne: {
-        title: 'Statue Type Over Time',
+        title: 'Statue Type by State and Time',
         legend: { position: 'top' },
         colors: ['#f24867'],
         height: 500,
