@@ -142,9 +142,8 @@ def graphSix():
     if request.method == 'POST':
         data = Data()
         post_data = request.get_json()
-        print(post_data)
-        # third_chart_data = data.build_singe_state_graph(
-        #     post_data)
+        sixth_chart_data = data.build_graph_six_data(
+            post_data)
     return jsonify('5')
 
 if __name__ == '__main__':

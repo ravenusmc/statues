@@ -51,6 +51,7 @@ class InitialData():
         clean = Clean()
         statues_data_subset = clean.clean_data()
         # statues_data_subset["State"].unique()
+        print(statues_data_subset["Symbol Type"].unique())
         states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
                   'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
                   'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
@@ -112,8 +113,8 @@ class InitialData():
             rows.append(int(statues_data_by_value_counts.iloc[count]))
             sixth_chart_data.append(rows)
             count += 1
-        print(sixth_chart_data)
+        # print(sixth_chart_data)
 
 
 test = InitialData()
-test.get_data_for_statue_type_by_state()
+test.unique_states()

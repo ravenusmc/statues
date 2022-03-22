@@ -149,3 +149,15 @@ class Data():
         year_removed_data = statues_data_subset['Year Removed'] == post_data['year']
         statues_data_drill_down_five = statues_data_subset[(year_removed_data)]
         return statues_data_drill_down_five
+
+    def build_graph_six_data(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        state = statues_data_subset['State'] == post_data['state']
+        yearOne = statues_data_subset['Year Dedicated'] >= post_data['yearOne']
+        yearTwo = statues_data_subset['Year Dedicated'] <= post_data['yearTwo']
+        statues_data_set_for_symbol_type = statues_data_subset[(state) &
+                                                               (yearOne) & (yearTwo)]
+        symbol_types = ['Monument' 'Other' 'Roadway' 'County/Municipality' 'Building' 'School'
+                        'Roads' 'Highway / Roadway']
+        print(statues_data_set_for_symbol_type)
