@@ -144,7 +144,7 @@ def graphSix():
         post_data = request.get_json()
         sixth_chart_data = data.build_graph_six_data(
             post_data)
-    return jsonify('5')
+    return jsonify(sixth_chart_data)
 
 if __name__ == '__main__':
     app.run()

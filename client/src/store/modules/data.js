@@ -162,7 +162,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_data_for_graph_six';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setSecondGraphDataSetInitial', res.data)
+				commit('setSixthGraphDataSet', res.data)
 			})
 	},
 

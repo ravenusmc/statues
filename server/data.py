@@ -158,6 +158,16 @@ class Data():
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['yearTwo']
         statues_data_set_for_symbol_type = statues_data_subset[(state) &
                                                                (yearOne) & (yearTwo)]
-        symbol_types = ['Monument' 'Other' 'Roadway' 'County/Municipality' 'Building' 'School'
-                        'Roads' 'Highway / Roadway']
-        print(statues_data_set_for_symbol_type)
+        sixth_chart_data = []
+        columns = ['Symbol Type', 'Count']
+        sixth_chart_data.append(columns)
+        symbol_types = ['Monument', 'Roadway', 'County/Municipality', 'Building', 'School',
+                        'Roads', 'Highway / Roadway', 'Other']
+        for symbol_type in symbol_types:
+            rows = []
+            number_of_symbol_types = len(
+                statues_data_set_for_symbol_type[(statues_data_set_for_symbol_type['Symbol Type'] == symbol_type)])
+            rows.append(symbol_type)
+            rows.append(number_of_symbol_types)
+            sixth_chart_data.append(rows)
+        return sixth_chart_data
