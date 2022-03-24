@@ -157,11 +157,10 @@ const actions = {
 	},
 
 	fetchDataForSixthGraph: ({ commit }, { payload }) => {
-		// commit('setGraphTwoYearOne', payload.yearOne)
-		// commit('setGraphTwoYearTwo', payload.yearTwo)
 		const path = 'http://localhost:5000/fetch_data_for_graph_six';
 		axios.post(path, payload)
 			.then((res) => {
+				res.data.sort((a, b) => b[1] - a[1]);
 				commit('setSixthGraphDataSet', res.data)
 			})
 	},

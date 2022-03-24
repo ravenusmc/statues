@@ -167,7 +167,8 @@ class Data():
             rows = []
             number_of_symbol_types = len(
                 statues_data_set_for_symbol_type[(statues_data_set_for_symbol_type['Symbol Type'] == symbol_type)])
-            rows.append(symbol_type)
-            rows.append(number_of_symbol_types)
-            sixth_chart_data.append(rows)
+            if number_of_symbol_types != 0:   
+                rows.append(symbol_type)
+                rows.append(number_of_symbol_types)
+                sixth_chart_data.append(rows)
         return sixth_chart_data
