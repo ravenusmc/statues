@@ -31,6 +31,8 @@ https://medium.com/swlh/adding-getters-to-a-vuex-store-6b39b4281d8d
 
 Need Graph On: 
 Symbol Type - like the most common type of momument => Allow user to change the data over time? 
+Haev graph on Statues for the North removed.
 
 Article on making a form a component 
 https://zaengle.com/blog/using-v-model-on-nested-vue-components
+
