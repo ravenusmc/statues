@@ -44,7 +44,7 @@ export default {
       // Code in here could be cleaned up some more...
       chartEvents: {
         select: () => {
-          //console.log(this.data); // This will show you the data kept for reference
+          console.log(this.data); // This will show you the data kept for reference
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
@@ -108,6 +108,15 @@ export default {
               payload,
             });
             this.modalTitle = `Statues that have been removed in the year ${year}`;
+          } else if (this.data[0][0] === 'Symbol Type') {
+            let year = this.data[row][0].getFullYear();
+            const payload = {
+              year,
+            };
+            this.$store.dispatch('data/fetchDrillDownDataGraphFive', {
+              payload,
+            });
+            // this.modalTitle = `Statues that have been removed in the year ${year}`;
           }
           this.showModal = true;
         },

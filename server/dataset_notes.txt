@@ -36,3 +36,4 @@ Haev graph on Statues for the North removed.
 Article on making a form a component 
 https://zaengle.com/blog/using-v-model-on-nested-vue-components
 
+Add discussion section to project?
