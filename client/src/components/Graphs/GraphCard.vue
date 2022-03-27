@@ -35,6 +35,9 @@ export default {
       'graphTwoYearTwo',
       'graphThreeYearOne',
       'graphThreeYearTwo',
+      'sixthGraphSelectedState',
+      'sixthGraphSixYearOne',
+      'sixthGraphSixYearTwo',
     ]),
   },
   data() {
@@ -109,10 +112,17 @@ export default {
             });
             this.modalTitle = `Statues that have been removed in the year ${year}`;
           } else if (this.data[0][0] === 'Symbol Type') {
-            let year = this.data[row][0].getFullYear();
+            let selectedSymbol = this.data[row][0]
+            let state = this.sixthGraphSelectedState
+            let graphsixYearOne = this.sixthGraphSixYearOne;
+            let graphSixYearTwo = this.sixthGraphSixYearTwo;
             const payload = {
-              year,
+              selectedSymbol, 
+              state,
+              graphsixYearOne,
+              graphSixYearTwo,
             };
+            console.log(payload);
             this.$store.dispatch('data/fetchDrillDownDataGraphFive', {
               payload,
             });

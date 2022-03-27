@@ -60,6 +60,9 @@ const state = {
 		['Building', 19],
 		['County/Municipality', 2],
 	],
+	sixthGraphSelectedState: 'VA',
+	sixthGraphSixYearOne: 1854, 
+	sixthGraphSixYearTwo: 1854, 
 };
 
 const getters = {
@@ -76,6 +79,9 @@ const getters = {
 	removedStatuesData: state => state.removedStatuesData,
 	removedStatuesByYearsData: state => state.removedStatuesByYearsData,
 	sixthGraphDataSet: state => state.sixthGraphDataSet,
+	sixthGraphSelectedState: state => state.sixthGraphSelectedState,
+	sixthGraphSixYearOne: state => state.sixthGraphSixYearOne,
+	sixthGraphSixYearTwo: state => state.sixthGraphSixYearTwo, 
 };
 
 const actions = {
@@ -157,6 +163,9 @@ const actions = {
 	},
 
 	fetchDataForSixthGraph: ({ commit }, { payload }) => {
+		commit('setGraphSixYearOne', payload.yearTwo)
+		commit('setGraphSixYearTwo', payload.yearTwo)
+		commit('setSixthGraphSelectedState', payload.state)
 		const path = 'http://localhost:5000/fetch_data_for_graph_six';
 		axios.post(path, payload)
 			.then((res) => {
@@ -219,6 +228,18 @@ const mutations = {
 
 	setSixthGraphDataSet(state, data) {
 		state.sixthGraphDataSet = data
+	},
+
+	setSixthGraphSelectedState(state, data) {
+		state.sixthGraphSelectedState = data
+	},
+
+	setGraphSixYearOne(state, data) {
+		state.sixthGraphSixYearOne = data
+	},
+
+	setGraphSixYearTwo(state, data) {
+		state.sixthGraphSixYearTwo = data
 	},
 
 };
