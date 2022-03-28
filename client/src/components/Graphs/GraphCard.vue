@@ -123,7 +123,7 @@ export default {
               graphSixYearTwo,
             };
             console.log(payload);
-            this.$store.dispatch('data/fetchDrillDownDataGraphFive', {
+            this.$store.dispatch('data/fetchDrillDownDataGraphSix', {
               payload,
             });
             // this.modalTitle = `Statues that have been removed in the year ${year}`;
