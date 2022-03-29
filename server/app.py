@@ -18,7 +18,6 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
 
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -29,7 +28,6 @@ def signup():
         hashed = db.encrypt_pass(post_data)
         user_created = db.insert(user, hashed)
         return jsonify(user_created)
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -145,6 +143,17 @@ def graphSix():
         sixth_chart_data = data.build_graph_six_data(
             post_data)
     return jsonify(sixth_chart_data)
+
+@app.route('/fetch_drilldown_graph_six', methods=['GET', 'POST'])
+def graphSixDrillDown():
+    if request.method == 'POST':
+        data = Data()
+        support = Support()
+        post_data = request.get_json()
+        # statues_data_drill_down_six = data.build_graph_six_drill_down(
+        #     post_data)
+        # drill_down_data = support.build_drill_down_rows(statues_data_drill_down_five)
+    return jsonify('5')
 
 if __name__ == '__main__':
     app.run()

@@ -47,7 +47,8 @@ export default {
       // Code in here could be cleaned up some more...
       chartEvents: {
         select: () => {
-          console.log(this.data); // This will show you the data kept for reference
+          // This is one ugly code - very confusing and really need to fix some things up here...
+          // console.log(this.data); // This will show you the data kept for reference
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
@@ -122,7 +123,6 @@ export default {
               graphsixYearOne,
               graphSixYearTwo,
             };
-            console.log(payload);
             this.$store.dispatch('data/fetchDrillDownDataGraphSix', {
               payload,
             });
