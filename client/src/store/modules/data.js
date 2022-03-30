@@ -163,7 +163,7 @@ const actions = {
 	},
 
 	fetchDataForSixthGraph: ({ commit }, { payload }) => {
-		commit('setGraphSixYearOne', payload.yearTwo)
+		commit('setGraphSixYearOne', payload.yearOne)
 		commit('setGraphSixYearTwo', payload.yearTwo)
 		commit('setSixthGraphSelectedState', payload.state)
 		const path = 'http://localhost:5000/fetch_data_for_graph_six';

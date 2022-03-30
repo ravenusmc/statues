@@ -172,3 +172,17 @@ class Data():
                 rows.append(number_of_symbol_types)
                 sixth_chart_data.append(rows)
         return sixth_chart_data
+    
+    def build_graph_six_drill_down(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        drilldown_data_graph_six = []
+        columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        drilldown_data_graph_six.append(columns)
+        symbol_type = statues_data_subset['Symbol Type'] == post_data['selectedSymbol']
+        state = statues_data_subset['State'] == post_data['state']
+        yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphsixYearOne']
+        yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphSixYearTwo']
+        statues_data_drill_down_six = statues_data_subset[(symbol_type) & (state) & (yearOne) &
+            (yearTwo)]
+        return statues_data_drill_down_six
