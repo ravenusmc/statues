@@ -48,6 +48,25 @@ const routes = [
       }
     },
   },
+  {
+    path: '/discussion',
+    name: 'Discussion',
+    component: () => import('../views/Discussion.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+  },
 ];
 
 const router = new VueRouter({
