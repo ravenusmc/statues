@@ -28,16 +28,24 @@
       >
         <div class="navbar-start">
           <a class="navbar-item">
-            <router-link class="fontColor font" to="/">Home</router-link>
+            <router-link class="fontColor font" v-if="loginFlag" to="/data"
+              >Graphs</router-link
+            >
           </a>
           <a class="navbar-item">
-            <router-link class="fontColor font" to="/about">About</router-link>
+            <router-link
+              class="fontColor font"
+              v-if="loginFlag"
+              to="/discussion"
+              >Discussion</router-link
+            >
           </a>
           <a class="navbar-item">
-            <router-link class="fontColor font" to="/discussion">Discussion</router-link>
+            <router-link class="fontColor font" v-if="loginFlag" to="/about"
+              >About</router-link
+            >
           </a>
         </div>
-
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
