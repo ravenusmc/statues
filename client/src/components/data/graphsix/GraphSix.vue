@@ -24,7 +24,7 @@ export default {
     return {
       typeOne: 'ColumnChart',
       chartOptionsOne: {
-        title: 'Statue Type by State and Time',
+        title: 'Statue Type by State and Time Period',
         legend: { position: 'top' },
         colors: ['#f24867'],
         height: 500,
