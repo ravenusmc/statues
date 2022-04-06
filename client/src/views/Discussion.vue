@@ -2,16 +2,46 @@
   <div>
     <section>
       <div class="graph_discussion_div">
-        <h6 class="discussion_title">Discuss Graph One</h6>
-        <p>This graph shows Statues in North Vs South</p>
+        <form @submit="graphOneDiscussion">
+          <h6 class="discussion_title">Discuss Graph One</h6>
+          <p>This graph shows Statues in North Vs South</p>
+          <input
+            class="form-control"
+            id="graphOne"
+            v-model="graphOne"
+            :placeholder="graphOne"
+            hidden
+          />
+          <button type="submit" class="btn btn-outline-dark">Discuss</button>
+        </form>
       </div>
       <div class="graph_discussion_div">
-        <h6 class="discussion_title">Discuss Graph Two</h6>
-        <p>This graph shows the states with the most statues</p>
+        <form @submit="graphTwoDiscussion">
+          <h6 class="discussion_title">Discuss Graph Two</h6>
+          <p>This graph shows the states with the most statues</p>
+          <input
+            class="form-control"
+            id="graphTwo"
+            v-model="graphTwo"
+            :placeholder="graphTwo"
+            hidden
+          />
+          <button type="submit" class="btn btn-outline-dark">Discuss</button>
+        </form>
       </div>
       <div class="graph_discussion_div">
-        <h6 class="discussion_title">Discuss Graph Three</h6>
-        <p>This graph shows Statues by state</p>
+        <form @submit="graphThreeDiscussion">
+          <h6 class="discussion_title">Discuss Graph Three</h6>
+          <p>This graph shows Statues by state</p>
+          <input
+            class="form-control"
+            id="graphThree"
+            v-model="graphThree"
+            :placeholder="graphThree"
+            hidden
+          />
+          <button type="submit" class="btn btn-outline-dark">Discuss</button>
+        </form>
       </div>
       <div class="graph_discussion_div">
         <h6 class="discussion_title">Discuss Graph Four</h6>
@@ -23,16 +53,54 @@
       </div>
       <div class="graph_discussion_div">
         <h6 class="discussion_title">Discuss Graph Six</h6>
-        <p>This graph shows Statue type by state and time period
-</p>
+        <p>This graph shows Statue type by state and time period</p>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Discussion',
+  data() {
+    return {
+      graphOne: 1,
+      graphTwo: 2,
+      graphThree: 3,
+      graphFour: 4,
+      graphFive: 5,
+      graphSix: 6,
+    };
+  },
+  methods: {
+    // ...mapActions(["session/updateUserProfile"]),
+    graphOneDiscussion(evt) {
+      evt.preventDefault();
+      const payload = {
+        selectedGraphDiscussion: this.graphOne,
+      };
+      console.log(payload);
+      // this.$store.dispatch('session/updateUserProfile', { payload });
+    },
+    graphTwoDiscussion(evt) {
+      evt.preventDefault();
+      const payload = {
+        selectedGraphDiscussion: this.graphTwo,
+      };
+      console.log(payload);
+      // this.$store.dispatch('session/updateUserProfile', { payload });
+    },
+    graphThreeDiscussion(evt) {
+      evt.preventDefault();
+      const payload = {
+        selectedGraphDiscussion: this.graphThree,
+      };
+      console.log(payload);
+      // this.$store.dispatch('session/updateUserProfile', { payload });
+    },
+  },
 };
 </script>
 

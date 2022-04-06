@@ -37,3 +37,8 @@ Article on making a form a component
 https://zaengle.com/blog/using-v-model-on-nested-vue-components
 
 Add discussion section to project?
+
+Previous project references: 
+https://github.com/ravenusmc/data_tool/blob/main/client/src/views/Profile.vue
+https://github.com/ravenusmc/data_tool/blob/main/client/src/store/modules/session.js
+https://github.com/ravenusmc/data_tool/blob/main/server/app.py
