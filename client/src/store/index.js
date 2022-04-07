@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import common from './modules/common';
 import session from './modules/session';
 import data from './modules/data';
+import discussion from './modules/discussion';
 
 Vue.use(Vuex);
 
@@ -11,5 +12,6 @@ export default new Vuex.Store({
     common,
     session,
     data,
+    discussion,
   },
 });

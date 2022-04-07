@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Discussion',
@@ -75,14 +75,14 @@ export default {
     };
   },
   methods: {
-    // ...mapActions(["session/updateUserProfile"]),
+    ...mapActions(["discussion/getDisscusionData"]),
     graphOneDiscussion(evt) {
       evt.preventDefault();
       const payload = {
         selectedGraphDiscussion: this.graphOne,
       };
       console.log(payload);
-      // this.$store.dispatch('session/updateUserProfile', { payload });
+      this.$store.dispatch('discussion/getDisscusionData', { payload });
     },
     graphTwoDiscussion(evt) {
       evt.preventDefault();

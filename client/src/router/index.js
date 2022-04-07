@@ -14,9 +14,6 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
@@ -52,6 +49,25 @@ const routes = [
     path: '/discussion',
     name: 'Discussion',
     component: () => import('../views/Discussion.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+  },
+  {
+    path: '/SpecificDiscussionPage',
+    name: 'SpecificDiscussionPage',
+    component: () => import('../views/SpecificDiscussionPage.vue'),
     beforeEnter: (to, from, next) => {
       if (store.state.common.loginFlag === false) {
         next('/login');
