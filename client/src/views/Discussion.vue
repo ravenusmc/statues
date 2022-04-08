@@ -2,42 +2,33 @@
   <div>
     <section>
       <div class="graph_discussion_div">
-        <form @submit="graphOneDiscussion">
+        <form @submit.prevent="selectedGraphForDiscussion">
           <h6 class="discussion_title">Discuss Graph One</h6>
           <p>This graph shows Statues in North Vs South</p>
           <input
-            class="form-control"
-            id="graphOne"
-            v-model="graphOne"
-            :placeholder="graphOne"
+            :value="1"
             hidden
           />
           <button type="submit" class="btn btn-outline-dark">Discuss</button>
         </form>
       </div>
       <div class="graph_discussion_div">
-        <form @submit="graphTwoDiscussion">
+        <form @submit.prevent="selectedGraphForDiscussion">
           <h6 class="discussion_title">Discuss Graph Two</h6>
           <p>This graph shows the states with the most statues</p>
           <input
-            class="form-control"
-            id="graphTwo"
-            v-model="graphTwo"
-            :placeholder="graphTwo"
+            :value="2"
             hidden
           />
           <button type="submit" class="btn btn-outline-dark">Discuss</button>
         </form>
       </div>
       <div class="graph_discussion_div">
-        <form @submit="graphThreeDiscussion">
+        <form @submit.prevent="selectedGraphForDiscussion">
           <h6 class="discussion_title">Discuss Graph Three</h6>
           <p>This graph shows Statues by state</p>
           <input
-            class="form-control"
-            id="graphThree"
-            v-model="graphThree"
-            :placeholder="graphThree"
+            :value="3"
             hidden
           />
           <button type="submit" class="btn btn-outline-dark">Discuss</button>
@@ -76,29 +67,13 @@ export default {
   },
   methods: {
     ...mapActions(["discussion/getDisscusionData"]),
-    graphOneDiscussion(evt) {
-      evt.preventDefault();
+    selectedGraphForDiscussion(evt) {
+      let selectedValue = evt.target[0]._value
       const payload = {
-        selectedGraphDiscussion: this.graphOne,
+        selectedGraphDiscussion: selectedValue,
       };
-      console.log(payload);
+      console.log(selectedValue)
       this.$store.dispatch('discussion/getDisscusionData', { payload });
-    },
-    graphTwoDiscussion(evt) {
-      evt.preventDefault();
-      const payload = {
-        selectedGraphDiscussion: this.graphTwo,
-      };
-      console.log(payload);
-      // this.$store.dispatch('session/updateUserProfile', { payload });
-    },
-    graphThreeDiscussion(evt) {
-      evt.preventDefault();
-      const payload = {
-        selectedGraphDiscussion: this.graphThree,
-      };
-      console.log(payload);
-      // this.$store.dispatch('session/updateUserProfile', { payload });
     },
   },
 };

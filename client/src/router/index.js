@@ -14,7 +14,21 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: () => import('../views/About.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/sign_up',

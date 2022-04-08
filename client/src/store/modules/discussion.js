@@ -16,8 +16,6 @@ const getters = {
 const actions = {
 
   getDisscusionData: ({ commit }, { payload }) => {
-		console.log('Action')
-		console.log(payload)
 		router.push({ name: 'SpecificDiscussionPage' });
     // const path = 'http://localhost:5000/login';
     // axios.post(path, payload)
