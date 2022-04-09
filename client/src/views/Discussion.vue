@@ -1,50 +1,54 @@
 <template>
   <div>
-    <section>
-      <div class="graph_discussion_div">
+    <h1 :class="$style['discussion-title']">Please Select a Graph to Discuss</h1>
+    <section :class="$style['discussion-section']">
+      <div :class="$style['graph_discussion_div']">
         <form @submit.prevent="selectedGraphForDiscussion">
-          <h6 class="discussion_title">Discuss Graph One</h6>
+          <h6 :class="$style['discussion_title']">Discuss Graph One</h6>
           <p>This graph shows Statues in North Vs South</p>
-          <input
-            :value="1"
-            hidden
-          />
+          <input :value="1" hidden />
           <button type="submit" class="btn btn-outline-dark">Discuss</button>
         </form>
       </div>
-      <div class="graph_discussion_div">
+      <div :class="$style['graph_discussion_div']">
         <form @submit.prevent="selectedGraphForDiscussion">
-          <h6 class="discussion_title">Discuss Graph Two</h6>
+          <h6 :class="$style['discussion_title']">Discuss Graph Two</h6>
           <p>This graph shows the states with the most statues</p>
-          <input
-            :value="2"
-            hidden
-          />
+          <input :value="2" hidden />
           <button type="submit" class="btn btn-outline-dark">Discuss</button>
         </form>
       </div>
-      <div class="graph_discussion_div">
+      <div :class="$style['graph_discussion_div']">
         <form @submit.prevent="selectedGraphForDiscussion">
-          <h6 class="discussion_title">Discuss Graph Three</h6>
+          <h6 :class="$style['discussion_title']">Discuss Graph Three</h6>
           <p>This graph shows Statues by state</p>
-          <input
-            :value="3"
-            hidden
-          />
+          <input :value="3" hidden />
           <button type="submit" class="btn btn-outline-dark">Discuss</button>
         </form>
       </div>
-      <div class="graph_discussion_div">
-        <h6 class="discussion_title">Discuss Graph Four</h6>
-        <p>This graph shows Top 5 states that removed statues</p>
+      <div :class="$style['graph_discussion_div']">
+        <form @submit.prevent="selectedGraphForDiscussion">
+          <h6 :class="$style['discussion_title']">Discuss Graph Four</h6>
+          <p>This graph shows Top 5 states that removed statues</p>
+          <input :value="4" hidden />
+          <button type="submit" class="btn btn-outline-dark">Discuss</button>
+        </form>
       </div>
-      <div class="graph_discussion_div">
-        <h6 class="discussion_title">Discuss Graph Five</h6>
-        <p>This graph shows the last ten years of statue removal</p>
+      <div :class="$style['graph_discussion_div']">
+        <form @submit.prevent="selectedGraphForDiscussion">
+          <h6 :class="$style['discussion_title']">Discuss Graph Five</h6>
+          <p>This graph shows the last ten years of statue removal</p>
+          <input :value="5" hidden />
+          <button type="submit" class="btn btn-outline-dark">Discuss</button>
+        </form>
       </div>
-      <div class="graph_discussion_div">
-        <h6 class="discussion_title">Discuss Graph Six</h6>
-        <p>This graph shows Statue type by state and time period</p>
+      <div :class="$style['graph_discussion_div']">
+        <form @submit.prevent="selectedGraphForDiscussion">
+          <h6 :class="$style['discussion_title']">Discuss Graph Six</h6>
+          <p>This graph shows Statue type by state and time period</p>
+          <input :value="6" hidden />
+          <button type="submit" class="btn btn-outline-dark">Discuss</button>
+        </form>
       </div>
     </section>
   </div>
@@ -55,35 +59,31 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'Discussion',
-  data() {
-    return {
-      graphOne: 1,
-      graphTwo: 2,
-      graphThree: 3,
-      graphFour: 4,
-      graphFive: 5,
-      graphSix: 6,
-    };
-  },
   methods: {
-    ...mapActions(["discussion/getDisscusionData"]),
+    ...mapActions(['discussion/getDisscusionData']),
     selectedGraphForDiscussion(evt) {
-      let selectedValue = evt.target[0]._value
+      let selectedValue = evt.target[0]._value;
       const payload = {
         selectedGraphDiscussion: selectedValue,
       };
-      console.log(selectedValue)
       this.$store.dispatch('discussion/getDisscusionData', { payload });
     },
   },
 };
 </script>
 
-<style lang="css" scoped>
-section {
+<style lang="css" module>
+.discussion-title {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 32px;
+  margin-top: 50px;
+}
+
+.discussion-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 100px;
+  margin-top: 20px;
   margin-bottom: 100px;
   align-items: center;
   justify-items: center;
@@ -96,6 +96,7 @@ section {
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 25px;
+  border-radius: 15px;
 }
 
 .discussion_title {

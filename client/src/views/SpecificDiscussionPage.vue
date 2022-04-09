@@ -1,11 +1,18 @@
 <template>
-	<div>
-		<h1>YAY</h1>
-	</div>
+  <div>
+    <h1>Welcome {{ userObject.username }}</h1>
+			<section>
+	</section>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-	name: 'SpecificDiscussionPage', 
-}
+  name: 'SpecificDiscussionPage',
+  computed: {
+    ...mapGetters('session', ['userObject']),
+  },
+};
 </script>
