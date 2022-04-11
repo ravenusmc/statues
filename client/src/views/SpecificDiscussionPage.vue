@@ -5,22 +5,15 @@
       <div>
         <form @submit.prevent="submitDiscussion">
           <div class="field">
-            <input
-              class="input is-primary is-rounded"
-              type="name"
-              v-model="userName"
-              placeholder="UserName"
-            />
+            <input :value="userObject.id" hidden />
           </div>
           <div class="field">
-            <input
-              class="input is-primary is-rounded"
-              type="password"
-              v-model="password"
-              placeholder="Password"
-            />
+            <textarea
+              v-model="message"
+              placeholder="What do you think..."
+            ></textarea>
           </div>
-          <button class="button is-success">Login</button>
+          <button class="button is-success">Submit</button>
         </form>
       </div>
       <div></div>
@@ -33,17 +26,22 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'SpecificDiscussionPage',
+  data() {
+    return {
+      message: '',
+    };
+  },
   computed: {
     ...mapGetters('session', ['userObject']),
   },
   methods: {
     ...mapActions(['common/login']),
     submitDiscussion(evt) {
-      // evt.preventDefault();
-      // const payload = {
-      //   userName: this.userName,
-      //   password: this.password,
-      // };
+      let userId = evt.target[0]._value;
+      const payload = {
+        userid: userId,
+        message: this.message,
+      };
       // this.$store.dispatch('common/login', { payload });
     },
   },
