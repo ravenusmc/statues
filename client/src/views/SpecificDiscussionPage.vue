@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Welcome {{ userObject.username }}</h1>
-    <section>
+    <h1>Welcome {{ userObject.username }} Tell us what you think!</h1>
+    <section class='discussion_section'>
       <div>
         <form @submit.prevent="submitDiscussion">
           <div class="field">
@@ -16,7 +16,9 @@
           <button class="button is-success">Submit</button>
         </form>
       </div>
-      <div></div>
+      <div>
+        <h1>What others have posted:</h1>
+      </div>
     </section>
   </div>
 </template>
