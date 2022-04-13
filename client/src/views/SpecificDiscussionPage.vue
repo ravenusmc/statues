@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h1>Welcome {{ userObject.username }} Tell us what you think!</h1>
-    <section class='discussion_section'>
+    <section :class="$style['discussion-section']">
       <div>
-        <form @submit.prevent="submitDiscussion">
-          <div class="field">
+        <h1>Welcome {{ userObject.username }} Tell us what you think!</h1>
+        <form
+          :class="$style['discussion-form']"
+          @submit.prevent="submitDiscussion"
+        >
+          <div>
             <input :value="userObject.id" hidden />
           </div>
-          <div class="field">
+          <div>
             <textarea
+              rows="10"
+              cols="55"
               v-model="message"
               placeholder="What do you think..."
             ></textarea>
@@ -18,6 +23,7 @@
       </div>
       <div>
         <h1>What others have posted:</h1>
+        <div></div>
       </div>
     </section>
   </div>
@@ -49,3 +55,25 @@ export default {
   },
 };
 </script>
+
+<style lang="css" module>
+.discussion-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+  margin: 25px 50px 25px 50px;
+}
+
+.discussion-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 3px solid black;
+  min-height: 500px;
+}
+
+button {
+  margin-left: 30px;
+  margin-right: 15px;
+}
+</style>
