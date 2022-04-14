@@ -5,7 +5,7 @@ import router from '../../router';
 
 Vue.use(Vuex);
 
-const data = {
+const state = {
   // userNotFound: false,
 };
 
@@ -38,7 +38,7 @@ const mutations = {
 
 export default {
   namespaced: true,
-  state: data,
+  state,
   getters,
   actions,
   mutations,
