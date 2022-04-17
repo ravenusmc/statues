@@ -17,14 +17,14 @@ const actions = {
 
   getDisscusionData: ({ commit }, { payload }) => {
 		router.push({ name: 'SpecificDiscussionPage' });
-    const path = 'http://localhost:5000/get_specific_discussion_data';
-    axios.post(path, payload)
-      .then((res) => {
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
+  //   const path = 'http://localhost:5000/get_specific_discussion_data';
+  //   axios.post(path, payload)
+  //     .then((res) => {
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // },
 
 };
 
