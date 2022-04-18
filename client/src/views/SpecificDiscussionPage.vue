@@ -2,7 +2,7 @@
   <div>
     <section :class="$style['discussion-section']">
       <div>
-        <h1>Welcome {{ userObject.username }} Tell us what you think!</h1>
+        <h1 class='center'>Welcome {{ userObject.username }} Tell us what you think!</h1>
         <form
           :class="$style['discussion-form']"
           @submit.prevent="submitDiscussion"
@@ -22,7 +22,7 @@
         </form>
       </div>
       <div>
-        <h1>What others have posted:</h1>
+        <h1 class='center'>What others have posted:</h1>
         <div></div>
       </div>
     </section>
