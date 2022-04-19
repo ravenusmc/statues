@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import axios from 'axios';
+import axios from 'axios';
 import router from '../../router';
 
 Vue.use(Vuex);
@@ -16,14 +16,15 @@ const getters = {
 const actions = {
 
   getDisscusionData: ({ commit }, { payload }) => {
-		router.push({ name: 'SpecificDiscussionPage' });
-  //   const path = 'http://localhost:5000/get_specific_discussion_data';
-  //   axios.post(path, payload)
-  //     .then((res) => {
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
+    router.push({ name: 'SpecificDiscussionPage' });
+    console.log(payload)
+    const path = 'http://localhost:5000/get_specific_discussion_data';
+    axios.post(path, payload)
+      .then((res) => {
+      })
+      .catch((error) => {
+        console.log(error);
+      });
    },
 
 };

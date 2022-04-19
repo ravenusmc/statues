@@ -13,6 +13,14 @@ CREATE TABLE users
   PRIMARY KEY(user_id)
 );
 
+CREATE TABLE discussions
+(
+  discussion_id INT NOT NULL AUTO_INCREMENT,
+  graph_number INT NOT NULL, 
+  post TEXT(240) NOT NULL,
+  PRIMARY KEY(discussion_id)
+);
+
 SHOW COLUMNS FROM users;
 
 INSERT INTO users

@@ -155,5 +155,14 @@ def graphSixDrillDown():
         drill_down_data = support.build_drill_down_rows(statues_data_drill_down_six)
     return jsonify(drill_down_data)
 
+@app.route('/get_specific_discussion_data', methods=['GET', 'POST'])
+def get_specific_discussion_data():
+    if request.method == 'POST':
+        data = Data()
+        support = Support()
+        post_data = request.get_json()
+        print(post_data)
+    return jsonify('5')
+
 if __name__ == '__main__':
     app.run()
