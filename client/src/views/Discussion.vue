@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 :class="$style['discussion-title']">Please Select a Graph to Discuss</h1>
+    <h1 :class="$style['discussion-title']">
+      Please Select a Graph to Discuss
+    </h1>
     <section :class="$style['discussion-section']">
       <div :class="$style['graph_discussion_div']">
         <form @submit.prevent="selectedGraphForDiscussion">

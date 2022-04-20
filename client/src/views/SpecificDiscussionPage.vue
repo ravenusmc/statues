@@ -2,7 +2,9 @@
   <div>
     <section :class="$style['discussion-section']">
       <div>
-        <h1 class='center'>Welcome {{ userObject.username }} Tell us what you think!</h1>
+        <h1 class="center">
+          Welcome {{ userObject.username }} Tell us what you think!
+        </h1>
         <form
           :class="$style['discussion-form']"
           @submit.prevent="submitDiscussion"
@@ -22,8 +24,15 @@
         </form>
       </div>
       <div>
-        <h1 class='center'>What others have posted:</h1>
-        <div></div>
+        <h1 class="center">What others have posted:</h1>
+        <div>
+          <div  v-for="point in graph_discussion_points" :key="point[0]">
+            <h6>{{ point[1] }} Said:</h6>
+            <p>
+              {{ point[2] }}
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -41,6 +50,7 @@ export default {
   },
   computed: {
     ...mapGetters('session', ['userObject']),
+    ...mapGetters('discussion', ['graph_discussion_points']),
   },
   methods: {
     ...mapActions(['common/login']),

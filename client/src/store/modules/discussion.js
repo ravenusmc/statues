@@ -6,21 +6,21 @@ import router from '../../router';
 Vue.use(Vuex);
 
 const state = {
-  // userNotFound: false,
+  graph_discussion_points: [],
 };
 
 const getters = {
-  // userNotFound: (state) => state.userNotFound,
+  graph_discussion_points: (state) => state.graph_discussion_points,
 };
 
 const actions = {
 
   getDisscusionData: ({ commit }, { payload }) => {
     router.push({ name: 'SpecificDiscussionPage' });
-    console.log(payload)
     const path = 'http://localhost:5000/get_specific_discussion_data';
     axios.post(path, payload)
       .then((res) => {
+        commit('setGraph_discussion_points', res.data)
       })
       .catch((error) => {
         console.log(error);
@@ -31,9 +31,9 @@ const actions = {
 
 const mutations = {
 
-  // setUserNotFound(state, value) {
-  //   state.userNotFound = value;
-  // },
+  setGraph_discussion_points(state, data) {
+    state.graph_discussion_points = data;
+  },
 
 };
 

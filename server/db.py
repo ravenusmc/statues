@@ -68,3 +68,11 @@ class Connection():
                 not_found = False
                 password_no_match = True
         return login_flag, not_found, password_no_match, user
+    
+    def get_specific_discussion_by_graph(self, selected_graph_number):
+        # query = ("""SELECT * FROM discussions WHERE graph_number = %s""")
+        query = ("""SELECT u.user_id, u.username, d.post FROM discussions d
+        INNER JOIN users u ON u.user_id = d.user_id WHERE graph_number = %s""")
+        self.cursor.execute(query, (selected_graph_number,))
+        graph_discussion_points = self.cursor.fetchall()
+        return graph_discussion_points

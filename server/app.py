@@ -158,11 +158,11 @@ def graphSixDrillDown():
 @app.route('/get_specific_discussion_data', methods=['GET', 'POST'])
 def get_specific_discussion_data():
     if request.method == 'POST':
-        data = Data()
-        support = Support()
+        db = Connection()
         post_data = request.get_json()
-        print(post_data)
-    return jsonify('5')
+        selected_graph_number = post_data['selectedGraphDiscussion']
+        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+    return jsonify(graph_discussion_points)
 
 if __name__ == '__main__':
     app.run()
