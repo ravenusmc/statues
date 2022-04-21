@@ -164,5 +164,16 @@ def get_specific_discussion_data():
         graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
     return jsonify(graph_discussion_points)
 
+@app.route('/add_discussion_post', methods=['GET', 'POST'])
+def add_discussion_post():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+        # selected_graph_number = post_data['selectedGraphDiscussion']
+        # graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+    return jsonify('5')
+
+
 if __name__ == '__main__':
     app.run()

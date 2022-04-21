@@ -13,6 +13,9 @@
             <input :value="userObject.id" hidden />
           </div>
           <div>
+            <input :value="selectedGraph" hidden />
+          </div>
+          <div>
             <textarea
               rows="10"
               cols="55"
@@ -50,17 +53,19 @@ export default {
   },
   computed: {
     ...mapGetters('session', ['userObject']),
-    ...mapGetters('discussion', ['graph_discussion_points']),
+    ...mapGetters('discussion', ['selectedGraph', 'graph_discussion_points']),
   },
   methods: {
-    ...mapActions(['common/login']),
+    ...mapActions(['discussion/addDisscusionPost']),
     submitDiscussion(evt) {
       let userId = evt.target[0]._value;
+      let selectedGraph = evt.target[1]._value
       const payload = {
         userid: userId,
-        message: this.message,
+        graph_number: selectedGraph,
+        post: this.message,
       };
-      // this.$store.dispatch('common/login', { payload });
+      this.$store.dispatch('discussion/addDisscusionPost', { payload });
     },
   },
 };

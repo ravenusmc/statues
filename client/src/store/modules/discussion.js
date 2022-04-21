@@ -6,18 +6,32 @@ import router from '../../router';
 Vue.use(Vuex);
 
 const state = {
+  selectedGraph: 1, 
   graph_discussion_points: [],
 };
 
 const getters = {
+  selectedGraph: (state) => state.selectedGraph,
   graph_discussion_points: (state) => state.graph_discussion_points,
 };
 
 const actions = {
 
   getDisscusionData: ({ commit }, { payload }) => {
+    commit('setSelectedGraph', payload.selectedGraphDiscussion)
     router.push({ name: 'SpecificDiscussionPage' });
     const path = 'http://localhost:5000/get_specific_discussion_data';
+    axios.post(path, payload)
+      .then((res) => {
+        commit('setGraph_discussion_points', res.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+   },
+
+   addDisscusionPost: ({ commit }, { payload }) => {
+    const path = 'http://localhost:5000/add_discussion_post';
     axios.post(path, payload)
       .then((res) => {
         commit('setGraph_discussion_points', res.data)
@@ -30,6 +44,10 @@ const actions = {
 };
 
 const mutations = {
+
+  setSelectedGraph(state, data) {
+    state.selectedGraph = data;
+  },
 
   setGraph_discussion_points(state, data) {
     state.graph_discussion_points = data;
