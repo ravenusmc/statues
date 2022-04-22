@@ -169,10 +169,10 @@ def add_discussion_post():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
-        # selected_graph_number = post_data['selectedGraphDiscussion']
-        # graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
-    return jsonify('5')
+        db.insert_new_discussion_point(post_data)
+        selected_graph_number = post_data['graph_number']
+        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+    return jsonify(graph_discussion_points)
 
 
 if __name__ == '__main__':

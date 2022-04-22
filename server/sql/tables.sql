@@ -73,3 +73,6 @@ SELECT
 FROM
     members m
 INNER JOIN committees c ON c.name = m.name;
+
+promise examples: 
+https://github.com/ravenusmc/nasa_project/blob/main/client/src/store/modules/people.js

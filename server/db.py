@@ -76,3 +76,11 @@ class Connection():
         self.cursor.execute(query, (selected_graph_number,))
         graph_discussion_points = self.cursor.fetchall()
         return graph_discussion_points
+    
+    def insert_new_discussion_point(self, post_data):
+        self._SQL = """insert into discussions
+          (user_id, graph_number, post)
+          values
+          (%s, %s, %s)"""
+        self.cursor.execute(self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post']))
+        self.conn.commit()
