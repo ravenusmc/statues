@@ -29,8 +29,12 @@
       <div>
         <h1 class="center">What others have posted:</h1>
         <div>
-          <div  v-for="point in graph_discussion_points" :key="point[0]">
-            <h6>{{ point[1] }} Said:</h6>
+          <div
+            :class="$style['discussion-div']"
+            v-for="point in graph_discussion_points"
+            :key="point[0]"
+          >
+            <h6 :class="$style['name-div']">{{ point[1] }} Said:</h6>
             <p>
               {{ point[2] }}
             </p>
@@ -59,7 +63,7 @@ export default {
     ...mapActions(['discussion/addDisscusionPost']),
     submitDiscussion(evt) {
       let userId = evt.target[0]._value;
-      let selectedGraph = evt.target[1]._value
+      let selectedGraph = evt.target[1]._value;
       const payload = {
         userid: userId,
         graph_number: selectedGraph,
@@ -90,5 +94,15 @@ export default {
 button {
   margin-left: 30px;
   margin-right: 15px;
+}
+
+.name-div {
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.discussion-div {
+  margin: 15px 15px 15px 15px;
 }
 </style>
