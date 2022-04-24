@@ -25,6 +25,11 @@ CREATE TABLE discussions
 
 SHOW COLUMNS FROM users;
 
+--Altering the discussions table:
+ALTER TABLE discussions 
+ADD COLUMN discussion_sentiment INT(255) AFTER post;
+
+-- Inserting data 
 INSERT INTO users
 VALUES (1, 'test', 'a1@yahoo.com', 'test');
 
