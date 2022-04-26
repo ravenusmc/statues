@@ -29,6 +29,9 @@ SHOW COLUMNS FROM users;
 ALTER TABLE discussions 
 ADD COLUMN discussion_sentiment INT(255) AFTER post;
 
+--Altering column type: 
+
+
 -- Inserting data 
 INSERT INTO users
 VALUES (1, 'test', 'a1@yahoo.com', 'test');

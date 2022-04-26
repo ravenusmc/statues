@@ -71,7 +71,7 @@ class Connection():
     
     def get_specific_discussion_by_graph(self, selected_graph_number):
         # query = ("""SELECT * FROM discussions WHERE graph_number = %s""")
-        query = ("""SELECT u.user_id, u.username, d.post FROM discussions d
+        query = ("""SELECT u.user_id, u.username, d.post, d.discussion_sentiment FROM discussions d
         INNER JOIN users u ON u.user_id = d.user_id WHERE graph_number = %s""")
         self.cursor.execute(query, (selected_graph_number,))
         graph_discussion_points = self.cursor.fetchall()
@@ -79,8 +79,8 @@ class Connection():
     
     def insert_new_discussion_point(self, post_data):
         self._SQL = """insert into discussions
-          (user_id, graph_number, post)
+          (user_id, graph_number, post, discussion_sentiment)
           values
-          (%s, %s, %s)"""
-        self.cursor.execute(self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post']))
+          (%s, %s, %s, %s)"""
+        self.cursor.execute(self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post'], post_data['sentiment_average']))
         self.conn.commit()

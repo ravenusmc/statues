@@ -7,6 +7,7 @@ from user import *
 from clean import *
 from data import *
 from support import *
+from sentiment import *
 
 # configuration
 DEBUG = True
@@ -168,7 +169,10 @@ def get_specific_discussion_data():
 def add_discussion_post():
     if request.method == 'POST':
         db = Connection()
+        text = Text()
         post_data = request.get_json()
+        sentiment_average = text.get_discussion_sentiment(post_data)
+        post_data['sentiment_average'] = sentiment_average
         db.insert_new_discussion_point(post_data)
         selected_graph_number = post_data['graph_number']
         graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)

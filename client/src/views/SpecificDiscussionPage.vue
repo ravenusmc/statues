@@ -38,6 +38,9 @@
             <p>
               {{ point[2] }}
             </p>
+            <p>
+              Discussion Sentiment: {{ point[3] }}
+            </p>
           </div>
         </div>
       </div>
