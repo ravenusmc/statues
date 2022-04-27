@@ -19,6 +19,5 @@ class Text():
     def get_average(self, sentence_sentiment_list):
         return sum(sentence_sentiment_list) / len(sentence_sentiment_list)
 
-
 # Three speeches file:
 # https://github.com/ravenusmc/three_speeches/blob/master/server/sentiment.py

@@ -75,6 +75,7 @@ class Connection():
         INNER JOIN users u ON u.user_id = d.user_id WHERE graph_number = %s""")
         self.cursor.execute(query, (selected_graph_number,))
         graph_discussion_points = self.cursor.fetchall()
+        print(graph_discussion_points)
         return graph_discussion_points
     
     def insert_new_discussion_point(self, post_data):

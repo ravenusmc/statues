@@ -2,8 +2,8 @@
   <div>
     <section :class="$style['discussion-section']">
       <div>
-        <h1 class="center">
-          Welcome {{ userObject.username }} Tell us what you think!
+        <h1 :class="$style['user-heading']">
+          Welcome <span :class="$style['name-fix']">{{ userObject.username }}</span>, tell us what you think!
         </h1>
         <form
           :class="$style['discussion-form']"
@@ -20,14 +20,14 @@
               rows="10"
               cols="55"
               v-model="message"
-              placeholder="What do you think..."
+              placeholder="What are your thoughts on this graph..."
             ></textarea>
           </div>
           <button class="button is-success">Submit</button>
         </form>
       </div>
-      <div>
-        <h1 class="center">What others have posted:</h1>
+      <div :class="$style['main-discussion-div']">
+        <h1 :class="$style['user-heading']">What others have posted:</h1>
         <div>
           <div
             :class="$style['discussion-div']"
@@ -38,9 +38,7 @@
             <p>
               {{ point[2] }}
             </p>
-            <p>
-              Discussion Sentiment: {{ point[3] }}
-            </p>
+            <p>Discussion Sentiment: {{ point[3] }}</p>
           </div>
         </div>
       </div>
@@ -83,14 +81,22 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 500px;
-  margin: 25px 50px 25px 50px;
+  margin: 50px 50px 25px 50px;
+}
+
+.user-heading {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.name-fix {
+  text-transform: capitalize;
 }
 
 .discussion-form {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 3px solid black;
   min-height: 500px;
 }
 
@@ -103,6 +109,10 @@ button {
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
+}
+
+.main-discussion-div {
+  border-left: 3px solid black;
 }
 
 .discussion-div {
