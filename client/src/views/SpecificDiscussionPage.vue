@@ -3,7 +3,9 @@
     <section :class="$style['discussion-section']">
       <div>
         <h1 :class="$style['user-heading']">
-          Welcome <span :class="$style['name-fix']">{{ userObject.username }}</span>, tell us what you think!
+          Welcome
+          <span :class="$style['name-fix']">{{ userObject.username }}</span
+          >, tell us what you think!
         </h1>
         <form
           :class="$style['discussion-form']"
@@ -36,9 +38,18 @@
           >
             <h6 :class="$style['name-div']">{{ point[1] }} Said:</h6>
             <p>
-              {{ point[2] }}
+              {{ point[3] }}
             </p>
-            <p>Discussion Sentiment: {{ point[3] }}</p>
+            <p>Discussion Sentiment: {{ point[4] }}</p>
+            <form
+              @submit.prevent="deleteDiscussion"
+              v-if="point[0] == userObject.id"
+            >
+              <div>
+                <input :value="point[2]" hidden />
+              </div>
+              <button class="button is-success font">Delete</button>
+            </form>
           </div>
         </div>
       </div>
@@ -72,6 +83,13 @@ export default {
       };
       this.$store.dispatch('discussion/addDisscusionPost', { payload });
     },
+    deleteDiscussion(evt) {
+      let selectedDiscussion = evt.target[0]._value;
+      const payload = {
+        discussion_id: selectedDiscussion
+      }
+      this.$store.dispatch('discussion/deleteDisscusionPost', { payload });
+    }
   },
 };
 </script>

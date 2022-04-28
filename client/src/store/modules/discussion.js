@@ -41,6 +41,17 @@ const actions = {
       });
    },
 
+   deleteDisscusionPost: ({ commit }, { payload }) => {
+    const path = 'http://localhost:5000/delete_discussion_post';
+    axios.post(path, payload)
+      .then((res) => {
+        // commit('setGraph_discussion_points', res.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+   },
+
 };
 
 const mutations = {

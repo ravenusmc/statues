@@ -52,18 +52,18 @@
               <router-link
                 v-if="!loginFlag"
                 class="fontColor font fix"
+                to="/login"
+              >
+                <a class="button is-light"> Login </a>
+              </router-link>
+              <router-link
+                v-if="!loginFlag"
+                class="fontColor font fix"
                 to="/sign_up"
               >
                 <a class="button is-primary">
                   <strong>Sign up</strong>
                 </a>
-              </router-link>
-              <router-link
-                v-if="!loginFlag"
-                class="fontColor font fix"
-                to="/login"
-              >
-                <a class="button is-light"> Login </a>
               </router-link>
               <router-link
                 v-if="loginFlag"

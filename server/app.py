@@ -178,6 +178,14 @@ def add_discussion_post():
         graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
     return jsonify(graph_discussion_points)
 
+@app.route('/delete_discussion_post', methods=['GET', 'POST'])
+def delete_discussion_post():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+    return jsonify('5')
+
 
 if __name__ == '__main__':
     app.run()
