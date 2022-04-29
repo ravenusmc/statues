@@ -183,9 +183,8 @@ def delete_discussion_post():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
-    return jsonify('5')
-
+        db.delete_discussion_point(post_data)
+        return jsonify('')
 
 if __name__ == '__main__':
     app.run()

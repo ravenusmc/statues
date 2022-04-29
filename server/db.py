@@ -76,7 +76,6 @@ class Connection():
         INNER JOIN users u ON u.user_id = d.user_id WHERE graph_number = %s""")
         self.cursor.execute(query, (selected_graph_number,))
         graph_discussion_points = self.cursor.fetchall()
-        print(graph_discussion_points)
         return graph_discussion_points
     
     def insert_new_discussion_point(self, post_data):
@@ -86,3 +85,11 @@ class Connection():
           (%s, %s, %s, %s)"""
         self.cursor.execute(self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post'], post_data['sentiment_average']))
         self.conn.commit()
+    
+    def delete_discussion_point(self, post_data):
+        self._SQL = """DELETE FROM discussions WHERE discussion_id = %s"""
+        self.cursor.execute(self._SQL, (post_data['discussion_id'], ))
+        self.conn.commit()
+        self.cursor.close()
+        self.conn.close()
+        print('HERE')
