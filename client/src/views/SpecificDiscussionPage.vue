@@ -34,7 +34,7 @@
           <div
             :class="$style['discussion-div']"
             v-for="point in graph_discussion_points"
-            :key="point[0]"
+            :key="point[2]"
           >
             <h6 :class="$style['name-div']">{{ point[1] }} Said:</h6>
             <p>
@@ -83,6 +83,7 @@ export default {
         post: this.message,
       };
       this.$store.dispatch('discussion/addDisscusionPost', { payload });
+      this.message = '';
     },
     deleteDiscussion(evt) {
       let selectedDiscussion = evt.target[0]._value;
