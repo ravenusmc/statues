@@ -47,6 +47,7 @@
             >
               <div>
                 <input :value="point[2]" hidden />
+                <input :value="selectedGraph" hidden />
               </div>
               <button class="button is-success font">Delete</button>
             </form>
@@ -85,8 +86,10 @@ export default {
     },
     deleteDiscussion(evt) {
       let selectedDiscussion = evt.target[0]._value;
+      let selectedGraph = evt.target[1]._value;
       const payload = {
-        discussion_id: selectedDiscussion
+        discussion_id: selectedDiscussion,
+        graph_number: selectedGraph,
       }
       this.$store.dispatch('discussion/deleteDisscusionPost', { payload });
     }

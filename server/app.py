@@ -184,7 +184,9 @@ def delete_discussion_post():
         db = Connection()
         post_data = request.get_json()
         db.delete_discussion_point(post_data)
-        return jsonify('')
+        selected_graph_number = post_data['graph_number']
+        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+        return jsonify(graph_discussion_points)
 
 if __name__ == '__main__':
     app.run()

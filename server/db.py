@@ -87,9 +87,10 @@ class Connection():
         self.conn.commit()
     
     def delete_discussion_point(self, post_data):
+        discussion_id = post_data['discussion_id']
+        print(discussion_id)
         self._SQL = """DELETE FROM discussions WHERE discussion_id = %s"""
-        self.cursor.execute(self._SQL, (post_data['discussion_id'], ))
+        self.cursor.execute(self._SQL, (discussion_id, ))
         self.conn.commit()
-        self.cursor.close()
-        self.conn.close()
-        print('HERE')
+        # self.cursor.close()
+        # self.conn.close()
