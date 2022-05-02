@@ -92,3 +92,5 @@ class Connection():
         self._SQL = """DELETE FROM discussions WHERE discussion_id = %s"""
         self.cursor.execute(self._SQL, (discussion_id, ))
         self.conn.commit()
+
+        

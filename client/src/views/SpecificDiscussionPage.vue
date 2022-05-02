@@ -30,6 +30,14 @@
       </div>
       <div :class="$style['main-discussion-div']">
         <h1 :class="$style['user-heading']">What others have posted:</h1>
+        <div :class="$style['selection-div']">
+          <select @change="onChange($event)" v-model="order">
+            <option>Please select an ordering option</option>
+            <option v-for="order in ordering_options" :key="order">
+              {{ order }}
+            </option>
+          </select>
+        </div>
         <div>
           <div
             :class="$style['discussion-div']"
@@ -40,17 +48,19 @@
             <p>
               {{ point[3] }}
             </p>
-            <p>Discussion Sentiment: {{ point[4] }}</p>
-            <form
-              @submit.prevent="deleteDiscussion"
-              v-if="point[0] == userObject.id"
-            >
-              <div>
-                <input :value="point[2]" hidden />
-                <input :value="selectedGraph" hidden />
-              </div>
-              <button class="button is-success font">Delete</button>
-            </form>
+            <div :class="$style['sentiment-delete-div']">
+              <p>Discussion Sentiment: {{ point[4] }}</p>
+              <form
+                @submit.prevent="deleteDiscussion"
+                v-if="point[0] == userObject.id"
+              >
+                <div>
+                  <input :value="point[2]" hidden />
+                  <input :value="selectedGraph" hidden />
+                </div>
+                <button class="button is-danger font">Delete</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -66,6 +76,8 @@ export default {
   data() {
     return {
       message: '',
+      order: 'Newest',
+      ordering_options: ['Newest', 'By Rating', 'By Date'],
     };
   },
   computed: {
@@ -91,9 +103,12 @@ export default {
       const payload = {
         discussion_id: selectedDiscussion,
         graph_number: selectedGraph,
-      }
+      };
       this.$store.dispatch('discussion/deleteDisscusionPost', { payload });
-    }
+    },
+    onChange(event) {
+      console.log(event.target.value);
+    },
   },
 };
 </script>
@@ -120,6 +135,14 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 500px;
+}
+
+.sentiment-delete-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 button {

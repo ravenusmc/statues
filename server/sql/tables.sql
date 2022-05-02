@@ -51,3 +51,15 @@ https://github.com/ravenusmc/compost_finder/blob/master/db.py
 
 promise examples: 
 https://github.com/ravenusmc/nasa_project/blob/main/client/src/store/modules/people.js
+
+def double_column_create(self, table_name, value1, data_type_1, value2, data_type_2):
+    sql = '''CREATE TABLE ''' + table_name + ''' (
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        ''' + value1 + ' ' + data_type_1 + ' ' + 'NOT NULL,' + '''
+        ''' + value2 + ' ' + data_type_2 + ' ' + 'NOT NULL' ''' ) '''
+
+def get_single_row_data(self, table, id):
+    query = ('''select * from ''' + table + ''' where id = %s ''')
+    self.cursor.execute(query, (id, ))
+    row = self.cursor.fetchone()
+    return row
