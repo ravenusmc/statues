@@ -107,7 +107,12 @@ export default {
       this.$store.dispatch('discussion/deleteDisscusionPost', { payload });
     },
     onChange(event) {
-      console.log(event.target.value);
+      let ordering = event.target.value;
+      const payload = {
+        ordering,
+        graph_number: this.selectedGraph,
+      };
+      this.$store.dispatch('discussion/switchDiscussionOrdering', { payload });
     },
   },
 };
