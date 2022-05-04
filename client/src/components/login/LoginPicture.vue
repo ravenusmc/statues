@@ -21,6 +21,7 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
 }
 
 @media only all and (max-width: 900px) {

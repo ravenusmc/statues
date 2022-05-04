@@ -6,7 +6,7 @@ import router from '../../router';
 Vue.use(Vuex);
 
 const state = {
-  selectedGraph: 1, 
+  selectedGraph: 1,
   graph_discussion_points: [],
 };
 
@@ -28,9 +28,9 @@ const actions = {
       .catch((error) => {
         console.log(error);
       });
-   },
+  },
 
-   addDisscusionPost: ({ commit }, { payload }) => {
+  addDisscusionPost: ({ commit }, { payload }) => {
     const path = 'http://localhost:5000/add_discussion_post';
     axios.post(path, payload)
       .then((res) => {
@@ -39,10 +39,9 @@ const actions = {
       .catch((error) => {
         console.log(error);
       });
-   },
+  },
 
-   deleteDisscusionPost: ({ commit }, { payload }) => {
-     console.log(payload)
+  deleteDisscusionPost: ({ commit }, { payload }) => {
     const path = 'http://localhost:5000/delete_discussion_post';
     axios.post(path, payload)
       .then((res) => {
@@ -51,7 +50,18 @@ const actions = {
       .catch((error) => {
         console.log(error);
       });
-   },
+  },
+
+  switchDiscussionOrdering: ({ commit }, { payload }) => {
+    const path = 'http://localhost:5000/switch_discussion_posts';
+    axios.post(path, payload)
+      .then((res) => {
+        commit('setGraph_discussion_points', res.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
 };
 
