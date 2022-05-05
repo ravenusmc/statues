@@ -29,6 +29,13 @@
       </div>
       <button class="button is-success font">Submit</button>
     </form>
+    <form @submit.prevent="selectedGraphForDiscussion">
+      <h6>Discuss Graph One</h6>
+      <input :value="1" hidden />
+      <button type="submit" class="btn btn-outline-dark">
+        Go to Discussion
+      </button>
+    </form>
   </div>
 </template>
 
@@ -45,6 +52,7 @@ export default {
   },
   methods: {
     ...mapActions('data', ['fetchNorthSouthByYear']),
+    ...mapActions(['discussion/getDisscusionData']),
     submitForm(evt) {
       evt.preventDefault();
       let yearOne = Number(this.yearOne);
@@ -62,6 +70,13 @@ export default {
         };
         this.fetchNorthSouthByYear({ payload });
       }
+    },
+    selectedGraphForDiscussion(evt) {
+      let selectedValue = evt.target[0]._value;
+      const payload = {
+        selectedGraphDiscussion: selectedValue,
+      };
+      this.$store.dispatch('discussion/getDisscusionData', { payload });
     },
   },
 };
@@ -95,5 +110,4 @@ button {
 .fix-label-alignment {
   margin-left: -23px;
 }
-
 </style>
