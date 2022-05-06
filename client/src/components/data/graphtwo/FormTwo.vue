@@ -29,6 +29,13 @@
       </div>
       <button class="button is-success font">Submit</button>
     </form>
+    <form @submit.prevent="selectedGraphForDiscussion">
+      <h6>Discuss Graph Two</h6>
+      <input :value="2" hidden />
+      <button type="submit" class="btn btn-outline-dark">
+        Go to Discussion
+      </button>
+    </form>
   </div>
 </template>
 
@@ -63,6 +70,13 @@ export default {
         this.fetchTopFiveByYear({ payload });
       }
     },
+    selectedGraphForDiscussion(evt) {
+      let selectedValue = evt.target[0]._value;
+      const payload = {
+        selectedGraphDiscussion: selectedValue,
+      };
+      this.$store.dispatch('discussion/getDisscusionData', { payload });
+    },
   },
 };
 </script>
@@ -95,5 +109,4 @@ button {
 .fix-label-alignment {
   margin-left: -23px;
 }
-
 </style>

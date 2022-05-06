@@ -32,14 +32,14 @@
               >Graphs</router-link
             >
           </a>
-          <a class="navbar-item">
+          <!-- <a class="navbar-item">
             <router-link
               class="fontColor font"
               v-if="loginFlag"
               to="/discussion"
               >Discussion</router-link
             >
-          </a>
+          </a> -->
           <a class="navbar-item">
             <router-link class="fontColor font" v-if="loginFlag" to="/about"
               >About</router-link
