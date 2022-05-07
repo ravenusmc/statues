@@ -7,27 +7,46 @@
     </p>
     <br />
     <p>
-      First, this graph does not allow the user to change the dates. It's 
-      a graph that shows the top five states that removed statues after 
-      Charlottesville. What is surprising to me is that the data shows that 
-      the main state that removed statues was Texas. I did not expect this. 
-      I actually thought that Georgia would have the most removed or maybe 
-      North Carolina. Texas just seemes way to conservative for me. It really 
-      makes me wonder why did Texas decide to pull so many statues down? Was 
-      it done on the local or state levels or was it mass protest? 
+      First, this graph does not allow the user to change the dates. It's a
+      graph that shows the top five states that removed statues after
+      Charlottesville. What is surprising to me is that the data shows that the
+      main state that removed statues was Texas. I did not expect this. I
+      actually thought that Georgia would have the most removed or maybe North
+      Carolina. Texas just seemes way to conservative for me. It really makes me
+      wonder why did Texas decide to pull so many statues down? Was it done on
+      the local or state levels or was it mass protest?
     </p>
     <br />
     <p>
-      This graph will have a drill down to see which statues were removed. As with 
-      the other graphs, simply click on the bar you want to drill down on and a table 
-      will appear showing you the data. 
+      This graph will have a drill down to see which statues were removed. As
+      with the other graphs, simply click on the bar you want to drill down on
+      and a table will appear showing you the data.
     </p>
+    <form @submit.prevent="selectedGraphForDiscussion">
+      <h6>Discuss Graph Four</h6>
+      <input :value="4" hidden />
+      <button type="submit" class="btn btn-outline-dark">
+        Go to Discussion
+      </button>
+    </form>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'GraphOneDiscussion',
+  methods: {
+    ...mapActions('discussion', ['getDisscusionData']),
+    selectedGraphForDiscussion(evt) {
+      let selectedValue = evt.target[0]._value;
+      const payload = {
+        selectedGraphDiscussion: selectedValue,
+      };
+      this.getDisscusionData({ payload });
+    },
+  },
 };
 </script>
 

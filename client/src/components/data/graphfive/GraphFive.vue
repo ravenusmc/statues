@@ -5,13 +5,6 @@
       :data="removedStatuesByYearsData"
       :options="chartOptionsOne"
     />
-    <form @submit.prevent="selectedGraphForDiscussion">
-      <h6>Discuss Graph Five</h6>
-      <input :value="5" hidden />
-      <button type="submit" class="btn btn-outline-dark">
-        Go to Discussion
-      </button>
-    </form>
   </div>
 </template>
 
@@ -46,15 +39,6 @@ export default {
         },
       },
     };
-  },
-  methods: {
-    selectedGraphForDiscussion(evt) {
-      let selectedValue = evt.target[0]._value;
-      const payload = {
-        selectedGraphDiscussion: selectedValue,
-      };
-      this.$store.dispatch('discussion/getDisscusionData', { payload });
-    },
   },
 };
 </script>

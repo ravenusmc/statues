@@ -27,12 +27,31 @@
       19th century. I'd almost expect to have more statues in the North up until
       that point.
     </p>
+    <form @submit.prevent="selectedGraphForDiscussion">
+      <h6>Discuss Graph One</h6>
+      <input :value="1" hidden />
+      <button type="submit" class="btn btn-outline-dark">
+        Go to Discussion
+      </button>
+    </form>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'GraphOneDiscussion',
+   methods: {
+    ...mapActions('discussion', ['getDisscusionData']),
+    selectedGraphForDiscussion(evt) {
+      let selectedValue = evt.target[0]._value;
+      const payload = {
+        selectedGraphDiscussion: selectedValue,
+      };
+      this.getDisscusionData({ payload })
+    },
+  },
 };
 </script>
 

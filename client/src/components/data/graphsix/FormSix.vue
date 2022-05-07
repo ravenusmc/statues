@@ -33,13 +33,6 @@
       </div>
       <button class="button is-success font">Submit</button>
     </form>
-    <form @submit.prevent="selectedGraphForDiscussion">
-      <h6>Discuss Graph Six</h6>
-      <input :value="6" hidden />
-      <button type="submit" class="btn btn-outline-dark">
-        Go to Discussion
-      </button>
-    </form>
   </div>
 </template>
 
@@ -111,13 +104,6 @@ export default {
         };
         this.fetchDataForSixthGraph({ payload });
       }
-    },
-    selectedGraphForDiscussion(evt) {
-      let selectedValue = evt.target[0]._value;
-      const payload = {
-        selectedGraphDiscussion: selectedValue,
-      };
-      this.$store.dispatch('discussion/getDisscusionData', { payload });
     },
   },
 };
