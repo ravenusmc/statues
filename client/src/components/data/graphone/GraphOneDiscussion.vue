@@ -75,6 +75,10 @@ export default {
   margin-bottom: 15px;
 }
 
+form {
+  
+}
+
 /* Responsive media quries */
 @media only all and (max-width: 999px) {
   .responsive-phrase-large {
