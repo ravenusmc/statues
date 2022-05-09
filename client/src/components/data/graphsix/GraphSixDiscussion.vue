@@ -18,7 +18,7 @@
       monumnet though is going to last a long time and really show people how
       important something is when you make a large statue of it.
     </p>
-    <form @submit.prevent="selectedGraphForDiscussion">
+    <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
       <h6>Discuss Graph Six</h6>
       <input :value="6" hidden />
       <button type="submit" class="btn btn-outline-dark">

@@ -27,7 +27,7 @@
       19th century. I'd almost expect to have more statues in the North up until
       that point.
     </p>
-    <form @submit.prevent="selectedGraphForDiscussion">
+    <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
       <h6>Discuss Graph One</h6>
       <input :value="1" hidden />
       <button type="submit" class="btn btn-outline-dark">
@@ -73,10 +73,6 @@ export default {
   font-size: 2em;
   text-transform: uppercase;
   margin-bottom: 15px;
-}
-
-form {
-  
 }
 
 /* Responsive media quries */

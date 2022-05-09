@@ -22,7 +22,7 @@
       with the other graphs, simply click on the bar you want to drill down on
       and a table will appear showing you the data.
     </p>
-    <form @submit.prevent="selectedGraphForDiscussion">
+    <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
       <h6>Discuss Graph Four</h6>
       <input :value="4" hidden />
       <button type="submit" class="btn btn-outline-dark">

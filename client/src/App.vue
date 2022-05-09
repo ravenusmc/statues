@@ -36,4 +36,12 @@ export default {
   font-weight: bold;
   color: red;
 }
+
+.discussion-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>

@@ -24,7 +24,7 @@
       think that the graph is broken because there appear to hardly be any
       statues for the North.
     </p>
-    <form @submit.prevent="selectedGraphForDiscussion">
+    <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
       <h6>Discuss Graph Three</h6>
       <input :value="3" hidden />
       <button type="submit" class="btn btn-outline-dark">

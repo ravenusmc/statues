@@ -30,7 +30,7 @@
       way that event is remembered. Maybe the Lost Cause explanation has
       something to do with it?
     </p>
-    <form @submit.prevent="selectedGraphForDiscussion">
+    <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
       <h6>Discuss Graph Two</h6>
       <input :value="2" hidden />
       <button type="submit" class="btn btn-outline-dark">

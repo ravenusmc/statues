@@ -18,7 +18,7 @@
       again. I'd say that each year going forward the statues being removed will
       drop until it make be either 0,1 or 2 per year.
     </p>
-    <form @submit.prevent="selectedGraphForDiscussion">
+    <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
       <h6>Discuss Graph Five</h6>
       <input :value="5" hidden />
       <button type="submit" class="btn btn-outline-dark">
