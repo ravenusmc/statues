@@ -33,6 +33,16 @@ ADD COLUMN discussion_sentiment INT(255) AFTER post;
 ALTER TABLE discussions 
 MODIFY COLUMN discussion_sentiment DEC(3,2);
 
+--Altering Discussions Table:
+ALTER TABLE discussions 
+ADD COLUMN votes INT(255) AFTER discussion_sentiment;
+
+--Altering Discussions Table:
+Alter TABLE discussions 
+ADD COLUMN created TIMESTAMP AFTER votes;
+
+
+
 -- Inserting data 
 INSERT INTO users
 VALUES (1, 'test', 'a1@yahoo.com', 'test');

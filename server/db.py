@@ -71,7 +71,8 @@ class Connection():
     
     def get_specific_discussion_by_graph(self, selected_graph_number):
         # query = ("""SELECT * FROM discussions WHERE graph_number = %s""")
-        query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, d.discussion_sentiment 
+        query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, 
+        d.discussion_sentiment, d.votes 
         FROM discussions d
         INNER JOIN users u ON u.user_id = d.user_id WHERE graph_number = %s""")
         self.cursor.execute(query, (selected_graph_number,))
