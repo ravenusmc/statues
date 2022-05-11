@@ -142,9 +142,12 @@ export default {
       this.$store.dispatch('discussion/switchDiscussionOrdering', { payload });
     },
     changeValueOfDiscussionPoint(value, discussionID, votes) {
-      console.log(value);
-      console.log(discussionID);
-      console.log(votes);
+      const payload = {
+        value,
+        discussionID,
+        votes
+      };
+      console.log(payload)
     },
   },
 };
