@@ -19,6 +19,7 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
 
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -29,6 +30,7 @@ def signup():
         hashed = db.encrypt_pass(post_data)
         user_created = db.insert(user, hashed)
         return jsonify(user_created)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -111,8 +113,10 @@ def graphThreeDrillDown():
         post_data = request.get_json()
         statues_data_drill_down_three = data.build_graph_three_drill_down(
             post_data)
-        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_three)
+        drill_down_data = support.build_drill_down_rows(
+            statues_data_drill_down_three)
     return jsonify(drill_down_data)
+
 
 @app.route('/fetch_drilldown_graph_four', methods=['GET', 'POST'])
 def graphFourDrillDown():
@@ -122,8 +126,10 @@ def graphFourDrillDown():
         post_data = request.get_json()
         statues_data_drill_down_four = data.build_graph_four_drill_down(
             post_data)
-        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_four)
+        drill_down_data = support.build_drill_down_rows(
+            statues_data_drill_down_four)
     return jsonify(drill_down_data)
+
 
 @app.route('/fetch_drilldown_graph_five', methods=['GET', 'POST'])
 def graphFiveDrillDown():
@@ -133,8 +139,10 @@ def graphFiveDrillDown():
         post_data = request.get_json()
         statues_data_drill_down_five = data.build_graph_five_drill_down(
             post_data)
-        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_five)
+        drill_down_data = support.build_drill_down_rows(
+            statues_data_drill_down_five)
     return jsonify(drill_down_data)
+
 
 @app.route('/fetch_data_for_graph_six', methods=['GET', 'POST'])
 def graphSix():
@@ -145,6 +153,7 @@ def graphSix():
             post_data)
     return jsonify(sixth_chart_data)
 
+
 @app.route('/fetch_drilldown_graph_six', methods=['GET', 'POST'])
 def graphSixDrillDown():
     if request.method == 'POST':
@@ -153,8 +162,10 @@ def graphSixDrillDown():
         post_data = request.get_json()
         statues_data_drill_down_six = data.build_graph_six_drill_down(
             post_data)
-        drill_down_data = support.build_drill_down_rows(statues_data_drill_down_six)
+        drill_down_data = support.build_drill_down_rows(
+            statues_data_drill_down_six)
     return jsonify(drill_down_data)
+
 
 @app.route('/get_specific_discussion_data', methods=['GET', 'POST'])
 def get_specific_discussion_data():
@@ -162,8 +173,10 @@ def get_specific_discussion_data():
         db = Connection()
         post_data = request.get_json()
         selected_graph_number = post_data['selectedGraphDiscussion']
-        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+        graph_discussion_points = db.get_specific_discussion_by_graph(
+            selected_graph_number)
     return jsonify(graph_discussion_points)
+
 
 @app.route('/add_discussion_post', methods=['GET', 'POST'])
 def add_discussion_post():
@@ -175,8 +188,10 @@ def add_discussion_post():
         post_data['sentiment_average'] = sentiment_average
         db.insert_new_discussion_point(post_data)
         selected_graph_number = post_data['graph_number']
-        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+        graph_discussion_points = db.get_specific_discussion_by_graph(
+            selected_graph_number)
     return jsonify(graph_discussion_points)
+
 
 @app.route('/delete_discussion_post', methods=['GET', 'POST'])
 def delete_discussion_post():
@@ -185,8 +200,10 @@ def delete_discussion_post():
         post_data = request.get_json()
         db.delete_discussion_point(post_data)
         selected_graph_number = post_data['graph_number']
-        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+        graph_discussion_points = db.get_specific_discussion_by_graph(
+            selected_graph_number)
         return jsonify(graph_discussion_points)
+
 
 @app.route('/switch_discussion_posts', methods=['GET', 'POST'])
 def switch_discussion_posts():
@@ -197,6 +214,16 @@ def switch_discussion_posts():
         # selected_graph_number = post_data['graph_number']
         # graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
         return jsonify(graph_discussion_points)
+
+
+@app.route('/update_discussion_votes', methods=['GET', 'POST'])
+def update_discussion_votes():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+        return jsonify('5')
+
 
 if __name__ == '__main__':
     app.run()

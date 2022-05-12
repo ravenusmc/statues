@@ -61,7 +61,19 @@ const actions = {
       .catch((error) => {
         console.log(error);
       });
-  }
+  },
+
+
+  changeDiscussionVotes: ({ commit }, { payload }) => {
+    const path = 'http://localhost:5000/update_discussion_votes';
+    axios.post(path, payload)
+    .then((res) => {
+      commit('setGraph_discussion_points', res.data)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  },
 
 };
 

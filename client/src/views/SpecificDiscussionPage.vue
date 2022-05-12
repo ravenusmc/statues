@@ -112,7 +112,7 @@ export default {
     ...mapGetters('discussion', ['selectedGraph', 'graph_discussion_points']),
   },
   methods: {
-    ...mapActions(['discussion/addDisscusionPost']),
+    ...mapActions('discussion', ['addDisscusionPost', 'deleteDisscusionPost', 'changeDiscussionVotes']),
     submitDiscussion(evt) {
       let userId = evt.target[0]._value;
       let selectedGraph = evt.target[1]._value;
@@ -121,7 +121,7 @@ export default {
         graph_number: selectedGraph,
         post: this.message,
       };
-      this.$store.dispatch('discussion/addDisscusionPost', { payload });
+      this.addDisscusionPost({ payload });
       this.message = '';
     },
     deleteDiscussion(evt) {
@@ -131,7 +131,7 @@ export default {
         discussion_id: selectedDiscussion,
         graph_number: selectedGraph,
       };
-      this.$store.dispatch('discussion/deleteDisscusionPost', { payload });
+      this.deleteDisscusionPost({ payload });
     },
     onChange(event) {
       let ordering = event.target.value;
@@ -139,15 +139,17 @@ export default {
         ordering,
         graph_number: this.selectedGraph,
       };
-      this.$store.dispatch('discussion/switchDiscussionOrdering', { payload });
+      this.switchDiscussionOrdering({ payload });
     },
     changeValueOfDiscussionPoint(value, discussionID, votes) {
+      // I don't believe that I need to be passing value - I just 
+      // need it for the calculation to get the new value of votes. 
       const payload = {
         value,
         discussionID,
         votes
       };
-      console.log(payload)
+      this.changeDiscussionVotes({ payload });
     },
   },
 };
