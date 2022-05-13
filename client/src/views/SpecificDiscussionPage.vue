@@ -112,7 +112,11 @@ export default {
     ...mapGetters('discussion', ['selectedGraph', 'graph_discussion_points']),
   },
   methods: {
-    ...mapActions('discussion', ['addDisscusionPost', 'deleteDisscusionPost', 'changeDiscussionVotes']),
+    ...mapActions('discussion', [
+      'addDisscusionPost',
+      'deleteDisscusionPost',
+      'changeDiscussionVotes',
+    ]),
     submitDiscussion(evt) {
       let userId = evt.target[0]._value;
       let selectedGraph = evt.target[1]._value;
@@ -142,12 +146,16 @@ export default {
       this.switchDiscussionOrdering({ payload });
     },
     changeValueOfDiscussionPoint(value, discussionID, votes) {
-      // I don't believe that I need to be passing value - I just 
-      // need it for the calculation to get the new value of votes. 
+      // I don't believe that I need to be passing value - I just
+      // need it for the calculation to get the new value of votes.
+      if (votes === null){
+        votes = 0
+      }
+      let numberOfVotesCalculated = votes + value;
+      // Need to add if calculated votes goes to below zero then it becomes zero. 
       const payload = {
-        value,
         discussionID,
-        votes
+        numberOfVotesCalculated,
       };
       this.changeDiscussionVotes({ payload });
     },

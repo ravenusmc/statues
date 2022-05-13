@@ -33,7 +33,7 @@ class Connection():
         self.conn.commit()
         return user_created
 
-    # This method will check to ensure that the username is in the database. 
+    # This method will check to ensure that the username is in the database.
     def check(self, username, password):
         # Setting up a user dictionary
         user = {}
@@ -68,7 +68,7 @@ class Connection():
                 not_found = False
                 password_no_match = True
         return login_flag, not_found, password_no_match, user
-    
+
     def get_specific_discussion_by_graph(self, selected_graph_number):
         # query = ("""SELECT * FROM discussions WHERE graph_number = %s""")
         query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, 
@@ -78,15 +78,16 @@ class Connection():
         self.cursor.execute(query, (selected_graph_number,))
         graph_discussion_points = self.cursor.fetchall()
         return graph_discussion_points
-    
+
     def insert_new_discussion_point(self, post_data):
         self._SQL = """insert into discussions
           (user_id, graph_number, post, discussion_sentiment)
           values
           (%s, %s, %s, %s)"""
-        self.cursor.execute(self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post'], post_data['sentiment_average']))
+        self.cursor.execute(
+            self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post'], post_data['sentiment_average']))
         self.conn.commit()
-    
+
     def delete_discussion_point(self, post_data):
         discussion_id = post_data['discussion_id']
         print(discussion_id)
@@ -94,4 +95,10 @@ class Connection():
         self.cursor.execute(self._SQL, (discussion_id, ))
         self.conn.commit()
 
-        
+    def update_number_of_votes_on_discussion(self, post_data):
+        self._SQL = """UPDATE discussions 
+        SET votes =  %s
+        where discussion_id = %s"""
+        self.cursor.execute(
+            self._SQL, (post_data['numberOfVotesCalculated'], post_data['discussionID']))
+        self.conn.commit()

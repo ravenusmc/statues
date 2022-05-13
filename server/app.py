@@ -222,6 +222,7 @@ def update_discussion_votes():
         db = Connection()
         post_data = request.get_json()
         print(post_data)
+        # db.update_number_of_votes_on_discussion(post_data)
         return jsonify('5')
 
 
