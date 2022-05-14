@@ -49,7 +49,7 @@
               {{ point[3] }}
             </p>
             <svg
-              @click="changeValueOfDiscussionPoint(1, point[2], point[5])"
+              @click="changeValueOfDiscussionPoint(1, point[2], point[5], selectedGraph)"
               xmlns="http://www.w3.org/2000/svg"
               width="30"
               height="30"
@@ -63,7 +63,7 @@
               />
             </svg>
             <svg
-              @click="changeValueOfDiscussionPoint(-1, point[2], point[5])"
+              @click="changeValueOfDiscussionPoint(-1, point[2], point[5], selectedGraph)"
               xmlns="http://www.w3.org/2000/svg"
               width="30"
               height="30"
@@ -145,17 +145,20 @@ export default {
       };
       this.switchDiscussionOrdering({ payload });
     },
-    changeValueOfDiscussionPoint(value, discussionID, votes) {
-      // I don't believe that I need to be passing value - I just
-      // need it for the calculation to get the new value of votes.
+    changeValueOfDiscussionPoint(value, discussionID, votes, selectedGraph) {
+      // I belive that this conditional statement will be able to be removed shortly 
+      // just have to fix a few things...
       if (votes === null){
         votes = 0
       }
       let numberOfVotesCalculated = votes + value;
-      // Need to add if calculated votes goes to below zero then it becomes zero. 
+      if (numberOfVotesCalculated < 0) {
+        numberOfVotesCalculated = 0
+      }
       const payload = {
         discussionID,
         numberOfVotesCalculated,
+        selectedGraph,
       };
       this.changeDiscussionVotes({ payload });
     },
