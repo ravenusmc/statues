@@ -23,6 +23,20 @@ CREATE TABLE discussions
   ON DELETE CASCADE
 );
 
+--Table modified 
+CREATE TABLE discussions
+(
+  discussion_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  graph_number INT NOT NULL, 
+  post TEXT NOT NULL,
+  discussion_sentiment INT,
+  votes INT, 
+  created TIMESTAMP, 
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+  ON DELETE CASCADE
+);
+
 SHOW COLUMNS FROM users;
 
 --Altering the discussions table:

@@ -4,7 +4,7 @@
 import bcrypt
 from bson.son import SON
 import mysql.connector
-
+from datetime import datetime
 
 class Connection():
 
@@ -80,12 +80,14 @@ class Connection():
         return graph_discussion_points
 
     def insert_new_discussion_point(self, post_data):
+        initial_votes = 0
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self._SQL = """insert into discussions
-          (user_id, graph_number, post, discussion_sentiment)
+          (user_id, graph_number, post, discussion_sentiment, votes, created)
           values
-          (%s, %s, %s, %s)"""
+          (%s, %s, %s, %s, %s, %s)"""
         self.cursor.execute(
-            self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post'], post_data['sentiment_average']))
+            self._SQL, (post_data['userid'], post_data['graph_number'], post_data['post'], post_data['sentiment_average'], initial_votes, timestamp))
         self.conn.commit()
 
     def delete_discussion_point(self, post_data):
