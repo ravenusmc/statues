@@ -48,8 +48,18 @@
             <p>
               {{ point[3] }}
             </p>
+            <p :class="$style['name-div']">
+              Date Posted: {{ point[6] }}
+            </p>
             <svg
-              @click="changeValueOfDiscussionPoint(1, point[2], point[5], selectedGraph)"
+              @click="
+                changeValueOfDiscussionPoint(
+                  1,
+                  point[2],
+                  point[5],
+                  selectedGraph
+                )
+              "
               xmlns="http://www.w3.org/2000/svg"
               width="30"
               height="30"
@@ -63,7 +73,14 @@
               />
             </svg>
             <svg
-              @click="changeValueOfDiscussionPoint(-1, point[2], point[5], selectedGraph)"
+              @click="
+                changeValueOfDiscussionPoint(
+                  -1,
+                  point[2],
+                  point[5],
+                  selectedGraph
+                )
+              "
               xmlns="http://www.w3.org/2000/svg"
               width="30"
               height="30"
@@ -146,14 +163,14 @@ export default {
       this.switchDiscussionOrdering({ payload });
     },
     changeValueOfDiscussionPoint(value, discussionID, votes, selectedGraph) {
-      // I belive that this conditional statement will be able to be removed shortly 
+      // I belive that this conditional statement will be able to be removed shortly
       // just have to fix a few things...
-      if (votes === null){
-        votes = 0
+      if (votes === null) {
+        votes = 0;
       }
       let numberOfVotesCalculated = votes + value;
       if (numberOfVotesCalculated < 0) {
-        numberOfVotesCalculated = 0
+        numberOfVotesCalculated = 0;
       }
       const payload = {
         discussionID,
