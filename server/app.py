@@ -211,9 +211,8 @@ def switch_discussion_posts():
         db = Connection()
         post_data = request.get_json()
         # {'column': 'created', 'direction': 'ASC', 'graph_number': 6}
-        # selected_graph_number = post_data['graph_number']
-        # graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
-        return jsonify('5')
+        graph_discussion_points = db.get_specific_discussion_by_graph_order(post_data)
+        return jsonify(graph_discussion_points)
 
 
 @app.route('/update_discussion_votes', methods=['GET', 'POST'])

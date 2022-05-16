@@ -6,6 +6,7 @@ from bson.son import SON
 import mysql.connector
 from datetime import datetime
 
+
 class Connection():
 
     def __init__(self):
@@ -70,13 +71,24 @@ class Connection():
         return login_flag, not_found, password_no_match, user
 
     def get_specific_discussion_by_graph(self, selected_graph_number):
-        # query = ("""SELECT * FROM discussions WHERE graph_number = %s""")
         query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, 
         d.discussion_sentiment, d.votes, d.created
         FROM discussions d
         INNER JOIN users u ON u.user_id = d.user_id WHERE graph_number = %s""")
         self.cursor.execute(query, (selected_graph_number,))
         graph_discussion_points = self.cursor.fetchall()
+        return graph_discussion_points
+
+    def get_specific_discussion_by_graph_order(self, post_data):
+        query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, 
+        d.discussion_sentiment, d.votes, d.created
+        FROM discussions d
+        INNER JOIN users u ON u.user_id = d.user_id 
+        WHERE graph_number = %s
+        ORDER BY """ +  post_data['column'] + ' ' + post_data['direction'])
+        self.cursor.execute(query, (post_data['graph_number'],))
+        graph_discussion_points = self.cursor.fetchall()
+        print(graph_discussion_points)
         return graph_discussion_points
 
     def insert_new_discussion_point(self, post_data):
