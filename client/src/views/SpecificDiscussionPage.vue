@@ -48,9 +48,7 @@
             <p>
               {{ point[3] }}
             </p>
-            <p :class="$style['name-div']">
-              Date Posted: {{ point[6] }}
-            </p>
+            <p :class="$style['name-div']">Date Posted: {{ point[6] }}</p>
             <svg
               @click="
                 changeValueOfDiscussionPoint(
@@ -121,7 +119,7 @@ export default {
     return {
       message: '',
       order: 'Newest',
-      ordering_options: ['Newest', 'By Rating', 'By Date'],
+      ordering_options: ['Newest', 'Oldest', 'Most Popular', 'Least Popular'],
     };
   },
   computed: {
@@ -132,6 +130,7 @@ export default {
     ...mapActions('discussion', [
       'addDisscusionPost',
       'deleteDisscusionPost',
+      'switchDiscussionOrdering',
       'changeDiscussionVotes',
     ]),
     submitDiscussion(evt) {
@@ -156,8 +155,24 @@ export default {
     },
     onChange(event) {
       let ordering = event.target.value;
+      let column = '';
+      let direction = '';
+      if (ordering === 'Newest') {
+        column = 'created';
+        direction = 'DESC';
+      } else if (ordering === 'Oldest') {
+        column = 'created';
+        direction = 'ASC';
+      } else if (ordering === 'Most Popular') {
+        column = 'votes';
+        direction = 'DESC';
+      } else {
+        column = 'votes';
+        direction = 'ASC';
+      }
       const payload = {
-        ordering,
+        column,
+        direction,
         graph_number: this.selectedGraph,
       };
       this.switchDiscussionOrdering({ payload });

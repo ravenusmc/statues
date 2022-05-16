@@ -63,7 +63,6 @@ const actions = {
       });
   },
 
-
   changeDiscussionVotes: ({ commit }, { payload }) => {
     const path = 'http://localhost:5000/update_discussion_votes';
     axios.post(path, payload)
