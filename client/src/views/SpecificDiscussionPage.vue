@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section :class="$style['discussion-section']">
+    <section :class="$style['discussion-section']" v-if="showDiscussion">
       <div>
         <h1 :class="$style['user-heading']">
           Welcome
@@ -30,14 +30,24 @@
       </div>
       <div :class="$style['main-discussion-div']">
         <h1 :class="$style['user-heading']">What others have posted:</h1>
-        <div :class="$style['selection-div']">
-          <select @change="onChange($event)" v-model="order">
-            <option>Please select an ordering option</option>
-            <option v-for="order in ordering_options" :key="order">
-              {{ order }}
-            </option>
-          </select>
-        </div>
+        <section :class="$style['page-options']">
+          <div :class="$style['selection-div']">
+            <select @change="onChange($event)" v-model="order">
+              <option>Please select an ordering option</option>
+              <option v-for="order in ordering_options" :key="order">
+                {{ order }}
+              </option>
+            </select>
+          </div>
+          <div :class="$style['selection-div']">
+            <select @change="changeDisplay($event)" v-model="view">
+              <option>Select Discussion or Graph</option>
+              <option v-for="view in views" :key="view">
+                {{ view }}
+              </option>
+            </select>
+          </div>
+        </section>
         <div>
           <div
             :class="$style['discussion-div']"
@@ -49,6 +59,7 @@
               {{ point[3] }}
             </p>
             <p :class="$style['name-div']">Date Posted: {{ point[6] }}</p>
+            <p :class="$style['name-div']">Votes: {{ point[5] }}</p>
             <svg
               @click="
                 changeValueOfDiscussionPoint(
@@ -107,6 +118,9 @@
         </div>
       </div>
     </section>
+    <section>
+      <!-- Place graph section here -->
+    </section>
   </div>
 </template>
 
@@ -120,6 +134,9 @@ export default {
       message: '',
       order: 'Newest',
       ordering_options: ['Newest', 'Oldest', 'Most Popular', 'Least Popular'],
+      view: 'Discussion',
+      views: ['Discussion', 'Graph of Discussion Sentiment'],
+      showDiscussion: true,
     };
   },
   computed: {
@@ -176,6 +193,11 @@ export default {
         graph_number: this.selectedGraph,
       };
       this.switchDiscussionOrdering({ payload });
+    },
+    changeDisplay(event) {
+      if (this.view == 'Graph of Discussion Sentiment') {
+        this.showDiscussion = false
+      }
     },
     changeValueOfDiscussionPoint(value, discussionID, votes, selectedGraph) {
       // I belive that this conditional statement will be able to be removed shortly
@@ -243,6 +265,13 @@ button {
 
 .main-discussion-div {
   border-left: 3px solid black;
+}
+
+.page-options {
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 5px;
 }
 
 .discussion-div {

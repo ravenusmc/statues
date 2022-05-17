@@ -210,8 +210,8 @@ def switch_discussion_posts():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        # {'column': 'created', 'direction': 'ASC', 'graph_number': 6}
-        graph_discussion_points = db.get_specific_discussion_by_graph_order(post_data)
+        graph_discussion_points = db.get_specific_discussion_by_graph_order(
+            post_data)
         return jsonify(graph_discussion_points)
 
 
@@ -222,7 +222,8 @@ def update_discussion_votes():
         post_data = request.get_json()
         db.update_number_of_votes_on_discussion(post_data)
         selected_graph_number = post_data['selectedGraph']
-        graph_discussion_points = db.get_specific_discussion_by_graph(selected_graph_number)
+        graph_discussion_points = db.get_specific_discussion_by_graph(
+            selected_graph_number)
         return jsonify(graph_discussion_points)
 
 

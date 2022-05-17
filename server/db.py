@@ -88,7 +88,6 @@ class Connection():
         ORDER BY """ +  post_data['column'] + ' ' + post_data['direction'])
         self.cursor.execute(query, (post_data['graph_number'],))
         graph_discussion_points = self.cursor.fetchall()
-        print(graph_discussion_points)
         return graph_discussion_points
 
     def insert_new_discussion_point(self, post_data):
@@ -111,7 +110,7 @@ class Connection():
 
     def update_number_of_votes_on_discussion(self, post_data):
         self._SQL = """UPDATE discussions 
-        SET votes =  %s
+        SET votes = %s
         where discussion_id = %s"""
         self.cursor.execute(
             self._SQL, (post_data['numberOfVotesCalculated'], post_data['discussionID']))
