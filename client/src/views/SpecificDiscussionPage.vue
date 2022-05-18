@@ -120,15 +120,20 @@
     </section>
     <section>
       <!-- Place graph section here -->
+      <DiscussionGraph />
     </section>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import DiscussionGraph from '@/components/data/discussion/DiscussionGraph.vue';
 
 export default {
   name: 'SpecificDiscussionPage',
+  components: {
+    DiscussionGraph,
+  },
   data() {
     return {
       message: '',
@@ -196,7 +201,7 @@ export default {
     },
     changeDisplay(event) {
       if (this.view == 'Graph of Discussion Sentiment') {
-        this.showDiscussion = false
+        this.showDiscussion = false;
       }
     },
     changeValueOfDiscussionPoint(value, discussionID, votes, selectedGraph) {
@@ -268,7 +273,7 @@ button {
 }
 
 .page-options {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 5px;
