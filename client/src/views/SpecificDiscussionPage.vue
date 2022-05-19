@@ -118,7 +118,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section v-if="!showDiscussion">
       <!-- Place graph section here -->
       <DiscussionGraph />
     </section>
@@ -141,12 +141,15 @@ export default {
       ordering_options: ['Newest', 'Oldest', 'Most Popular', 'Least Popular'],
       view: 'Discussion',
       views: ['Discussion', 'Graph of Discussion Sentiment'],
-      showDiscussion: true,
     };
   },
   computed: {
     ...mapGetters('session', ['userObject']),
-    ...mapGetters('discussion', ['selectedGraph', 'graph_discussion_points']),
+    ...mapGetters('discussion', [
+      'selectedGraph',
+      'graph_discussion_points',
+      'showDiscussion',
+    ]),
   },
   methods: {
     ...mapActions('discussion', [
@@ -154,6 +157,7 @@ export default {
       'deleteDisscusionPost',
       'switchDiscussionOrdering',
       'changeDiscussionVotes',
+      'changeBetweenDiscussionAndGraph',
     ]),
     submitDiscussion(evt) {
       let userId = evt.target[0]._value;
@@ -201,7 +205,11 @@ export default {
     },
     changeDisplay(event) {
       if (this.view == 'Graph of Discussion Sentiment') {
-        this.showDiscussion = false;
+        let show = false
+        const payload = {
+          show
+        };
+        this.changeBetweenDiscussionAndGraph({ payload });
       }
     },
     changeValueOfDiscussionPoint(value, discussionID, votes, selectedGraph) {

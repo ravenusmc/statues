@@ -8,11 +8,13 @@ Vue.use(Vuex);
 const state = {
   selectedGraph: 1,
   graph_discussion_points: [],
+  showDiscussion: true,
 };
 
 const getters = {
   selectedGraph: (state) => state.selectedGraph,
   graph_discussion_points: (state) => state.graph_discussion_points,
+  showDiscussion: (state) => state.showDiscussion,
 };
 
 const actions = {
@@ -74,6 +76,10 @@ const actions = {
     });
   },
 
+  changeBetweenDiscussionAndGraph: ({ commit }, { payload }) => {
+    commit('setShowDiscussion', payload['show'])
+  }
+
 };
 
 const mutations = {
@@ -84,6 +90,10 @@ const mutations = {
 
   setGraph_discussion_points(state, data) {
     state.graph_discussion_points = data;
+  },
+
+  setShowDiscussion(state,data) {
+    state.showDiscussion = data
   },
 
 };

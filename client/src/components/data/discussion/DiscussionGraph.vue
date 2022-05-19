@@ -1,16 +1,45 @@
 <template>
-	<div>
-		<h1>GRAPH HERE</h1>
-	</div>
+  <div>
+    <div>
+      <select @change="changeDisplay($event)" v-model="view">
+        <option>Select Discussion or Graph</option>
+        <option v-for="view in views" :key="view">
+          {{ view }}
+        </option>
+      </select>
+    </div>
+    <h1>GRAPH HERE</h1>
+  </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
-	name: 'DiscussionGraph',
-}
+  name: 'DiscussionGraph',
+  data() {
+    return {
+      view: 'Discussion',
+      views: ['Discussion', 'Graph of Discussion Sentiment'],
+    };
+  },
+  methods: {
+    ...mapActions('discussion', [
+      'changeBetweenDiscussionAndGraph',
+    ]),
+    changeDisplay(event) {
+      if (this.view == 'Discussion') {
+        let show = true;
+        const payload = {
+          show,
+				};
+        this.changeBetweenDiscussionAndGraph({ payload });
+      }
+    },
+  },
+};
 </script>
 
 
 <style lang="css" module>
-
 </style>
