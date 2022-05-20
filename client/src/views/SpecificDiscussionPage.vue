@@ -40,7 +40,7 @@
             </select>
           </div>
           <div :class="$style['selection-div']">
-            <select @change="changeDisplay($event)" v-model="view">
+            <select @change="changeDisplay($event, selectedGraph)" v-model="view">
               <option>Select Discussion or Graph</option>
               <option v-for="view in views" :key="view">
                 {{ view }}
@@ -203,10 +203,11 @@ export default {
       };
       this.switchDiscussionOrdering({ payload });
     },
-    changeDisplay(event) {
+    changeDisplay(event, selectedGraph) {
       if (this.view == 'Graph of Discussion Sentiment') {
         let show = false
         const payload = {
+          selectedGraph,
           show
         };
         this.changeBetweenDiscussionAndGraph({ payload });

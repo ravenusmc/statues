@@ -19,7 +19,7 @@ export default {
   name: 'DiscussionGraph',
   data() {
     return {
-      view: 'Discussion',
+      view: 'Graph of Discussion Sentiment',
       views: ['Discussion', 'Graph of Discussion Sentiment'],
     };
   },

@@ -68,16 +68,27 @@ const actions = {
   changeDiscussionVotes: ({ commit }, { payload }) => {
     const path = 'http://localhost:5000/update_discussion_votes';
     axios.post(path, payload)
-    .then((res) => {
-      commit('setGraph_discussion_points', res.data)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((res) => {
+        commit('setGraph_discussion_points', res.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 
   changeBetweenDiscussionAndGraph: ({ commit }, { payload }) => {
     commit('setShowDiscussion', payload['show'])
+    console.log(payload)
+    if (typeof payload['selectedGraph'] !== 'undefined') {
+      const path = 'http://localhost:5000/build_discussion_graph';
+      axios.post(path, payload)
+        .then((res) => {
+          // commit('setGraph_discussion_points', res.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
 };
@@ -92,7 +103,7 @@ const mutations = {
     state.graph_discussion_points = data;
   },
 
-  setShowDiscussion(state,data) {
+  setShowDiscussion(state, data) {
     state.showDiscussion = data
   },
 
