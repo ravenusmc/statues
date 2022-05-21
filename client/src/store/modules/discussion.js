@@ -78,7 +78,6 @@ const actions = {
 
   changeBetweenDiscussionAndGraph: ({ commit }, { payload }) => {
     commit('setShowDiscussion', payload['show'])
-    console.log(payload)
     if (typeof payload['selectedGraph'] !== 'undefined') {
       const path = 'http://localhost:5000/build_discussion_graph';
       axios.post(path, payload)

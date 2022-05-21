@@ -103,7 +103,6 @@ class Connection():
 
     def delete_discussion_point(self, post_data):
         discussion_id = post_data['discussion_id']
-        print(discussion_id)
         self._SQL = """DELETE FROM discussions WHERE discussion_id = %s"""
         self.cursor.execute(self._SQL, (discussion_id, ))
         self.conn.commit()
@@ -115,3 +114,13 @@ class Connection():
         self.cursor.execute(
             self._SQL, (post_data['numberOfVotesCalculated'], post_data['discussionID']))
         self.conn.commit()
+
+    def get_discussions_by_graph_number(self, selectedGraph):
+        query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, 
+        d.discussion_sentiment, d.votes, d.created
+        FROM discussions d
+        INNER JOIN users u ON u.user_id = d.user_id 
+        WHERE graph_number = %s
+        ORDER BY created DESC """)
+        self.cursor.execute(query, (selectedGraph,))
+        return self.cursor.fetchall()

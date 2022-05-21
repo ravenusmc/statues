@@ -231,15 +231,12 @@ def build_discussion_graph():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
-        # db.update_number_of_votes_on_discussion(post_data)
+        graph_discussion_points = db.get_discussions_by_graph_number(post_data['selectedGraph'])
+        print(graph_discussion_points)
         # selected_graph_number = post_data['selectedGraph']
         # graph_discussion_points = db.get_specific_discussion_by_graph(
         #     selected_graph_number)
         return jsonify('5')
-
-
-
 
 if __name__ == '__main__':
     app.run()
