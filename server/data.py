@@ -8,7 +8,6 @@ from datetime import datetime
 # Files that I built
 from clean import *
 
-
 class Data():
 
     def build_north_south_graph(self, years):
@@ -186,3 +185,11 @@ class Data():
         statues_data_drill_down_six = statues_data_subset[(symbol_type) & (state) & (yearOne) &
             (yearTwo)]
         return statues_data_drill_down_six
+    
+    def get_sentiment_data(self, graph_discussion_points):
+        count = 0
+        sentiment_values_array = []
+        while count < len(graph_discussion_points):
+            sentiment_values_array.append(graph_discussion_points[count][4])
+            count += 1 
+        return sentiment_values_array
