@@ -234,8 +234,8 @@ def build_discussion_graph():
         graph_discussion_points = db.get_discussions_by_graph_number(post_data['selectedGraph'])
         data = Data()
         sentiment_values_array = data.get_sentiment_data(graph_discussion_points)
-        print(sentiment_values_array[0])
-        return jsonify('5')
+        discussion_sentiment_graph_data = data.build_discussion_sentiment_graph(sentiment_values_array)
+        return jsonify(discussion_sentiment_graph_data)
 
 if __name__ == '__main__':
     app.run()

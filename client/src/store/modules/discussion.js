@@ -9,12 +9,14 @@ const state = {
   selectedGraph: 1,
   graph_discussion_points: [],
   showDiscussion: true,
+  sentiment_graph_data: [],
 };
 
 const getters = {
   selectedGraph: (state) => state.selectedGraph,
   graph_discussion_points: (state) => state.graph_discussion_points,
   showDiscussion: (state) => state.showDiscussion,
+  sentiment_graph_data: (state) => state.sentiment_graph_data,
 };
 
 const actions = {
@@ -82,7 +84,7 @@ const actions = {
       const path = 'http://localhost:5000/build_discussion_graph';
       axios.post(path, payload)
         .then((res) => {
-          // commit('setGraph_discussion_points', res.data)
+          commit('setSentiment_graph_data', res.data)
         })
         .catch((error) => {
           console.log(error);
@@ -105,6 +107,10 @@ const mutations = {
   setShowDiscussion(state, data) {
     state.showDiscussion = data
   },
+
+  setSentiment_graph_data(state, data) {
+    state.sentiment_graph_data = data
+  }
 
 };
 

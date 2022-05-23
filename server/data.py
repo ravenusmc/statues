@@ -8,6 +8,7 @@ from datetime import datetime
 # Files that I built
 from clean import *
 
+
 class Data():
 
     def build_north_south_graph(self, years):
@@ -166,12 +167,12 @@ class Data():
             rows = []
             number_of_symbol_types = len(
                 statues_data_set_for_symbol_type[(statues_data_set_for_symbol_type['Symbol Type'] == symbol_type)])
-            if number_of_symbol_types != 0:   
+            if number_of_symbol_types != 0:
                 rows.append(symbol_type)
                 rows.append(number_of_symbol_types)
                 sixth_chart_data.append(rows)
         return sixth_chart_data
-    
+
     def build_graph_six_drill_down(self, post_data):
         clean = Clean()
         statues_data_subset = clean.clean_data()
@@ -183,13 +184,26 @@ class Data():
         yearOne = statues_data_subset['Year Dedicated'] >= post_data['graphsixYearOne']
         yearTwo = statues_data_subset['Year Dedicated'] <= post_data['graphSixYearTwo']
         statues_data_drill_down_six = statues_data_subset[(symbol_type) & (state) & (yearOne) &
-            (yearTwo)]
+                                                          (yearTwo)]
         return statues_data_drill_down_six
-    
+
     def get_sentiment_data(self, graph_discussion_points):
         count = 0
         sentiment_values_array = []
         while count < len(graph_discussion_points):
             sentiment_values_array.append(graph_discussion_points[count][4])
-            count += 1 
+            count += 1
         return sentiment_values_array
+
+    def build_discussion_sentiment_graph(self, graph_discussion_points):
+        discussion_sentiment_graph_data = []
+        columns = ['Discussion', 'Sentiment']
+        discussion_sentiment_graph_data.append(columns)
+        count = 0
+        while count < len(graph_discussion_points):
+            rows = []
+            rows.append(count + 1)
+            rows.append(graph_discussion_points[count])
+            discussion_sentiment_graph_data.append(rows)
+            count += 1
+        return discussion_sentiment_graph_data
