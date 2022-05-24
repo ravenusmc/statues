@@ -211,14 +211,10 @@ export default {
           show
         };
         this.changeBetweenDiscussionAndGraph({ payload });
+        this.view = 'Discussion'
       }
     },
     changeValueOfDiscussionPoint(value, discussionID, votes, selectedGraph) {
-      // I belive that this conditional statement will be able to be removed shortly
-      // just have to fix a few things...
-      if (votes === null) {
-        votes = 0;
-      }
       let numberOfVotesCalculated = votes + value;
       if (numberOfVotesCalculated < 0) {
         numberOfVotesCalculated = 0;

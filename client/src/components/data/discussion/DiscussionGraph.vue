@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div :class="$style['section-area']">
       <select @change="changeDisplay($event)" v-model="view">
         <option>Select Discussion or Graph</option>
         <option v-for="view in views" :key="view">
@@ -37,14 +37,15 @@ export default {
         title: 'Graph of Sentiment for each Discussion',
         legend: { position: 'top' },
         colors: ['#f24867'],
-        height: 500,
-        animation: {
-          duration: 1000,
-          easing: 'linear',
+        height: 600,
+        hAxis: {
+          title: 'Discussion',
         },
         vAxis: {
+          title: 'Sentiment',
           viewWindow: {
             min: -1,
+            max: 1,
           },
         },
       },
@@ -67,4 +68,8 @@ export default {
 
 
 <style lang="css" module>
+.section-area {
+  margin-top: 50px;
+  text-align: center;
+}
 </style>
