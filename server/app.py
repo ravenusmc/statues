@@ -233,9 +233,22 @@ def build_discussion_graph():
         post_data = request.get_json()
         graph_discussion_points = db.get_discussions_by_graph_number(post_data['selectedGraph'])
         data = Data()
+        count_and_discussion_point_relationship = data.build_relationship_between_count_and_discussion_point(graph_discussion_points)
         sentiment_values_array = data.get_sentiment_data(graph_discussion_points)
         discussion_sentiment_graph_data = data.build_discussion_sentiment_graph(sentiment_values_array)
         return jsonify(discussion_sentiment_graph_data)
 
 if __name__ == '__main__':
     app.run()
+
+
+# What I need to show in drill down - user who said it, what what said, date and votes
+# [(1, 'gus', 38, 
+# 'Payton Gendron is the suspect accused of killing at least 10 people at a Tops Friendly Market 
+# grocery store in Buffalo, New York, on Saturday, May 14, 2022, while live-streaming video. Gendron 
+# was taken into custody at the scene, Buffalo Police said. Three others were wounded. Gendron is facing 
+# first-degree murder charges in New York state court and could also face federal charges, including hate 
+# crimes, officials said. The names of the victims have not been released yet.', Decimal('-0.05'), 
+# 3, datetime.datetime(2022, 5, 15, 10, 20, 1)), (2, 'bayan', 12, 'Gross domestic product unexpectedly declined 
+# at a 1.4% annualized pace in the first quarter, marking an abrupt reversal for an economy coming off its best 
+# performance since 1984, the Commerce Department reported Thursday.', Decimal('0.20'), 1, None)]

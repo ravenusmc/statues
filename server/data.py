@@ -195,6 +195,14 @@ class Data():
             count += 1
         return sentiment_values_array
 
+    def build_relationship_between_count_and_discussion_point(self, graph_discussion_points):
+        count_and_discussion_point_relationship = {}
+        count = 0
+        while count < len(graph_discussion_points):
+            count_and_discussion_point_relationship[count + 1] = graph_discussion_points[count][0] 
+            count += 1
+        return count_and_discussion_point_relationship
+
     def build_discussion_sentiment_graph(self, graph_discussion_points):
         discussion_sentiment_graph_data = []
         columns = ['Discussion', 'Sentiment']
@@ -207,3 +215,6 @@ class Data():
             discussion_sentiment_graph_data.append(rows)
             count += 1
         return discussion_sentiment_graph_data
+
+    def get_data_for_drilldown(self, graph_discussion_points):
+        pass
