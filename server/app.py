@@ -236,7 +236,10 @@ def build_discussion_graph():
         count_and_discussion_point_relationship = data.build_relationship_between_count_and_discussion_point(graph_discussion_points)
         sentiment_values_array = data.get_sentiment_data(graph_discussion_points)
         discussion_sentiment_graph_data = data.build_discussion_sentiment_graph(sentiment_values_array)
-        return jsonify(discussion_sentiment_graph_data)
+        discussion_graph_information = []
+        discussion_graph_information.append(count_and_discussion_point_relationship)
+        discussion_graph_information.append(discussion_sentiment_graph_data)
+        return jsonify(discussion_graph_information)
 
 if __name__ == '__main__':
     app.run()

@@ -10,6 +10,7 @@ const state = {
   graph_discussion_points: [],
   showDiscussion: true,
   sentiment_graph_data: [],
+  relationship_between_count_and_discussion_point: {},
 };
 
 const getters = {
@@ -17,6 +18,7 @@ const getters = {
   graph_discussion_points: (state) => state.graph_discussion_points,
   showDiscussion: (state) => state.showDiscussion,
   sentiment_graph_data: (state) => state.sentiment_graph_data,
+  relationship_between_count_and_discussion_point: (state) => state.relationship_between_count_and_discussion_point,
 };
 
 const actions = {
@@ -84,7 +86,8 @@ const actions = {
       const path = 'http://localhost:5000/build_discussion_graph';
       axios.post(path, payload)
         .then((res) => {
-          commit('setSentiment_graph_data', res.data)
+          commit('setSentiment_graph_data', res.data[1])
+          commit('setRelationship_between_count_and_discussion_point', res.data[0])
         })
         .catch((error) => {
           console.log(error);
@@ -110,7 +113,11 @@ const mutations = {
 
   setSentiment_graph_data(state, data) {
     state.sentiment_graph_data = data
-  }
+  },
+
+  setRelationship_between_count_and_discussion_point(state, data) {
+    state.relationship_between_count_and_discussion_point = data
+  },
 
 };
 
