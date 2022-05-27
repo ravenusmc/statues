@@ -39,6 +39,9 @@ export default {
       'sixthGraphSixYearOne',
       'sixthGraphSixYearTwo',
     ]),
+    ...mapGetters('discussion', [
+      'relationship_between_count_and_discussion_point',
+    ]),
   },
   data() {
     return {
@@ -48,7 +51,7 @@ export default {
       chartEvents: {
         select: () => {
           // This is one ugly code - very confusing and really need to fix some things up here...
-          console.log(this.data); // This will show you the data kept for reference
+          // console.log(this.data); // This will show you the data kept for reference
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
@@ -113,12 +116,12 @@ export default {
             });
             this.modalTitle = `Statues that have been removed in the year ${year}`;
           } else if (this.data[0][0] === 'Symbol Type') {
-            let selectedSymbol = this.data[row][0]
-            let state = this.sixthGraphSelectedState
+            let selectedSymbol = this.data[row][0];
+            let state = this.sixthGraphSelectedState;
             let graphsixYearOne = this.sixthGraphSixYearOne;
             let graphSixYearTwo = this.sixthGraphSixYearTwo;
             const payload = {
-              selectedSymbol, 
+              selectedSymbol,
               state,
               graphsixYearOne,
               graphSixYearTwo,
@@ -127,6 +130,9 @@ export default {
               payload,
             });
             // this.modalTitle = `Statues that have been removed in the year ${year}`;
+          } else if (this.data[0][1] === 'Sentiment') {
+            console.log(this.relationship_between_count_and_discussion_point[row])
+            // console.log(row);
           }
           this.showModal = true;
         },
