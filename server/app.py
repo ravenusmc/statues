@@ -241,6 +241,13 @@ def build_discussion_graph():
         discussion_graph_information.append(discussion_sentiment_graph_data)
         return jsonify(discussion_graph_information)
 
+@app.route('/fetch_sentiment_drilldown_data', methods=['GET', 'POST'])
+def fetch_sentiment_drilldown_data():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        return jsonify('5')
+
 if __name__ == '__main__':
     app.run()
 

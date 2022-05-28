@@ -93,7 +93,7 @@ const actions = {
           console.log(error);
         });
     }
-  }
+  },
 
 };
 

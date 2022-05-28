@@ -182,6 +182,18 @@ const actions = {
 			})
 	},
 
+	// This action sets the drill down data for the sentiment grapg
+	fetchSentimentDrillDownData: ({ commit }, { payload }) => {
+    const path = 'http://localhost:5000/fetch_sentiment_drilldown_data';
+    axios.post(path, payload)
+    .then((res) => {
+      // commit('setDrillDownData', res.data)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }, 
+
 };
 
 const mutations = {

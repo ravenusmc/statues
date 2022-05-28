@@ -131,8 +131,12 @@ export default {
             });
             // this.modalTitle = `Statues that have been removed in the year ${year}`;
           } else if (this.data[0][1] === 'Sentiment') {
-            console.log(this.relationship_between_count_and_discussion_point[row])
-            // console.log(row);
+            let discussionID = this
+              .relationship_between_count_and_discussion_point[row];
+            const payload = {
+              discussionID,
+            };
+            this.$store.dispatch('data/fetchSentimentDrillDownData', { payload });
           }
           this.showModal = true;
         },
