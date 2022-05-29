@@ -124,3 +124,13 @@ class Connection():
         ORDER BY created DESC """)
         self.cursor.execute(query, (selectedGraph,))
         return self.cursor.fetchall()
+
+    def get_discussion_by_discussion_id(self, post_data):
+        query = ("""SELECT u.user_id, u.username, d.discussion_id, d.post, 
+        d.discussion_sentiment, d.votes, d.created
+        FROM discussions d
+        INNER JOIN users u ON u.user_id = d.user_id 
+        WHERE discussion_id = %s """)
+        self.cursor.execute(query, (post_data['discussionID'],))
+        return self.cursor.fetchone()
+        

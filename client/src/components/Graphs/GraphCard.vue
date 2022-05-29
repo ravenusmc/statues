@@ -6,6 +6,12 @@
       :modalTitle="modalTitle"
       @close-modal="update"
     />
+    <SentimentModal
+      :data="drillDownData"
+      :showSentimentDrillDown="showSentimentDrillDown"
+      :modalTitle="modalTitle"
+      @close-sentiment-modal="close"
+    />
     <GChart
       :type="typeOne"
       :data="data"
@@ -18,6 +24,7 @@
 
 <script>
 import Modal from '@/components/data/Modal.vue';
+import SentimentModal from '@/components/data/SentimentModal.vue';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -25,6 +32,7 @@ export default {
   props: ['typeOne', 'data', 'options'],
   components: {
     Modal,
+    SentimentModal,
   },
   computed: {
     ...mapGetters('data', [
@@ -47,14 +55,17 @@ export default {
     return {
       modalTitle: '',
       showModal: false,
+      showSentimentDrillDown: false,
       // Code in here could be cleaned up some more...
       chartEvents: {
         select: () => {
           // This is one ugly code - very confusing and really need to fix some things up here...
-          // console.log(this.data); // This will show you the data kept for reference
+          // This will show you the data kept for reference
+          //console.log(this.data)
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
+          let dontShowSentimentDrillDown = true;
           if (this.data[0].length === 4) {
             let side_selected = this.data[0][selection.column];
             let graphThreeYearOne = this.graphThreeYearOne;
@@ -136,9 +147,17 @@ export default {
             const payload = {
               discussionID,
             };
-            this.$store.dispatch('data/fetchSentimentDrillDownData', { payload });
+            this.$store.dispatch('data/fetchSentimentDrillDownData', {
+              payload,
+            });
+            dontShowSentimentDrillDown = false;
           }
-          this.showModal = true;
+
+          if (dontShowSentimentDrillDown) {
+            this.showModal = true;
+          } else {
+            this.showSentimentDrillDown = true;
+          }
         },
       }, // End Chart Events
     };
@@ -149,6 +168,9 @@ export default {
       this.showModal = close;
       this.resetDrillDownData();
     },
+    close(close) {
+      this.showSentimentDrillDown = close;
+    }
   }, // End of Methods
 };
 </script>
