@@ -151,6 +151,7 @@ export default {
               payload,
             });
             dontShowSentimentDrillDown = false;
+            this.modalTitle = `Sentiment for discussion`;
           }
 
           if (dontShowSentimentDrillDown) {
