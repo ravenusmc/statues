@@ -8,11 +8,11 @@
             <hr />
             <!-- Modal Body area -->
             <div>
-              <!-- <GChart
-                :type="Table"
-                :data="drillDownData"
-                :options="chartOptionsDrillDown"
-              /> -->
+              <h3>On {{ drillDownData[6] }} {{ drillDownData[1] }} said: </h3>
+              <p>
+                {{ drillDownData[3] }}
+              </p>
+              <h3>Sentiment: {{ drillDownData[4] }}</h3>
             </div>
             <!-- End Modal Body area -->
             <hr />

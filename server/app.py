@@ -247,8 +247,7 @@ def fetch_sentiment_drilldown_data():
         db = Connection()
         post_data = request.get_json()
         discussion_data = db.get_discussion_by_discussion_id(post_data)
-        print(discussion_data)
-        return jsonify('5')
+        return jsonify(discussion_data)
 
 if __name__ == '__main__':
     app.run()
