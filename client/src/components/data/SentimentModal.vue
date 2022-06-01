@@ -8,7 +8,7 @@
             <hr />
             <!-- Modal Body area -->
             <div>
-              <h3>On {{ drillDownData[6] }} {{ drillDownData[1] }} said: </h3>
+              <h3>On {{ drillDownData[6] }} <span>{{ drillDownData[1] }}<span> said: </h3>
               <p>
                 {{ drillDownData[3] }}
               </p>
