@@ -7,19 +7,28 @@
             <h1>{{ modalTitle }}</h1>
             <hr />
             <!-- Modal Body area -->
-            <div>
-              <h3>On {{ drillDownData[6] }} <span>{{ drillDownData[1] }}<span> said: </h3>
+            <div class="drilldown-information">
+              <h3 class="add-boldness">
+                On {{ drillDownData[6] }}
+                <span class="capitalize-name">{{ drillDownData[1] }}</span>
+                said:
+              </h3>
+              <br />
               <p>
                 {{ drillDownData[3] }}
               </p>
-              <h3>Sentiment: {{ drillDownData[4] }}</h3>
+              <br />
+              <h3 class="add-boldness">Sentiment: {{ drillDownData[4] }}</h3>
             </div>
             <!-- End Modal Body area -->
             <hr />
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
-                <button class="button is-success" @click="closeSentimentModal()">
+                <button
+                  class="button is-success"
+                  @click="closeSentimentModal()"
+                >
                   Close
                 </button>
               </slot>
@@ -49,7 +58,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <style scoped>
@@ -64,10 +72,12 @@ export default {
   display: table;
   transition: opacity 0.3s ease;
 }
+
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
 }
+
 .modal-container {
   width: 600px;
   margin: 0px auto;
@@ -78,6 +88,19 @@ export default {
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
+
+.add-boldness {
+  font-weight: bolder;
+}
+
+.capitalize-name {
+  text-transform: capitalize;
+}
+
+.drilldown-information {
+  text-align: left;
+}
+
 .modal-footer {
   display: flex;
   justify-content: center;
