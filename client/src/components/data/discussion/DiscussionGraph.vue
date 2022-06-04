@@ -1,10 +1,18 @@
 <template>
   <div>
     <div :class="$style['section-area']">
+      <p>Select Discussion or Graph</p>
       <select @change="changeDisplay($event)" v-model="view">
-        <option>Select Discussion or Graph</option>
         <option v-for="view in views" :key="view">
           {{ view }}
+        </option>
+      </select>
+    </div>
+    <div :class="$style['section-area']">
+      <select @change="changeDisplay($event)" v-model="graphVersion">
+        <option>Select Graph Type: (Column or Line)</option>
+        <option v-for="graphVersion in graphVersions" :key="graphVersion">
+          {{ graphVersion }}
         </option>
       </select>
     </div>
@@ -26,13 +34,15 @@ export default {
     GraphCard,
   },
   computed: {
-    ...mapGetters('discussion', ['sentiment_graph_data']),
+    ...mapGetters('discussion', ['sentiment_graph_data', 'graphType']),
   },
   data() {
     return {
       view: 'Graph of Discussion Sentiment',
       views: ['Discussion', 'Graph of Discussion Sentiment'],
-      typeOne: 'ColumnChart',
+      graphVersion: 'ColumnChart',
+      graphVersions: ['ColumnChart', 'LineChart'],
+      typeOne: '',
       chartOptionsOne: {
         title: 'Graph of Sentiment for each Discussion',
         legend: { position: 'top' },
@@ -61,6 +71,21 @@ export default {
         };
         this.changeBetweenDiscussionAndGraph({ payload });
       }
+    },
+    changeGraphType() {
+      console.log('Hi');
+      console.log(this.graphType)
+      this.typeOne = this.graphType;
+    },
+  },
+  watch: {
+    graphType: {
+      handler(value) {
+        if (value) {
+          this.changeGraphType();
+        }
+      },
+      immediate: true,
     },
   },
 };

@@ -11,6 +11,7 @@ const state = {
   showDiscussion: true,
   sentiment_graph_data: [],
   relationship_between_count_and_discussion_point: {},
+  graphType: 'ColumnChart',
 };
 
 const getters = {
@@ -19,6 +20,7 @@ const getters = {
   showDiscussion: (state) => state.showDiscussion,
   sentiment_graph_data: (state) => state.sentiment_graph_data,
   relationship_between_count_and_discussion_point: (state) => state.relationship_between_count_and_discussion_point,
+  graphType: (state) => state.graphType,
 };
 
 const actions = {
