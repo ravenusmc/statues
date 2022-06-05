@@ -97,6 +97,10 @@ const actions = {
     }
   },
 
+  changeGraphVersionAction: ({ commit }, { payload }) => {
+    commit('setGraphType', payload)
+  },
+
 };
 
 const mutations = {
@@ -120,6 +124,10 @@ const mutations = {
   setRelationship_between_count_and_discussion_point(state, data) {
     state.relationship_between_count_and_discussion_point = data
   },
+  
+  setGraphType(state, data) {
+    state.graphType = data 
+  }
 
 };
 

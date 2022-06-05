@@ -9,8 +9,8 @@
       </select>
     </div>
     <div :class="$style['section-area']">
-      <select @change="changeDisplay($event)" v-model="graphVersion">
-        <option>Select Graph Type: (Column or Line)</option>
+      <p>Select Graph Type: (Column or Line)</p>
+      <select @change="changeGraphVersion($event)" v-model="graphVersion">
         <option v-for="graphVersion in graphVersions" :key="graphVersion">
           {{ graphVersion }}
         </option>
@@ -62,7 +62,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions('discussion', ['changeBetweenDiscussionAndGraph']),
+    ...mapActions('discussion', [
+      'changeBetweenDiscussionAndGraph',
+      'changeGraphVersionAction',
+    ]),
     changeDisplay(event) {
       if (this.view == 'Discussion') {
         let show = true;
@@ -72,10 +75,15 @@ export default {
         this.changeBetweenDiscussionAndGraph({ payload });
       }
     },
+    changeGraphVersion(event) {
+      let graphVersion = this.graphVersion;
+      const payload = {
+        graphVersion,
+      };
+      this.changeGraphVersionAction({ payload });
+    },
     changeGraphType() {
-      console.log('Hi');
-      console.log(this.graphType)
-      this.typeOne = this.graphType;
+      this.typeOne = this.graphType.graphVersion;
     },
   },
   watch: {
@@ -87,6 +95,9 @@ export default {
       },
       immediate: true,
     },
+  },
+  mounted() {
+    this.typeOne = this.$store.getters['discussion/graphType'];
   },
 };
 </script>
