@@ -1,21 +1,23 @@
 <template>
   <div>
-    <div :class="$style['section-area']">
-      <p>Select Discussion or Graph</p>
-      <select @change="changeDisplay($event)" v-model="view">
-        <option v-for="view in views" :key="view">
-          {{ view }}
-        </option>
-      </select>
-    </div>
-    <div :class="$style['section-area']">
-      <p>Select Graph Type: (Column or Line)</p>
-      <select @change="changeGraphVersion($event)" v-model="graphVersion">
-        <option v-for="graphVersion in graphVersions" :key="graphVersion">
-          {{ graphVersion }}
-        </option>
-      </select>
-    </div>
+    <section :class="$style['section-area']">
+      <div>
+        <p>Select Discussion or Graph</p>
+        <select @change="changeDisplay($event)" v-model="view">
+          <option v-for="view in views" :key="view">
+            {{ view }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <p>Select Graph Type: (Column or Line)</p>
+        <select @change="changeGraphVersion($event)" v-model="graphVersion">
+          <option v-for="graphVersion in graphVersions" :key="graphVersion">
+            {{ graphVersion }}
+          </option>
+        </select>
+      </div>
+    </section>
     <GraphCard
       :typeOne="typeOne"
       :data="sentiment_graph_data"
@@ -105,6 +107,9 @@ export default {
 
 <style lang="css" module>
 .section-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-top: 50px;
   text-align: center;
 }
