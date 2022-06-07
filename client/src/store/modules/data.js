@@ -62,7 +62,7 @@ const state = {
 	],
 	sixthGraphSelectedState: 'VA',
 	sixthGraphSixYearOne: 1854, 
-	sixthGraphSixYearTwo: 1854, 
+	sixthGraphSixYearTwo: 2017, 
 };
 
 const getters = {
@@ -175,6 +175,7 @@ const actions = {
 	},
 
 	fetchDrillDownDataGraphSix: ({ commit }, { payload }) => {
+		console.log(payload)
 		const path = 'http://localhost:5000/fetch_drilldown_graph_six';
 		axios.post(path, payload)
 			.then((res) => {

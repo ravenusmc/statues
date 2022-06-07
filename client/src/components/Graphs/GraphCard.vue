@@ -140,7 +140,7 @@ export default {
             this.$store.dispatch('data/fetchDrillDownDataGraphSix', {
               payload,
             });
-            // this.modalTitle = `Statues that have been removed in the year ${year}`;
+            this.modalTitle = `${selectedSymbol} monument type`;
           } else if (this.data[0][1] === 'Sentiment') {
             let discussionID = this
               .relationship_between_count_and_discussion_point[row];
