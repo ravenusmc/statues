@@ -56,7 +56,6 @@ class InitialData():
                   'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
                   'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
         states = sorted(states)
-        # print(states)
 
     def get_top_states_removed_statues(self):
         clean = Clean()
@@ -74,7 +73,6 @@ class InitialData():
             rows.append(int(state_counts.iloc[count]))
             fourth_chart_data.append(rows)
             count += 1
-        # print(fourth_chart_data)
 
     def get_top_years_statues_removed(self):
         clean = Clean()
@@ -92,7 +90,6 @@ class InitialData():
             rows.append(int(state_counts.iloc[count]))
             fifth_chart_data.append(rows)
             count += 1
-        # print(fifth_chart_data)
 
     def get_data_for_statue_type_by_state(self):
         clean = Clean()
@@ -100,7 +97,8 @@ class InitialData():
         state_sort = statues_data_subset['State'] == 'VA'
         yearOne = statues_data_subset['Year Dedicated'] >= 1854
         yearTwo = statues_data_subset['Year Dedicated'] <= 2017
-        statues_data = statues_data_subset[(state_sort) & (yearOne) & (yearTwo)]
+        statues_data = statues_data_subset[(
+            state_sort) & (yearOne) & (yearTwo)]
         statues_data_by_value_counts = statues_data['Symbol Type'].value_counts().head(
             10).sort_index()
         sixth_chart_data = []
@@ -113,8 +111,28 @@ class InitialData():
             rows.append(int(statues_data_by_value_counts.iloc[count]))
             sixth_chart_data.append(rows)
             count += 1
-        # print(sixth_chart_data)
+
+    def get_initial_data_for_map(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
+                  'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+                  'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
+        map_data_set = []
+        columns = ['State', 'Total Monuments']
+        map_data_set.append(columns)
+        year = statues_data_subset['Year Dedicated'] = 1870
+        for state in states:
+            rows = []
+            specific_state = statues_data_subset['State'] == state
+            number_of_statues = len(
+                statues_data_subset[(specific_state) & (statues_data_subset['Year Dedicated'] >= 1870) & (statues_data_subset['Year Dedicated'] <= 1871)])
+            rows.append(state)
+            rows.append(number_of_statues)
+            if state != 'OKPAMOLAID':
+                map_data_set.append(rows)
+        print(map_data_set)
 
 
 test = InitialData()
-test.unique_states()
+test.get_initial_data_for_map()

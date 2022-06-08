@@ -32,18 +32,24 @@
         <GraphFour />
       </div>
     </section>
+    <hr />
     <section class="graph-area">
       <div>
         <GraphFive />
       </div>
       <GraphFiveDiscussion />
     </section>
+    <hr />
     <section class="graph-area">
       <GraphSixDiscussion />
       <div>
         <GraphSix />
         <FormSix />
       </div>
+    </section>
+    <hr />
+    <section class="graph-area">
+      <Map />
     </section>
   </div>
 </template>
@@ -67,6 +73,8 @@ import GraphFive from '@/components/data/graphfive/GraphFive.vue';
 import GraphSixDiscussion from '@/components/data/graphsix/GraphSixDiscussion.vue';
 import FormSix from '@/components/data/graphsix/FormSix.vue';
 import GraphSix from '@/components/data/graphsix/GraphSix.vue';
+import Map from '@/components/map/Map.vue';
+
 
 export default {
   name: 'Data',
@@ -88,6 +96,7 @@ export default {
     GraphSixDiscussion,
     FormSix,
     GraphSix,
+    Map,
   },
   data() {
     return {

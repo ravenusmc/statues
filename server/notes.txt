@@ -1,0 +1,34 @@
+Google GeoCharts Information:
+
+https://developers.google.com/chart/interactive/docs/gallery/geochart
+
+Stackoverflow posting about how to get only U.S States:
+https://stackoverflow.com/questions/35100909/geochart-u-s-states-using-google-geocharts-api
+
+I need to get total number of statues by state 
+
+states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
+                  'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+                  'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
+SO: 
+[
+	['State', 'Total Statues']
+	['US-AZ', 34]
+]
+I also need to add US- to the start of everything in my states array. 
+
+STEPS:
+-Get Initial maps Card onto data page. -DONE 
+-Get inital data for 1854 -
+-Build out the state management side 
+-Build form buttons to change years 
+
+
+
+Add resolution: 'provinces', to the options object.
+
+    var options = {
+      region: 'US',
+      displayMode: 'regions',
+      resolution: 'provinces',
+    };
