@@ -63,6 +63,7 @@ const state = {
 	sixthGraphSelectedState: 'VA',
 	sixthGraphSixYearOne: 1854, 
 	sixthGraphSixYearTwo: 2017, 
+	mapData: [],
 };
 
 const getters = {

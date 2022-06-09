@@ -121,18 +121,29 @@ class InitialData():
         map_data_set = []
         columns = ['State', 'Total Monuments']
         map_data_set.append(columns)
-        year = statues_data_subset['Year Dedicated'] = 1870
         for state in states:
             rows = []
-            specific_state = statues_data_subset['State'] == state
-            number_of_statues = len(
-                statues_data_subset[(specific_state) & (statues_data_subset['Year Dedicated'] >= 1870) & (statues_data_subset['Year Dedicated'] <= 1871)])
+            # (statues_data_subset["State"] == state)
+            number_of_statues = statues_data_subset[(
+                statues_data_subset["Year Dedicated"] == 1854) & (statues_data_subset["State"] == state)]
             rows.append(state)
-            rows.append(number_of_statues)
+            rows.append(len(number_of_statues))
             if state != 'OKPAMOLAID':
                 map_data_set.append(rows)
         print(map_data_set)
 
+    def exploring_data(self):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
+                  'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+                  'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
+        for state in states:
+            df = statues_data_subset[(statues_data_subset["Year Dedicated"] == 1854)]
+            df.to_csv('exploring_data.csv', encoding='utf-8', index=False)
+
 
 test = InitialData()
 test.get_initial_data_for_map()
+test.exploring_data()
+
