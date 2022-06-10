@@ -19,7 +19,7 @@ I also need to add US- to the start of everything in my states array.
 
 STEPS:
 -Get Initial maps Card onto data page. -DONE 
--Get inital data for 1854 
+-Get inital data for 1854 - Done 
 -Build out the state management side 
 -Build form buttons to change years 
 

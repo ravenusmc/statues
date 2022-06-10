@@ -63,7 +63,42 @@ const state = {
 	sixthGraphSelectedState: 'VA',
 	sixthGraphSixYearOne: 1854, 
 	sixthGraphSixYearTwo: 2017, 
-	mapData: [],
+	mapData: [
+		['State', 'Total Monuments'], 
+		['US-AZ', 0], 
+		['US-TX', 1], 
+		['US-GA', 0], 
+		['US-TN', 0], 
+		['US-FL', 0], 
+		['US-CA', 0], 
+		['US-DC', 0], 
+		['US-DE', 0], 
+		['US-NC', 0], 
+		['US-MS', 1], 
+		['US-VA', 0], 
+		['US-AR', 0], 
+		['US-IA', 0], 
+		['US-WA', 0], 
+		['US-SC', 0], 
+		['US-KY', 0], 
+		['US-WV', 0], 
+		['US-AL', 0], 
+		['US-NM', 0], 
+		['US-MT', 0], 
+		['US-NY', 0], 
+		['US-MD', 0], 
+		['US-OH', 0], 
+		['US-IN', 0], 
+		['US-OR', 0], 
+		['US-MA', 0], 
+		['US-SD', 0], 
+		['US-ME', 0], 
+		['US-KS', 0], 
+		['US-UT', 0], 
+		['US-NV', 0], 
+		['US-AK', 0]
+	],
+	mapYear: 1854
 };
 
 const getters = {
@@ -83,6 +118,8 @@ const getters = {
 	sixthGraphSelectedState: state => state.sixthGraphSelectedState,
 	sixthGraphSixYearOne: state => state.sixthGraphSixYearOne,
 	sixthGraphSixYearTwo: state => state.sixthGraphSixYearTwo, 
+	mapData: state => state.mapData,
+	mapYear: state => state.mapYear,
 };
 
 const actions = {
@@ -263,6 +300,14 @@ const mutations = {
 	setGraphSixYearTwo(state, data) {
 		state.sixthGraphSixYearTwo = data
 	},
+
+	setMapData(state, data) {
+		state.mapData = data 
+	},
+
+	setMapYear(state, data) {
+		state.mapYear = data
+	}
 
 };
 

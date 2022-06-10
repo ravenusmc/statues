@@ -121,16 +121,17 @@ class InitialData():
         map_data_set = []
         columns = ['State', 'Total Monuments']
         map_data_set.append(columns)
+        state_pre_text = 'US-'
         for state in states:
             rows = []
-            # (statues_data_subset["State"] == state)
             number_of_statues = statues_data_subset[(
                 statues_data_subset["Year Dedicated"] == 1854) & (statues_data_subset["State"] == state)]
+            state = state_pre_text + state
             rows.append(state)
             rows.append(len(number_of_statues))
-            if state != 'OKPAMOLAID':
+            if state != 'US-OKPAMOLAID':
                 map_data_set.append(rows)
-        print(map_data_set)
+        # print(map_data_set)
 
     def exploring_data(self):
         clean = Clean()
