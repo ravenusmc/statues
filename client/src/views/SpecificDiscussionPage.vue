@@ -119,7 +119,6 @@
       </div>
     </section>
     <section v-if="!showDiscussion">
-      <!-- Place graph section here -->
       <DiscussionGraph />
     </section>
   </div>
