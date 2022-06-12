@@ -249,6 +249,14 @@ def fetch_sentiment_drilldown_data():
         discussion_data = db.get_discussion_by_discussion_id(post_data)
         return jsonify(discussion_data)
 
+@app.route('/fetch_map_data', methods=['GET', 'POST'])
+def fetch_map_data():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+        return jsonify(discussion_data)
+
 if __name__ == '__main__':
     app.run()
 
