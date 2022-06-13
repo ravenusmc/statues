@@ -199,7 +199,8 @@ class Data():
         count_and_discussion_point_relationship = {}
         count = 0
         while count < len(graph_discussion_points):
-            count_and_discussion_point_relationship[count + 1] = graph_discussion_points[count][2] 
+            count_and_discussion_point_relationship[count +
+                                                    1] = graph_discussion_points[count][2]
             count += 1
         return count_and_discussion_point_relationship
 
@@ -215,3 +216,30 @@ class Data():
             discussion_sentiment_graph_data.append(rows)
             count += 1
         return discussion_sentiment_graph_data
+
+    def get_data_for_map(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
+                  'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+                  'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
+        map_data_set = []
+        columns = ['State', 'Total Monuments']
+        map_data_set.append(columns)
+        state_pre_text = 'US-'
+        first_year = 1854
+        second_year = post_data['year']
+        print(second_year)
+        if second_year == '1854':
+            for state in states:
+                rows = []
+                number_of_statues = statues_data_subset[(
+                    statues_data_subset["Year Dedicated"] == 1854) & (statues_data_subset["State"] == state)]
+                state = state_pre_text + state
+                rows.append(state)
+                rows.append(len(number_of_statues))
+                if state != 'US-OKPAMOLAID':
+                    map_data_set.append(rows)
+        else:
+            print('ELSE')
+        return map_data_set
