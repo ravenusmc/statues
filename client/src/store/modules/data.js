@@ -227,7 +227,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_map_data';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setDrillDownData', res.data)
+				commit('setMapData', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -239,7 +239,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetch_sentiment_drilldown_data';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setMapData', res.data)
+				commit('setDrillDownData', res.data)
 			})
 			.catch((error) => {
 				console.log(error);

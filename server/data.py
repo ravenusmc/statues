@@ -240,21 +240,31 @@ class Data():
                 if state != 'US-OKPAMOLAID':
                     map_data_set.append(rows)
         else:
+            states = ['TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
+                  'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+                  'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
             yearOne = statues_data_subset['Year Dedicated'] >= int(first_year)
             yearTwo = statues_data_subset['Year Dedicated'] <= int(second_year)
             for state in states:
                 rows = []
-                state = statues_data_subset['State'] == state
+                current_state = statues_data_subset['State'] == state
                 # number_of_statues = statues_data_subset[(state) & (yearOne) & (yearTwo)]
-                df = statues_data_subset[(state) & (yearOne) & (yearTwo)]
+                # df = statues_data_subset[(state)]
+                df = statues_data_subset[(current_state) & (yearOne) & (yearTwo)]
+                nan_value = float("NaN")
+                df.replace("", nan_value, inplace=True)
+                df.dropna(subset=["Year Dedicated"], inplace=True)
                 df.to_csv('exploring_data.csv', encoding='utf-8', index=False)
-                print('PRINTED!!!')
-                input()
+                # input()
                 # number_of_statues = statues_data_subset[(
                 #     statues_data_subset["Year Dedicated"] >= int(first_year)) & (statues_data_subset["State"] == state)]
-                state = state_pre_text + state
+                # state = state_pre_text + state
+                # print(state)
+                # print(len(df))
+                # input()
                 rows.append(state)
-                rows.append(len(number_of_statues))
+                rows.append(len(df))
                 if state != 'US-OKPAMOLAID':
                     map_data_set.append(rows)
+        print(map_data_set)
         return map_data_set
