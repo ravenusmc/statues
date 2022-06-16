@@ -221,9 +221,7 @@ const actions = {
 	},
 
 	fetchMapData: ({ commit }, { payload }) => {
-		console.log('Action')
-		console.log(payload['year'])
-		// commit('setMapYear', )
+		commit('setMapYear', payload['year'])
 		const path = 'http://localhost:5000/fetch_map_data';
 		axios.post(path, payload)
 			.then((res) => {

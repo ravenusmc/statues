@@ -107,7 +107,11 @@ export default {
     },
     changeYear(direction) {
       console.log(direction)
-      console.log(this.mapYear)
+      let year = Number(this.mapYear) + 1
+      const payload = {
+        year
+      }
+      this.fetchMapData({ payload });
     }
   },
 };
