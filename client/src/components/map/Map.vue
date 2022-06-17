@@ -107,7 +107,11 @@ export default {
     },
     changeYear(direction) {
       console.log(direction)
-      let year = Number(this.mapYear) + 1
+      if (direction === 'increaseYear'){
+        let year = Number(this.mapYear) + 1
+      }else {
+        let year = Number(this.mapYear) - 1
+      }
       const payload = {
         year
       }
