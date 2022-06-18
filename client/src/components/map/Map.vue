@@ -106,12 +106,13 @@ export default {
       this.fetchMapData({ payload });
     },
     changeYear(direction) {
-      console.log(direction)
+      let year = 1854
       if (direction === 'increaseYear'){
-        let year = Number(this.mapYear) + 1
+        year = Number(this.mapYear) + 1
       }else {
-        let year = Number(this.mapYear) - 1
+        year = Number(this.mapYear) - 1
       }
+      year = year.toString()
       const payload = {
         year
       }
