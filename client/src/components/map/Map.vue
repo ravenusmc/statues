@@ -56,6 +56,7 @@
       :options="chartOptions"
       ref="gChart"
       :resizeDebounce="100"
+      :events="chartEvents"
     />
   </div>
 </template>
@@ -94,6 +95,22 @@ export default {
           },
         },
       },
+      chartEvents: {
+        select: () => {
+          console.log(this.mapData)
+          const chart = this.$refs.gChart.chartObject;
+          const selection = chart.getSelection()[0];
+          let row = selection.row + 1;
+          console.log(row)
+          let selectedRow = this.mapData[row]
+          let state = selectedRow[0].slice(3)
+          const payload = {
+            state,
+            year : this.mapYear
+          };
+          console.log(payload)
+        },
+      },
     };
   },
   methods: {
@@ -101,23 +118,23 @@ export default {
     submitYear(evt) {
       evt.preventDefault();
       const payload = {
-        year: this.year
+        year: this.year,
       };
       this.fetchMapData({ payload });
     },
     changeYear(direction) {
-      let year = 1854
-      if (direction === 'increaseYear'){
-        year = Number(this.mapYear) + 1
-      }else {
-        year = Number(this.mapYear) - 1
+      let year = 1854;
+      if (direction === 'increaseYear') {
+        year = Number(this.mapYear) + 1;
+      } else {
+        year = Number(this.mapYear) - 1;
       }
-      year = year.toString()
+      year = year.toString();
       const payload = {
-        year
-      }
+        year,
+      };
       this.fetchMapData({ payload });
-    }
+    },
   },
 };
 </script>
