@@ -97,18 +97,21 @@ export default {
       },
       chartEvents: {
         select: () => {
-          console.log(this.mapData)
+          console.log(this.mapData);
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
-          console.log(row)
-          let selectedRow = this.mapData[row]
-          let state = selectedRow[0].slice(3)
+          console.log(row);
+          let selectedRow = this.mapData[row];
+          let state = selectedRow[0].slice(3);
           const payload = {
             state,
-            year : this.mapYear
+            year: this.mapYear,
           };
-          console.log(payload)
+          this.$store.dispatch('data/fetchMapDrillDownData', {
+            payload,
+          });
+          console.log(payload);
         },
       },
     };

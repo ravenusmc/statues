@@ -226,20 +226,27 @@ def update_discussion_votes():
             selected_graph_number)
         return jsonify(graph_discussion_points)
 
+
 @app.route('/build_discussion_graph', methods=['GET', 'POST'])
 def build_discussion_graph():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        graph_discussion_points = db.get_discussions_by_graph_number(post_data['selectedGraph'])
+        graph_discussion_points = db.get_discussions_by_graph_number(
+            post_data['selectedGraph'])
         data = Data()
-        count_and_discussion_point_relationship = data.build_relationship_between_count_and_discussion_point(graph_discussion_points)
-        sentiment_values_array = data.get_sentiment_data(graph_discussion_points)
-        discussion_sentiment_graph_data = data.build_discussion_sentiment_graph(sentiment_values_array)
+        count_and_discussion_point_relationship = data.build_relationship_between_count_and_discussion_point(
+            graph_discussion_points)
+        sentiment_values_array = data.get_sentiment_data(
+            graph_discussion_points)
+        discussion_sentiment_graph_data = data.build_discussion_sentiment_graph(
+            sentiment_values_array)
         discussion_graph_information = []
-        discussion_graph_information.append(count_and_discussion_point_relationship)
+        discussion_graph_information.append(
+            count_and_discussion_point_relationship)
         discussion_graph_information.append(discussion_sentiment_graph_data)
         return jsonify(discussion_graph_information)
+
 
 @app.route('/fetch_sentiment_drilldown_data', methods=['GET', 'POST'])
 def fetch_sentiment_drilldown_data():
@@ -249,6 +256,7 @@ def fetch_sentiment_drilldown_data():
         discussion_data = db.get_discussion_by_discussion_id(post_data)
         return jsonify(discussion_data)
 
+
 @app.route('/fetch_map_data', methods=['GET', 'POST'])
 def fetch_map_data():
     if request.method == 'POST':
@@ -257,6 +265,18 @@ def fetch_map_data():
         post_data = request.get_json()
         map_data_set = data.get_data_for_map(post_data)
         return jsonify(map_data_set)
+
+
+@app.route('/fetch_map_drill_down_data', methods=['GET', 'POST'])
+def fetch_map_drill_down_data():
+    if request.method == 'POST':
+        db = Connection()
+        data = Data()
+        post_data = request.get_json()
+        print(post_data)
+        # map_data_set = data.get_data_for_map(post_data)
+        return jsonify('5')
+
 
 if __name__ == '__main__':
     app.run()
