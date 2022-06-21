@@ -273,8 +273,7 @@ def fetch_map_drill_down_data():
         db = Connection()
         data = Data()
         post_data = request.get_json()
-        print(post_data)
-        # map_data_set = data.get_data_for_map(post_data)
+        map_drill_down_data = data.get_data_for_map_drilldown(post_data)
         return jsonify('5')
 
 

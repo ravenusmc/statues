@@ -241,14 +241,15 @@ class Data():
                     map_data_set.append(rows)
         else:
             states = ['TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
-                  'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
-                  'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
+                      'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
+                      'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']
             yearOne = statues_data_subset['Year Dedicated'] >= int(first_year)
             yearTwo = statues_data_subset['Year Dedicated'] <= int(second_year)
             for state in states:
                 rows = []
                 current_state = statues_data_subset['State'] == state
-                df = statues_data_subset[(current_state) & (yearOne) & (yearTwo)]
+                df = statues_data_subset[(
+                    current_state) & (yearOne) & (yearTwo)]
                 nan_value = float("NaN")
                 df.replace("", nan_value, inplace=True)
                 df.dropna(subset=["Year Dedicated"], inplace=True)
@@ -257,3 +258,19 @@ class Data():
                 if state != 'US-OKPAMOLAID':
                     map_data_set.append(rows)
         return map_data_set
+
+    def get_data_for_map_drilldown(self, post_data):
+        clean = Clean()
+        statues_data_subset = clean.clean_data()
+        # map_drill_down_data = []
+        # columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
+        # map_drill_down_data.append(columns)
+        first_year = 1854
+        second_year = int(post_data['year'])
+        state = post_data['state']
+        state = statues_data_subset['State'] == state
+        yearOne = statues_data_subset['Year Dedicated'] >= first_year
+        yearTwo = statues_data_subset['Year Dedicated'] <= second_year
+        map_drill_down_data = statues_data_subset[(state) & (yearOne) &
+                                                          (yearTwo)]
+        return
