@@ -262,9 +262,6 @@ class Data():
     def get_data_for_map_drilldown(self, post_data):
         clean = Clean()
         statues_data_subset = clean.clean_data()
-        # map_drill_down_data = []
-        # columns = ['feature_name', 'State', 'Symbol Type', 'Year Dedicated']
-        # map_drill_down_data.append(columns)
         first_year = 1854
         second_year = int(post_data['year'])
         state = post_data['state']
@@ -273,4 +270,4 @@ class Data():
         yearTwo = statues_data_subset['Year Dedicated'] <= second_year
         map_drill_down_data = statues_data_subset[(state) & (yearOne) &
                                                           (yearTwo)]
-        return
+        return map_drill_down_data

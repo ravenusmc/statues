@@ -1,5 +1,11 @@
 <template>
   <div>
+    <Modal
+      :data="drillDownData"
+      :showModal="showModal"
+      :modalTitle="modalTitle"
+      @close-modal="update"
+    />
     <h1>Map Of Statues By Year</h1>
     <h6>Current Year: {{ mapYear }}</h6>
     <section>
@@ -63,6 +69,7 @@
 
 <script>
 import { GChart } from 'vue-google-charts';
+import Modal from '@/components/data/Modal.vue';
 import { mapGetters, mapActions } from 'vuex';
 import GraphCard from '@/components/Graphs/GraphCard.vue';
 
@@ -70,12 +77,15 @@ export default {
   name: 'Map',
   components: {
     GraphCard,
+    Modal,
   },
   computed: {
-    ...mapGetters('data', ['mapData', 'mapYear']),
+    ...mapGetters('data', ['mapData', 'mapYear', 'drillDownData']),
   },
   data() {
     return {
+      modalTitle: '',
+      showModal: false,
       year: 1854,
       chartOptions: {
         title: 'Statues in North Vs South',
@@ -102,11 +112,11 @@ export default {
           const selection = chart.getSelection()[0];
           let row = selection.row + 1;
           let selectedRow = this.mapData[row];
-          let state = ''
-          if (selectedRow[0].length > 2){
+          let state = '';
+          if (selectedRow[0].length > 2) {
             state = selectedRow[0].slice(3);
           } else {
-            state = selectedRow[0]
+            state = selectedRow[0];
           }
           const payload = {
             state,
@@ -115,6 +125,12 @@ export default {
           this.$store.dispatch('data/fetchMapDrillDownData', {
             payload,
           });
+          if (this.mapYear === 1854) {
+            this.modalTitle = `Drilldown Information for ${state} in ${this.mapYear}`;
+          } else {
+            this.modalTitle = `Drilldown Information for ${state} between 1854 and ${this.mapYear}`;
+          }
+          this.showModal = true;
         },
       },
     };
@@ -140,6 +156,13 @@ export default {
         year,
       };
       this.fetchMapData({ payload });
+    },
+    update(close) {
+      this.showModal = close;
+      this.resetDrillDownData();
+    },
+    close(close) {
+      this.showSentimentDrillDown = close;
     },
   },
 };

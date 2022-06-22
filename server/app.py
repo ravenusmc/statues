@@ -272,9 +272,12 @@ def fetch_map_drill_down_data():
     if request.method == 'POST':
         db = Connection()
         data = Data()
+        support = Support()
         post_data = request.get_json()
         map_drill_down_data = data.get_data_for_map_drilldown(post_data)
-        return jsonify('5')
+        drill_down_data = support.build_drill_down_rows(
+            map_drill_down_data)
+        return jsonify(drill_down_data)
 
 
 if __name__ == '__main__':
