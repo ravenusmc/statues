@@ -6,9 +6,9 @@
       :modalTitle="modalTitle"
       @close-modal="update"
     />
-    <h1>Map Of Statues By Year</h1>
-    <h6>Current Year: {{ mapYear }}</h6>
-    <section>
+    <section :class="$style['year-section']">
+      <h1 :class="$style['map-title']">Map Of Statues By Year</h1>
+      <h6>Current Year: {{ mapYear }}</h6>
       <div>
         <h3>Change Year, a year at a time:</h3>
         <svg
@@ -169,6 +169,19 @@ export default {
 </script>
 
 <style lang="css" module>
+.year-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-title {
+  font-weight: bolder;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
 .spacing-fix {
   margin-right: 10px;
 }
