@@ -51,7 +51,7 @@ however I did not want each graph to be controlled by one form. I wanted each gr
 have it's seperate control. I also thought about breaking my forms up into smaller components 
 but also did not like how that turned out as well. Thus, that's why I have each graph has it's 
 own form component. This may be fixed in the future...
-3. Look at build_graph_six_drill_down method in data.py 
+3. Look at build_graph_six_drill_down method in data.py - may have minor issues. 
 
 # Preview
 
