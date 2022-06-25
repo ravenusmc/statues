@@ -8,8 +8,11 @@
     />
     <section :class="$style['year-section']">
       <h1 :class="$style['map-title']">Map Of Statues By Year</h1>
-      <h6>Current Year: {{ mapYear }}</h6>
-      <div>
+      <h3>
+        Current Year:
+        <span :class="$style['selected-year']">{{ mapYear }}</span>
+      </h3>
+      <div :class="$style['single-year-change']">
         <h3>Change Year, a year at a time:</h3>
         <svg
           @click="changeYear('increaseYear')"
@@ -41,8 +44,10 @@
       </div>
       <div>
         <form @submit="submitYear">
-          <h3>Or enter year to go to:</h3>
-          <label for="yearOne">Enter Year (1854-2017):</label>
+          <h3 :class="$style['subtitle-fix']">Or enter year to go to:</h3>
+          <label :class="$style['label-fix']" for="yearOne"
+            >Enter Year (1854-2017):</label
+          >
           <input
             type="number"
             id="year"
@@ -50,6 +55,7 @@
             name="year"
             min="1854"
             max="2017"
+            :class="$style['spacing-fix']"
           />
           <button class="button is-success font">Submit</button>
         </form>
@@ -182,7 +188,23 @@ export default {
   text-transform: uppercase;
 }
 
-.spacing-fix {
-  margin-right: 10px;
+.selected-year {
+  font-weight: bolder;
 }
+
+.single-year-change {
+  display: flex;
+  flex-direction: row;
+  margin: 7px 0 7px 0;
+}
+
+.spacing-fix {
+  margin: 0 10px 0 10px;
+}
+
+.subtitle-fix {
+  margin: 7px 0 7px 0;
+  text-align: center;
+}
+
 </style>
