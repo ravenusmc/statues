@@ -199,11 +199,11 @@ export default {
 }
 
 .spacing-fix {
-  margin: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
 }
 
 .subtitle-fix {
-  margin: 7px 0 7px 0;
+  margin: 3px 0 3px 0;
   text-align: center;
 }
 
