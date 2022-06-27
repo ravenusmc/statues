@@ -113,6 +113,7 @@ export default {
       },
       chartEvents: {
         select: () => {
+          // Keeping this for reference 
           // console.log(this.mapData);
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];

@@ -111,7 +111,6 @@ export default {
     ...mapActions('data', ['fetchNorthSouthByYear']),
     submitForm(evt) {
       evt.preventDefault();
-      console.log(this.graphNumber);
       let yearOne = Number(this.years.yearOne);
       let yearTwo = Number(this.years.yearTwo);
       if (yearOne >= yearTwo) {
