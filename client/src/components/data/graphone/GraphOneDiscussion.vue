@@ -28,7 +28,7 @@
       that point.
     </p>
     <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
-      <h6>Discuss Graph One</h6>
+      <h6 class='discussion_title'>Discuss Graph One</h6>
       <input :value="1" hidden />
       <button type="submit" class="btn btn-outline-dark">
         Go to Discussion

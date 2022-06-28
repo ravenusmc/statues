@@ -51,7 +51,7 @@ class InitialData():
         clean = Clean()
         statues_data_subset = clean.clean_data()
         # statues_data_subset["State"].unique()
-        print(statues_data_subset["Symbol Type"].unique())
+        # print(statues_data_subset["Symbol Type"].unique())
         states = ['AZ', 'TX', 'GA', 'TN', 'FL', 'CA', 'DC', 'DE', 'NC', 'MS', 'VA', 'AR', 'IA', 'WA',
                   'SC', 'KY', 'WV', 'AL', 'NM', 'MT', 'NY', 'MD', 'OH', 'OK' 'PA' 'MO' 'LA' 'ID', 'IN', 'OR',
                   'MA', 'SD', 'ME', 'KS', 'UT', 'NV', 'AK']

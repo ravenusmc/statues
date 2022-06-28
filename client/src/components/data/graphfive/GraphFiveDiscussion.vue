@@ -19,7 +19,7 @@
       drop until it make be either 0,1 or 2 per year.
     </p>
     <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
-      <h6>Discuss Graph Five</h6>
+      <h6 class='discussion_title'>Discuss Graph Five</h6>
       <input :value="5" hidden />
       <button type="submit" class="btn btn-outline-dark">
         Go to Discussion

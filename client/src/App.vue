@@ -44,4 +44,9 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+.discussion_title {
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
 </style>

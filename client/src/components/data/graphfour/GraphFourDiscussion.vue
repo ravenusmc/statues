@@ -23,7 +23,7 @@
       and a table will appear showing you the data.
     </p>
     <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
-      <h6>Discuss Graph Four</h6>
+      <h6 class='discussion_title'>Discuss Graph Four</h6>
       <input :value="4" hidden />
       <button type="submit" class="btn btn-outline-dark">
         Go to Discussion

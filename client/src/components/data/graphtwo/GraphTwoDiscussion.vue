@@ -31,7 +31,7 @@
       something to do with it?
     </p>
     <form class='discussion-form' @submit.prevent="selectedGraphForDiscussion">
-      <h6>Discuss Graph Two</h6>
+      <h6 class='discussion_title'>Discuss Graph Two</h6>
       <input :value="2" hidden />
       <button type="submit" class="btn btn-outline-dark">
         Go to Discussion
