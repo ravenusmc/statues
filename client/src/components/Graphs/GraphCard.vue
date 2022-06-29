@@ -153,7 +153,7 @@ export default {
             dontShowSentimentDrillDown = false;
             this.modalTitle = `Drilldown Information for Selected Discussion`;
           }
-
+          // This is for the drilldown on the sentiment graph 
           if (dontShowSentimentDrillDown) {
             this.showModal = true;
           } else {
