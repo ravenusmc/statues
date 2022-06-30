@@ -11,7 +11,9 @@ This will be a larger project - using MYSQL, Python - flask and Vue.js. It will 
 and then allow the user to play with the data that I have so that one can see information regarding these 
 statues. 
 
-I have also decided to try and add a discussion board for this project. 
+Features of this project: 
+1. Six graphs that show different aspects of the data.
+2. 
 
 # Getting started
 ### Installing
