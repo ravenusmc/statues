@@ -15,6 +15,7 @@ Features of this project:
 1. Six graphs that show different aspects of the data.
 2. Graphs have a drill down that all the user to get more data. 
 3. Users can comment on individual graphs.
+4. Sentiment is tracked and graphed for what every single person says. 
 
 # Getting started
 ### Installing
