@@ -16,6 +16,8 @@ Features of this project:
 2. Graphs have a drill down that all the user to get more data. 
 3. Users can comment on individual graphs.
 4. Sentiment is tracked and graphed for what every single person says. 
+5. A user may drill down on the sentiment graph to see who wrote what was posted, date, sentiment 
+and what was actually written. 
 
 # Getting started
 ### Installing
