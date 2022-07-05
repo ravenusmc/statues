@@ -7,10 +7,6 @@ Civil war guy, I'm really interested in doing this project. I'm not sure why I k
 a few months ago I finally got a good dataset. I downloaded it and put it on my desktop telling myself 
 that I'll soon get to the project and start working on it. Well, I'm going to start doing that. 
 
-This will be a larger project - using MYSQL, Python - flask and Vue.js. It will have a log in system 
-and then allow the user to play with the data that I have so that one can see information regarding these 
-statues. 
-
 Features of this project: 
 1. Six graphs that show different aspects of the data.
 2. Graphs have a drill down that all the user to get more data. 
@@ -18,6 +14,7 @@ Features of this project:
 4. Sentiment is tracked and graphed for what every single person says. 
 5. A user may drill down on the sentiment graph to see who wrote what was posted, date, sentiment 
 and what was actually written. 
+6. On the sentiment graph, a user may change between a line or a bar graph. 
 
 # Getting started
 ### Installing
