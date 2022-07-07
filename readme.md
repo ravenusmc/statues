@@ -1,9 +1,9 @@
 # Statues
 ## Intro
 
-This is a projec that I wanted to build about 3-4 years ago but never got around to it. The project is 
+This is a project that I wanted to build about 3-4 years ago but never got around to it. The project is 
 focused on confederate statues and when they went up around the U.S. As a history major and a big 
-Civil war guy, I'm really interested in doing this project. I'm not sure why I kept putting it off but 
+Civil war guy, I'm really interested in this project. I'm not sure why I kept putting it off but 
 a few months ago I finally got a good dataset. I downloaded it and put it on my desktop telling myself 
 that I'll soon get to the project and start working on it. Well, I'm going to start doing that. 
 
@@ -15,6 +15,9 @@ Features of this project:
 5. A user may drill down on the sentiment graph to see who wrote what was posted, date, sentiment 
 and what was actually written. 
 6. On the sentiment graph, a user may change between a line or a bar graph. 
+
+Final issue to note: I don't believe that the data set has all civil war statues in the country.
+Not 100% sure why they included what they did. 
 
 # Getting started
 ### Installing
